@@ -9,18 +9,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var authentication_service_1 = require("../../services/authentication.service");
 require("rxjs/add/operator/map");
 var LoginComponent = (function () {
-    function LoginComponent() {
+    function LoginComponent(route, router, authenticationService) {
+        this.route = route;
+        this.router = router;
+        this.authenticationService = authenticationService;
+        this.model = {};
+        this.loading = false;
+        console.log("Login Component", route, router, authenticationService);
     }
+    LoginComponent.prototype.onSubmit = function (event) {
+        console.log("onSubmit");
+        event.preventDefault();
+        this.login();
+    };
     LoginComponent.prototype.logout = function () {
+        this.authenticationService.logout();
     };
     /**
      * Submit login credentials
      */
     LoginComponent.prototype.login = function () {
+        this.authenticationService.login("nobody", "important");
     };
     LoginComponent.prototype.ngOnInit = function () {
+        this.authenticationService.logout();
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
         console.log("LoginComponent::ngOnInit()");
         // check cookies for previous login
         // login (oauth?)
@@ -36,7 +53,7 @@ LoginComponent = __decorate([
         templateUrl: './login.component.html',
         styleUrls: ['./login.component.scss']
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [router_1.ActivatedRoute, router_1.Router, authentication_service_1.AuthenticationService])
 ], LoginComponent);
 exports.LoginComponent = LoginComponent;
 //# sourceMappingURL=login.component.js.map

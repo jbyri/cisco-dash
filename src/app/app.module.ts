@@ -4,14 +4,21 @@ import { HttpModule } from '@angular/http';
 import { LoginComponent } from './components/login/login.component'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent }  from './app.component';
+import { AuthenticationService } from './services/authentication.service'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule }   from '@angular/forms';
+
 
 @NgModule({
 imports: [
+  NgbModule.forRoot(),
   BrowserModule,
   AppRoutingModule,
-  HttpModule
+  HttpModule,
+  FormsModule
 ],
   declarations: [ AppComponent, LoginComponent ],
+  providers: [ AuthenticationService ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

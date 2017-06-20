@@ -6,6 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
+var core_2 = require("@angular/core");
 var AppComponent = (function () {
     function AppComponent() {
         this.name = 'Angular';
@@ -14,8 +15,10 @@ var AppComponent = (function () {
 }());
 AppComponent = __decorate([
     core_1.Component({
-        selector: 'my-app',
-        template: "<router-outlet></router-outlet>",
+        encapsulation: core_2.ViewEncapsulation.None,
+        selector: 'cisco-dash-app',
+        templateUrl: './assets/templates/layouts/app-layout.html',
+        styleUrls: ['./assets/styles/app.scss', '/node_modules/bootstrap/dist/boostrap.css', '/node_modules/bootstrap/dist/boostrap-grid.css']
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;

@@ -1,0 +1,28 @@
+.full-size {
+  padding:0;
+  display:inline-flex;
+  border-width: thin;
+  border-style:solid;
+  border-color: #00AA00;
+  width:100%;
+  height:100%;
+}
+
+.footer {
+  padding:15;
+  display:inline-flex;
+  border-width: thin;
+  border-style:solid;
+  border-color: #FFCC00;
+  width:100%;
+  height:70px;
+}
+
+.header {
+  display:inline-flex;
+  border-width: thin;
+  border-style:solid;
+  border-color: #FFCC00;
+  width:100%;
+  height:90px;
+}

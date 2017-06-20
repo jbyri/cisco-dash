@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-
+import { Router, ActivatedRoute } from '@angular/router';
+import { AuthenticationService } from '../../services/authentication.service'
 import 'rxjs/add/operator/map'
 
 @Component({
@@ -9,24 +9,37 @@ import 'rxjs/add/operator/map'
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  model:any = {};
+  loading = false;
+  returnUrl: string;
+
   private account : Object;
 
-  constructor() {
+  constructor(private route: ActivatedRoute, private router:Router, private authenticationService:AuthenticationService) {
+    console.log("Login Component", route, router, authenticationService);
+  }
 
+  onSubmit(event : Event) {
+    console.log("onSubmit");
+    event.preventDefault();
+    this.login();
   }
 
   logout() {
-
-
+    this.authenticationService.logout();
   }
   /**
    * Submit login credentials
    */
   login() {
-    
+    this.authenticationService.login("nobody", "important");
   }
 
   ngOnInit() {
+    this.authenticationService.logout();
+
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
     console.log("LoginComponent::ngOnInit()");
     // check cookies for previous login
     // login (oauth?)
