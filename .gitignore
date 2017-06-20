@@ -4,3 +4,4 @@ _test-output
 *.component.js
 *.spec.js
 *.module.js
+*.service.js

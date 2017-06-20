@@ -2,6 +2,7 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { LoginComponent } from './components/login/login.component'
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent }  from './app.component';
 import { AuthenticationService } from './services/authentication.service'
@@ -17,7 +18,7 @@ imports: [
   HttpModule,
   FormsModule
 ],
-  declarations: [ AppComponent, LoginComponent ],
+  declarations: [ AppComponent, LoginComponent, DashboardComponent ],
   providers: [ AuthenticationService ],
   bootstrap:    [ AppComponent ]
 })

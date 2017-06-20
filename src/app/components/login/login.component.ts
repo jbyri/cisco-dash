@@ -26,13 +26,19 @@ export class LoginComponent implements OnInit {
   }
 
   logout() {
-    this.authenticationService.logout();
+    this.authenticationService.logout().then(success => {
+      this.router.navigate(['/login']);
+    });
   }
   /**
    * Submit login credentials
    */
   login() {
-    this.authenticationService.login("nobody", "important");
+    this.authenticationService.login("nobody", "important").then(success => {
+      console.log("Login Successs!");
+      this.router.navigate(['/dashboard']);
+    });
+
   }
 
   ngOnInit() {

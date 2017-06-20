@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map'
 export class AuthenticationService {
     constructor(private http: Http) { }
  
-    login(username: string, password: string) {
+    login(username: string, password: string) : Promise<boolean> {
         console.log("Login Service Login");
 //         return this.http.post('/api/authenticate', JSON.stringify({ username: username, password: password }))
 //             .map((response: Response) => {
@@ -22,12 +22,19 @@ export class AuthenticationService {
 //             });
 //
       localStorage.setItem('currentUser', '{}');
+
+      return new Promise((resolve, reject) => {
+          resolve(true);
+      });
     }
  
-    logout() {
+    logout() : Promise<boolean> {
         console.log("Login Service Logout");
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
+        return new Promise((resolve, reject) => {
+            resolve(true);
+        });
     }
 
 }
