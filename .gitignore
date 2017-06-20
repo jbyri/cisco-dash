@@ -2,3 +2,5 @@ node_modules
 _test-output
 *.js.map
 *.component.js
+*.spec.js
+*.module.js
