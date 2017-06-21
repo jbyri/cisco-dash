@@ -5,3 +5,4 @@ _test-output
 *.spec.js
 *.module.js
 *.service.js
+src/main.js

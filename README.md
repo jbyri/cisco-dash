@@ -60,7 +60,11 @@ with excellent support for Angular apps that use routing.
 
 Here are the test related scripts:
 * `npm test` - compiles, runs and watches the karma unit tests
-* `npm run e2e` - compiles and run protractor e2e tests, written in Typescript (*e2e-spec.ts)
+* `npm run e2e` - compiles and run protractor e2e tests, written in Typescript (\*e2e-spec.ts)
+
+## Build Pipeline
+This build uses gulp to compile typescript code. The resulting js / map files are
+placed alongside their .ts counterparts. (\* see gulp.js)
 
 ## Testing
 
