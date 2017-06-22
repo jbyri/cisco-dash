@@ -6,6 +6,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent }  from './app.component';
 import { AuthenticationService } from './services/authentication.service'
+import { DashboardDataService } from './services/dashboard/dashboarddata.service'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule }   from '@angular/forms';
 
@@ -19,7 +20,7 @@ imports: [
   FormsModule
 ],
   declarations: [ AppComponent, LoginComponent, DashboardComponent ],
-  providers: [ AuthenticationService ],
+  providers: [ AuthenticationService, DashboardDataService ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

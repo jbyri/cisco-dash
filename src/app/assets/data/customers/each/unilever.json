@@ -1,0 +1,72 @@
+{
+  "data": {
+    "feedbacks": [
+      {
+        "title":"Action Item 1",
+        "text":"lorem ipsum dolor sit amet consectetur adipiscing elit.",
+        "performance":0.8
+      },
+      {
+        "title":"Action Item 2",
+        "text":"lorem ipsum dolor sit amet consectetur adipiscing elit.",
+        "performance":0.6
+      },
+      {
+        "title":"Action Item 3",
+        "text":"lorem ipsum dolor sit amet consectetur adipiscing elit.",
+        "performance":0.25
+      },
+    ],
+
+    "datapoints": [
+      {
+        "title": "Last Day Of Support % (Up To 5 Years)",
+        "tagIds" : [1],
+        "contentType": "chart",
+        "content" : {
+
+          "chartData" : {
+            "type": "bar",
+            "data": {
+              "labels": [ "M", "M", "M", "M", "M", "M"],
+              "datasets": [{
+                "data": [12, 19, 3, 5, 2, 3],
+                "backgroundColor": [
+                  "#67AAF9",
+                  "#67AAF9",
+                  "#67AAF9",
+                  "#67AAF9",
+                  "#67AAF9",
+                  "#67AAF9"
+                ]
+              }]
+            },
+            "options": {
+              "legend": {
+                "display": false
+              },
+              "scales": {
+                "xAxes": [{
+                  "barPercentage": 0.3,
+                  "gridLines": {
+                    "display":false
+                  }
+                }],
+                "yAxes": [{
+                  "gridLines" : {
+                    "drawBorder": false
+                  },
+                  "ticks": {
+                    "padding": 20,
+                    "beginAtZero":true,
+                    "maxTicksLimit": 4
+                  }
+                }]
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

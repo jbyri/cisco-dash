@@ -2,8 +2,12 @@
 node_modules
 _test-output
 *.js.map
+*.model.js
 *.component.js
 *.spec.js
 *.module.js
 *.service.js
 src/main.js
+lupaProject.json
+*/app/assets/styles/**/*.css
+*/app/components/**/*.component.css
