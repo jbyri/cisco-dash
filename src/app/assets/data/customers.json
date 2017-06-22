@@ -2,21 +2,21 @@
   {
     "name":"Unilever",
     "displayName":"Unilever, Inc.",
-    "dataUrl":"/assets/data/customers/each/unilever.json"
+    "dataUrl":"/assets/data/customers/unilever.json"
   },
   {
     "name":"Maersk",
     "displayName":"Maersk, Inc.",
-    "dataUrl":"/assets/data/customers/each/maersk.json"
+    "dataUrl":"/assets/data/customers/maersk.json"
   },
   {
     "name":"Network Rail",
     "displayName":"Network Rail",
-    "dataUrl":"/assets/data/customers/each/networkrail.json"
+    "dataUrl":"/assets/data/customers/networkrail.json"
   },
   {
     "name":"Nationwide",
     "displayName":"Nationwide",
-    "dataUrl":"/assets/data/customers/each/unilever.json"
+    "dataUrl":"/assets/data/customers/unilever.json"
   }
 ]
