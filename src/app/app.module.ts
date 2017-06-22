@@ -3,6 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { LoginComponent } from './components/login/login.component'
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SearchMenuComponent } from './components/search/search-menu.component';
+import { TagBarComponent } from './components/ui/tagbar/tagbar.component'
+import { TagBarItemComponent } from './components/ui/tagbar/tagbar-item.component'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent }  from './app.component';
 import { AuthenticationService } from './services/authentication.service'
@@ -19,7 +22,14 @@ imports: [
   HttpModule,
   FormsModule
 ],
-  declarations: [ AppComponent, LoginComponent, DashboardComponent ],
+  declarations: [
+    AppComponent,
+    DashboardComponent,
+    LoginComponent,
+    SearchMenuComponent,
+    TagBarComponent,
+    TagBarItemComponent
+  ],
   providers: [ AuthenticationService, DashboardDataService ],
   bootstrap:    [ AppComponent ]
 })
