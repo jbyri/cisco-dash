@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-
+import { TagBarModel, TagBarItemModel } from '../../../model/tagbar.model'
 
 import 'rxjs/add/operator/map'
-
-export interface TagBarModel {
-
-}
 
 @Component({
   selector: 'tagbar',
@@ -15,7 +11,7 @@ export interface TagBarModel {
 })
 export class TagBarComponent implements OnInit {
   model:TagBarModel = {
-
+    dataProvider : []
   };
 
   constructor(

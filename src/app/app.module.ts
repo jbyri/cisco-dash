@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { LoginComponent } from './components/login/login.component'
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { SearchMenuComponent } from './components/search/search-menu.component';
+import { SearchMenuComponent } from './components/ui/search/search-menu.component';
 import { TagBarComponent } from './components/ui/tagbar/tagbar.component'
 import { TagBarItemComponent } from './components/ui/tagbar/tagbar-item.component'
 import { AppRoutingModule } from './app-routing.module';
@@ -15,13 +15,13 @@ import { FormsModule }   from '@angular/forms';
 
 
 @NgModule({
-imports: [
-  NgbModule.forRoot(),
-  BrowserModule,
-  AppRoutingModule,
-  HttpModule,
-  FormsModule
-],
+  imports: [
+    NgbModule.forRoot(),
+    BrowserModule,
+    AppRoutingModule,
+    HttpModule,
+    FormsModule
+  ],
   declarations: [
     AppComponent,
     DashboardComponent,
@@ -30,7 +30,13 @@ imports: [
     TagBarComponent,
     TagBarItemComponent
   ],
-  providers: [ AuthenticationService, DashboardDataService ],
+  // Add services and data providers here
+  // this is used for Injectable items which will
+  // be injected into components that request it.
+  providers: [
+    AuthenticationService,
+    DashboardDataService
+  ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

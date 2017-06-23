@@ -1,16 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Customer, CustomerModel } from '../../model/customer.model';
-import { Tag } from '../../model/tag.model';
+import { SearchMenuModel } from '../../../model/search-menu.model';
 
 import 'rxjs/add/operator/map'
 
-export interface SearchMenuModel {
-  customers : Customer[],
-  customerModel : CustomerModel,
-  tags : Tag[],
-  dataSelection : object[]
-}
 
 @Component({
   selector: 'search-menu',
