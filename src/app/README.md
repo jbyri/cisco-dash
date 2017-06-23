@@ -22,3 +22,7 @@ Use this to setup Routes. You'll need to add a component for your new Route.
 
 ### app module
 When adding components, insure you import and Declare them to the application.
+
+## Points of interest
+  - [Components Directory](./components/README.md)
+  - [Assets Directory](./assets/README.md)

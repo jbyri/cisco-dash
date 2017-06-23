@@ -1,27 +1,49 @@
-<div>
+<div id="search-menu.container" class="full-size">
   <div id="searchbox">
     <!-- TODO @barcher SearchBox Component -->
+    <div class="form-group">
+      <label for="usr">Search:</label>
+      <input type="text" class="form-control" id="usr">
+    </div>
   </div>
 
   <div id="filterTags">
     <tagbar></tagbar>
   </div>
+ 
+  <div class="row">
+    <div id="filterSelection" class= "col">
+      <h2>Customers</h2>
+      <!-- TODO @wnamen fill out customers using ng-model -->
+      <div ngbDropdown class="d-inline-block">
+        <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Customers</button>
 
-  <div id="filterSelection">
-      <div>
-        <h2>Customers</h2>
-        <!-- TODO @wnamen fill out customers using ng-model -->
+        <div class="dropdown-menu" aria-labelledby="dropdownBasic1">
+          <!-- todo @wnamen wire up the customers here using ngModel and ng-repeat -->
+          <button class="dropdown-item">Customer A</button>
+          <button class="dropdown-item">Customer B</button>
+          <button class="dropdown-item">Customer C</button>
+        </div>
       </div>
+    </div>
+    <div  class= "col">
+      <h2>Tags</h2>
+      <!-- TODO @wnamen fill out tags using ng-model -->
+      <div class="form-group">
+        <select multiple class="form-control" id="sel1">
+          <!-- todo @wnamen wire up the tags here using ngModel and ng-repeat -->
+          <option>tagA</option>
+          <option>tagB</option>
+          <option>tagC</option>
+          <option>tagD</option>
+        </select>
+      </div>
+    </div>
 
-      <div>
-        <h2>Tags</h2>
-        <!-- TODO @wnamen fill out tags using ng-model -->
-      </div>
+    <!-- <div  class= "col">
+      <h2>Data Selection</h2>
 
-      <div>
-        <h2>Data Selection</h2>
-        <!-- TODO @wnamen fill out data selection using ng-model -->
-      </div>
+    </div> -->
+
   </div>
-
 </div>

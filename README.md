@@ -113,3 +113,8 @@ A custom reporter (see `protractor.config.js`) generates a  `./_test-output/prot
 which is easier to read; this file is excluded from source control.
 
 Shut it down manually with `Ctrl-C`.
+
+## Points of interest
+  - [Application Directory](./src/app/README.md)
+  - [Components Directory](./src/app/components/README.md)
+  - [Assets Directory](./src/app/assets/README.md)

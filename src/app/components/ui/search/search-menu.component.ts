@@ -27,4 +27,27 @@ export class SearchMenuComponent implements OnInit {
   ngOnInit() {
     console.log("SearchMenuComponent::ngOnInit()");
   }
+
+  ngOnDestroy() {
+    console.log("SearchMenuComponent::ngOnDestroy()");
+  }
+
+  ngDoCheck() {
+    console.log("SearchMenuComponent::ngDoCheck()");
+  }
+
+  ngAfterViewChecked() {
+    console.log("SearchMenuComponent::ngAfterViewChecked()");
+  }
+  ngAfterViewInit() {
+    console.log("SearchMenuComponent::ngAfterViewInit()");
+  }
+
+  ngAfterContentInit() {
+    console.log("SearchMenuComponent::ngAfterContentInit()");
+  }
+  ngAfterContentChecked() {
+    console.log("SearchMenuComponent::ngAfterContentChecked()");
+  }
+
 }
