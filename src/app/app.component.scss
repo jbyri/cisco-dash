@@ -1,4 +1,10 @@
- .full-size {
+#app {
+  width:100vw;
+  height:100vh;
+}
+
+
+.full-size {
   padding:0;
   display:inline-flex;
   border-width: thin;

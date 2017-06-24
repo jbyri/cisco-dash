@@ -1,13 +1,28 @@
-<div class="container border2 inner">
-  <div class="row">
-    <!-- points to search-menu.component -->
-    <!-- TODO @wnamen make the search menu component float somehow?
-    This will likely be done either in a wrapping div,
-    or within the component itself. -->
-    <search-menu [model]='searchMenuModel'></search-menu>
+<div class="display-flex">
+  <!-- <div id="side-bar" class="col-sm-1 col-md-1 col-lg-1 large-padding small-border-right border-white background-blue">
+    Cisco
+  </div> -->
+  <div id="dash-body" class="background-white">
+    <div id="nav-dropdown-menu" class="display-inline-flex bottom-shadow border-black">
+      <div class="col-sm-1 col-md-1 col-lg-1 large-padding">
+        <p class=" small-border-right border-gray">Cisco</p>
+      </div>
+      <div class="col-sm-10 col-md-10 col-lg-10 large-padding">
+        <!-- points to search-menu.component -->
+        <!-- TODO @wnamen make the search menu component float somehow?
+        This will likely be done either in a wrapping div,
+        or within the component itself. -->
+        <search-menu [model]='searchMenuModel'></search-menu>
+      </div>
+      <div class="col-sm-10 col-md-10 col-lg-10 display-none">
+        <!-- TODO @barcher, @wnamen eventually will display the tag items based on search selection -->
+        <tagbar #dashboardTagBar></tagbar>
+      </div>
+    </div>
+
+    <!-- <div class="col-sm-10 col-md-10 col-lg-10 background-blue">
+
+    </div> -->
   </div>
-  <div class="row">
-    <!-- TODO @barcher, @wnamen eventually will display the tag items based on search selection -->
-    <tagbar #dashboardTagBar></tagbar>
-  </div>
+
 </div>
