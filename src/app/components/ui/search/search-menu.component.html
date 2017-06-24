@@ -3,17 +3,16 @@
     <!-- TODO @barcher SearchBox Component -->
     <div class="form-group display-flex">
       <label for="usr"><i class="fa fa-search" aria-hidden="true"></i></label>
-      <input type="text" class="form-control no-border-right no-border-top no-border-left no-radius small-border-bottom border-gray" id="usr">
+      <tagbar #filterTagBar [model]='tagBarModel'></tagbar>
     </div>
   </div>
 
-  <tagbar #filterTagBar [model]='tagBarModel'></tagbar>
 
-  <div class="row">
-    <div id="filterSelection" class= "col">
+  <div class="display-flex col-sm-6 col-md-6 col-lg-6">
+    <div id="filterSelection">
       <customer-selector #customerSelector [dataProvider]='customerSelectorModel'></customer-selector>
     </div>
-    <div  class= "col">
+    <div>
       <tag-selector #tagSelector [model]='tagSelectorModel'></tag-selector>
     <!-- <div  class= "col">
       <h2>Data Selection</h2>
