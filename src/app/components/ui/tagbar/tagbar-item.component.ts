@@ -24,7 +24,7 @@ export class TagBarItemComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log("TagBarComponent::ngOnChanges()", changes);
+
   }
 
   onClick(event : any) {
@@ -39,6 +39,6 @@ export class TagBarItemComponent implements OnInit, OnChanges {
   }
 
   ngDoCheck(){
-    console.log("TagBarItemComponent::ngDoCheck()");
+    
   }
 }

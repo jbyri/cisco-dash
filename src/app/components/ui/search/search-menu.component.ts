@@ -1,8 +1,14 @@
 import { Component, OnInit, Input, EventEmitter, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SearchMenuModel } from '../../../model/search-menu.model';
+import { CustomerSelectorModel } from '../../../model/customer-selector.model'
+import { TagSelectorModel } from '../../../model/tag-selector.model'
+import { TagBarModel } from '../../../model/tagbar.model';
 import { TagBarComponent } from '../tagbar/tagbar.component';
-
+import { CustomerSelectorComponent } from '../selectors/customer-selector.component'
+import { TagSelectorComponent } from '../selectors/tag-selector.component'
+import { Customer } from '../../../model/customer.model'
+import { Tag } from '../../../model/tag.model'
 import 'rxjs/add/operator/map'
 
 @Component({
@@ -11,9 +17,9 @@ import 'rxjs/add/operator/map'
   styleUrls: ['./search-menu.component.css']
 })
 export class SearchMenuComponent implements OnInit {
-
   @ViewChild('filterTagBar') filterTagBar : TagBarComponent;
-
+  @ViewChild('customerSelector') customerSelector : CustomerSelectorComponent;
+  @ViewChild('tagSelector') tagSelector : TagSelectorComponent;
 
   /**
    * @Input allows a model to be passed into this component
@@ -23,6 +29,19 @@ export class SearchMenuComponent implements OnInit {
   @Input()
   model:SearchMenuModel;
 
+  tagBarModel : TagBarModel = {
+    nextTagInput : "",
+    sourceData : [],
+    dataProvider : []
+  };
+
+  customerSelectorModel : CustomerSelectorModel = {
+    customers:[]
+  }
+
+  tagSelectorModel : TagSelectorModel = {
+    tags:[]
+  }
 
   constructor(
     private route: ActivatedRoute,
@@ -39,12 +58,24 @@ export class SearchMenuComponent implements OnInit {
   }
 
   ngDoCheck() {
-    // console.log("SearchMenuComponent::ngDoCheck()");
+    // convert data for use in the tagbar models.
+    this.tagBarModel.sourceData = [];
+    
+    this.model.tags.map(tag => {
+      this.tagBarModel.sourceData.push({
+        content:tag.name,
+        enabled:true
+      });
+    });
+
+    this.tagSelectorModel.tags = this.model.tags;
+    this.customerSelector.dataProvider.customers = this.model.customers;
   }
 
   ngAfterViewChecked() {
-    // console.log("SearchMenuComponent::ngAfterViewChecked()");
+
   }
+
   ngAfterViewInit() {
     // console.log("SearchMenuComponent::ngAfterViewInit()");
   }

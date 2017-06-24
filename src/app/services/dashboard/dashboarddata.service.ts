@@ -36,8 +36,6 @@ export class DashboardDataService {
 
   constructor(private http: Http) {
     console.debug("DashboardDataService Construct");
-    this.loadTags();
-    this.loadCustomers();
   }
 
   // formats some tag data from Ciscos Secret Server

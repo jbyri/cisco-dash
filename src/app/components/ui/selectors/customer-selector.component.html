@@ -1,0 +1,8 @@
+<h2>Customers</h2>
+<!-- TODO @wnamen fill out customers using ng-model -->
+<div ngbDropdown class="d-inline-block">
+<select class="form-control" id="sel2">
+    <option *ngFor="let customer of dataProvider.customers">{{customer.displayName}}</option>
+    <!-- todo @barcher wire up the customers here using ngModel and ng-repeat -->
+  </select>
+</div>
