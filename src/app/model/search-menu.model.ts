@@ -1,9 +1,22 @@
 import { Customer, CustomerModel } from '../model/customer.model';
 import { Tag } from '../model/tag.model';
 
+/**
+ * The search menu model
+ */
 export interface SearchMenuModel {
+  config : SearchMenuConfig,
   customers : Customer[],
-  customerModel : CustomerModel,
+  selectedCustomers : Customer[],
+  selectedCustomerModels : CustomerModel[],
   tags : Tag[],
   dataSelection : object[]
+}
+
+/**
+ * The configuration for search menu behavior
+ */
+export interface SearchMenuConfig {
+  maxSelectableCustomers : number,
+  maxSelectableTags : number
 }

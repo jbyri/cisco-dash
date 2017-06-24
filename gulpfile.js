@@ -27,3 +27,6 @@ gulp.task('sass', function () {
     .pipe(sass.sync().on('error', sass.logError))
     .pipe(gulp.dest('src'));
 });
+gulp.task('sass:watch', function () {
+  gulp.watch('./src/**/*.scss', ['sass']);
+});

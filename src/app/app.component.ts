@@ -7,9 +7,9 @@ import { HostListener,Directive,HostBinding} from '@angular/core';
 @Component({
   encapsulation: ViewEncapsulation.None,
   selector: 'cisco-dash-app',
-  templateUrl: './assets/templates/layouts/app-layout.html',
+  templateUrl: './app.component.html',
   styleUrls: [
-    './assets/styles/app.css',
+    './app.component.css',
     '/node_modules/bootstrap/dist/boostrap.css',
     '/node_modules/bootstrap/dist/boostrap-grid.css'
   ]

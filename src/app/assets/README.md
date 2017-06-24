@@ -12,8 +12,9 @@ index.html level ONLY. If your script is not complex, consider converting it int
 an angular module, in TypeScript.
 
 ## styles
-Only SCSS files. CSS Files by default are ignored. SCSS are auto compiled by the
-gulp task when running
+Only CSS files. CSS Files by default are ignored.
+SCSS are auto compiled by the gulp task when running, and are located alongside their
+components.
 
 ## templates
 These are specifically html templates for the angular components in the application

@@ -1,0 +1,4 @@
+// Use this only as a HUB for importing sub SCSS modules.
+// NOTE: insure you save your modules as _<module_name>.scss, if not prefixed
+// it will not import.
+@import './app/assets/styles/sass/colors';

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../../services/authentication.service'
 import { DashboardDataService } from '../../services/dashboard/dashboarddata.service'
+import { SearchMenuModel } from '../../model/search-menu.model'
 
 import 'rxjs/add/operator/map'
 
@@ -12,6 +13,18 @@ import 'rxjs/add/operator/map'
 })
 export class DashboardComponent implements OnInit {
   model:any = {};
+  searchMenuModel : SearchMenuModel =  {
+    config : {
+      maxSelectableTags : 3,
+      maxSelectableCustomers : 1
+    },
+    customers : [],
+    selectedCustomers: [],
+    selectedCustomerModels : [],
+    tags : [],
+    dataSelection : []
+  };
+
   loading = false;
   returnUrl: string;
 
@@ -34,4 +47,26 @@ export class DashboardComponent implements OnInit {
     // });
   }
 
+
+    ngOnDestroy() {
+      console.log("SearchMenuComponent::ngOnDestroy()");
+    }
+
+    ngDoCheck() {
+      console.log("SearchMenuComponent::ngDoCheck()");
+    }
+
+    ngAfterViewChecked() {
+      // console.log("SearchMenuComponent::ngAfterViewChecked()");
+    }
+    ngAfterViewInit() {
+      // console.log("SearchMenuComponent::ngAfterViewInit()");
+    }
+
+    ngAfterContentInit() {
+      // console.log("SearchMenuComponent::ngAfterContentInit()");
+    }
+    ngAfterContentChecked() {
+      // console.log("SearchMenuComponent::ngAfterContentChecked()");
+    }
 }

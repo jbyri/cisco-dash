@@ -1,13 +1,13 @@
-<div class="full-size">
-  <div>
+<div class="container border2 inner">
+  <div class="row">
     <!-- points to search-menu.component -->
     <!-- TODO @wnamen make the search menu component float somehow?
     This will likely be done either in a wrapping div,
     or within the component itself. -->
-    <search-menu></search-menu>
+    <search-menu [model]='searchMenuModel'></search-menu>
   </div>
-  <div>
+  <div class="row">
     <!-- TODO @barcher, @wnamen eventually will display the tag items based on search selection -->
-    <tagbar></tagbar>
+    <tagbar #dashboardTagBar></tagbar>
   </div>
 </div>
