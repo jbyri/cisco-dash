@@ -4,6 +4,8 @@ import { HttpModule } from '@angular/http';
 import { LoginComponent } from './components/login/login.component'
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SearchMenuComponent } from './components/ui/search/search-menu.component';
+import { CustomerSelectorComponent } from './components/ui/selectors/customer-selector.component'
+import { TagSelectorComponent } from './components/ui/selectors/tag-selector.component'
 import { TagBarComponent } from './components/ui/tagbar/tagbar.component'
 import { TagBarItemComponent } from './components/ui/tagbar/tagbar-item.component'
 import { AppRoutingModule } from './app-routing.module';
@@ -28,7 +30,9 @@ import { FormsModule }   from '@angular/forms';
     LoginComponent,
     SearchMenuComponent,
     TagBarComponent,
-    TagBarItemComponent
+    TagBarItemComponent,
+    CustomerSelectorComponent,
+    TagSelectorComponent
   ],
   // Add services and data providers here
   // this is used for Injectable items which will

@@ -1,5 +1,6 @@
 export interface TagBarItemModel {
-  content : string
+  content : string,
+  enabled : boolean
 }
 
 
