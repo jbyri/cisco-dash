@@ -1,4 +1,4 @@
-<div class="tagbar display-flex small-border-bottom border-gray">
+<div class="tagbar display-flex">
   <!-- when any item is clicked, it is removed from the dataprovider -->
 
   <tagbar-item (clicked)=onTagBarItemClicked($event) *ngFor="let data of model.dataProvider" [dataProvider]='data'></tagbar-item>

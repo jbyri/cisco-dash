@@ -4,15 +4,20 @@ customer-selector {
 
 .menu-titles {
   font-weight: 600;
-  font-size: small;
+  font-size: medium;
   text-transform: capitalize;
 }
 
 .options-box {
   width: 10em;
-  padding: 0.5em 0;
+  padding: 0;
+  border: none;
+}
+
+.option-tag {
+  width: 10em;
+  padding: 1em 0;
   text-align: left;
   font-size: small;
   font-weight: 300;
-  border: none;
 }

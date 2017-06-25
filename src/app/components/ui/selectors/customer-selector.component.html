@@ -1,8 +1,8 @@
-<p class="menu-titles small-border-bottom border-gray large-padding-bottom">CUSTOMERS</p>
+<p class="menu-titles medium-border-bottom border-whitesmoke medium-padding-bottom">CUSTOMERS</p>
 <!-- TODO @wnamen fill out customers using ng-model -->
 <div ngbDropdown class="d-inline-block">
-<select class="form-control options-box" id="sel2">
-    <option *ngFor="let customer of dataProvider.customers">{{customer.displayName}}</option>
+<select class="form-control options-box" size="3" id="sel2">
+    <option class="option-tag font-gray small-border-bottom border-whitesmoke" *ngFor="let customer of dataProvider.customers">{{customer.displayName}}</option>
     <!-- todo @barcher wire up the customers here using ngModel and ng-repeat -->
   </select>
 </div>
