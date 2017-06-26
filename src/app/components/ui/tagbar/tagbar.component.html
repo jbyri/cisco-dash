@@ -2,6 +2,6 @@
   <!-- when any item is clicked, it is removed from the dataprovider -->
 
   <tagbar-item (clicked)=onTagBarItemClicked($event) *ngFor="let data of model.dataProvider" [dataProvider]='data'></tagbar-item>
-  <input #tagInput type="text" class="no-border no-radius" [ngModel]="model.nextTagInput" (focusout)="onTagbarSearchNextTag($event)" (keypress)="onTagbarSearchClear($event)" (keyup)="onTagbarSearchInput($event)"/>
+  <input #tagInput type="text" class="tagbar-input no-border no-radius" [ngModel]="model.nextTagInput" (focusout)="onTagbarSearchNextTag($event)" (keypress)="onTagbarSearchClear($event)" (keyup)="onTagbarSearchInput($event)"/>
 {{mymodel}}
 </div>

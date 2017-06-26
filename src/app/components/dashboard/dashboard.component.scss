@@ -5,6 +5,19 @@
 #side-nav-dropdown {
 }
 
-#side-nav-dropdown p {
+#side-nav-dropdown img {
   padding: 1em 2em 1em 0;
+}
+
+.close-button {
+  background: none;
+  font-size: 1.5em;
+  width: 2em;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  background-color: #e2231b;
+  color: white;
+  transition: 0.5s;
 }

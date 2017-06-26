@@ -1,13 +1,11 @@
 .tagbar-item {
+  font-weight: 500;
   margin-right: 3px;
-  background-color: rgb(91, 192, 222);
   border-radius: .25em;
-  font-size: 65%;
   box-sizing: border-box;
-  color: rgb(255, 255, 255);
   cursor: pointer;
   display:inline;
-  padding: .2em .6em .3em;
+  padding: 0.1em 0.4em;
   text-align: center;
   vertical-align: baseline;
   white-space: nowrap;
@@ -15,11 +13,11 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.tagbar-item span {
+  font-size: large;
+}
+
 .tagbar-item [role="remove"] {
   margin-left: 8px;
   cursor: pointer;
-}
-
-.tagbar-input {
-  width: 3em !important;
 }
