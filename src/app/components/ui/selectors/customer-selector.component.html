@@ -1,8 +1,8 @@
-<p class="menu-titles medium-border-bottom border-whitesmoke small-padding-bottom">CUSTOMERS</p>
-<!-- TODO @wnamen fill out customers using ng-model -->
-<div ngbDropdown class="d-inline-block">
-<select class="form-control options-box" size="3" id="sel2">
-    <option class="option-tag font-gray small-border-bottom border-whitesmoke" *ngFor="let customer of dataProvider.customers">{{customer.displayName}}</option>
-    <!-- todo @barcher wire up the customers here using ngModel and ng-repeat -->
+<p class="menu-titles small-border-bottom border-gray small-padding-bottom">CUSTOMERS</p>
+<div class="form-group">
+  <select (change)="onSelect($event.target)" #selector class="form-control option-tag-box" size="4">
+    <option
+        class="display-flex option-tag"
+        *ngFor="let customer of dataProvider.customers" [value]="customer.name">{{customer.displayName}}</option>
   </select>
 </div>

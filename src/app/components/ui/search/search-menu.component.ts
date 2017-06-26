@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, ViewChild } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SearchMenuModel } from '../../../model/search-menu.model';
 import { CustomerSelectorModel } from '../../../model/customer-selector.model'
@@ -20,6 +20,9 @@ export class SearchMenuComponent implements OnInit {
   @ViewChild('filterTagBar') filterTagBar : TagBarComponent;
   @ViewChild('customerSelector') customerSelector : CustomerSelectorComponent;
   @ViewChild('tagSelector') tagSelector : TagSelectorComponent;
+
+  @Output()
+  customerSelectionChanged : EventEmitter<Customer[]> = new EventEmitter<Customer[]>();
 
   /**
    * @Input allows a model to be passed into this component
@@ -49,18 +52,24 @@ export class SearchMenuComponent implements OnInit {
     console.log("SearchMenuComponent::construct", route, router);
   }
 
+  /**
+   * ngOnInit - description
+   *
+   * @return {type}  description
+   */
   ngOnInit() {
     console.log("SearchMenuComponent::ngOnInit()", this.model);
+
   }
 
   ngOnDestroy() {
     console.log("SearchMenuComponent::ngOnDestroy()");
   }
 
-  ngDoCheck() {
+  refreshTagbarModelData() {
     // convert data for use in the tagbar models.
     this.tagBarModel.sourceData = [];
-    
+
     this.model.tags.map(tag => {
       this.tagBarModel.sourceData.push({
         content:tag.name,
@@ -68,6 +77,16 @@ export class SearchMenuComponent implements OnInit {
       });
     });
 
+    this.model.customers.map(customer => {
+      this.tagBarModel.sourceData.push({
+        content:customer.name,
+        enabled:false
+      });
+    });
+  }
+
+  ngDoCheck() {
+    this.refreshTagbarModelData();
     this.tagSelectorModel.tags = this.model.tags;
     this.customerSelector.dataProvider.customers = this.model.customers;
   }
@@ -85,5 +104,57 @@ export class SearchMenuComponent implements OnInit {
   }
   ngAfterContentChecked() {
     // console.log("SearchMenuComponent::ngAfterContentChecked()");
+  }
+
+  onTagSelectionChange(tags : number[]) {
+    let tagsById  : { [key : number ] : any } = {};
+    this.model.tags.map(tag => {
+      tagsById[tag.id] = tag;
+    })
+    console.debug("onTagSelectionChange", tags);
+    if(this.model.selectedTags.length > 0) {
+      this.model.selectedTags.map(selectedTag => {
+        this.filterTagBar.tryRemovingTag(selectedTag.name.toLowerCase());
+      });
+
+      this.model.selectedTags = [];
+    }
+    tags.map(tagId => {
+      let tag : Tag = tagsById[tagId];
+      this.model.selectedTags.push(tag);
+    });
+
+    this.model.selectedTags.map(selectedTag => {
+      this.filterTagBar.tryAddingTag(selectedTag.name.toLowerCase());
+    });
+  }
+
+  onCustomerSelectionChange(customers : string[]) {
+    this.onTagSelectionChange([]);
+
+    let customersByName  : { [key : number ] : any } = {};
+    this.model.customers.map(customer => {
+      customersByName[customer.name] = customer;
+    });
+
+    console.debug("onCustomerSelectionChange", customers);
+
+    if(this.model.selectedCustomers.length > 0) {
+      this.model.selectedCustomers.map(selectedCustomer => {
+        this.filterTagBar.tryRemovingTag(selectedCustomer.name.toLowerCase());
+      });
+
+      this.model.selectedCustomers = [];
+    }
+    customers.map(customerId => {
+      let customer : Customer = customersByName[customerId];
+      this.model.selectedCustomers.push(customer);
+    });
+
+    this.model.selectedCustomers.map(selectedCustomer => {
+      this.filterTagBar.tryAddingTag(selectedCustomer.name.toLowerCase());
+    });
+
+    this.customerSelectionChanged.emit(this.model.selectedCustomers);
   }
 }
