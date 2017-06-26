@@ -14,6 +14,7 @@ import { AuthenticationService } from './services/authentication.service'
 import { DashboardDataService } from './services/dashboard/dashboarddata.service'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule }   from '@angular/forms';
+import { Utils } from './services/utils/utils.component'
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { FormsModule }   from '@angular/forms';
   // this is used for Injectable items which will
   // be injected into components that request it.
   providers: [
+    Utils,
     AuthenticationService,
     DashboardDataService
   ],

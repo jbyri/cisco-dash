@@ -5,4 +5,9 @@
 @import './app/assets/styles/sass/colors';
 @import './app/assets/styles/sass/borders-edges';
 @import './app/assets/styles/sass/margins-paddings';
-@import './node_modules/font-awesome/scss/_variables';
+
+// font awesome
+@import '../node_modules/font-awesome/scss/_variables';
+
+// Google Fonts Open Sans
+@import './app/assets/styles/sass/googlefonts-open-sans'

@@ -29,6 +29,22 @@ export class TagBarComponent implements OnInit {
     console.log("TagBarComponent", route, router);
   }
 
+  tryRemovingTag(lwrValue : string) {
+    console.log(`tryRemovingTag [${lwrValue}]`);
+    let index = -1;
+    this.model.dataProvider.map(eachSource => {
+      let eachLwr = eachSource.content.toLowerCase()
+      if (eachLwr === lwrValue || eachLwr.indexOf(lwrValue) > -1) {
+        index = this.model.dataProvider.indexOf(eachSource);
+      }
+
+      if(index > -1) {
+        this.model.dataProvider.splice(index, 1);
+      }
+
+      return index > -1;
+    });
+  }
   tryAddingTag(lwrValue : string) {
     console.log(`tryAddingTag [${lwrValue}]`);
     this.model
@@ -44,6 +60,7 @@ export class TagBarComponent implements OnInit {
 
     this.model.nextTagInput = "";
   }
+
 
   tryAddingTagFromInput(input : any) : boolean{
     if(input.value != null && input.value !== "") {
@@ -100,11 +117,13 @@ export class TagBarComponent implements OnInit {
    * Removes an item from the tag bar
    */
   onTagBarItemClicked(tagBarModel : TagBarItemModel) : void {
-    console.log("onTagBarItemClicked", tagBarModel);
-    let index = this.model.dataProvider.indexOf(tagBarModel);
+    if(tagBarModel.enabled) {
+      console.log("onTagBarItemClicked", tagBarModel);
+      let index = this.model.dataProvider.indexOf(tagBarModel);
 
-    if(index > -1) {
-      this.model.dataProvider.splice(index, 1);
+      if(index > -1) {
+        this.model.dataProvider.splice(index, 1);
+      }
     }
   }
 
