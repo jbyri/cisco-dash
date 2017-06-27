@@ -1,17 +1,17 @@
 #nav-dropdown-menu {
   width: 100vw;
   position: absolute;
-  top: -250px;
+  background-color: white;
+  top: -500px;
   left: 0;
-  height: 250px;
-  padding: 20px;
+  z-index: 99;
   transition: top 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
-  overflow: hidden;
+  box-shadow: 0px 1px 50px black;
 }
 
 #dash-body {
   width: 100vw;
-  height: 100vw;
+  height: 60vw;
   transition: margin 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
 }
 
@@ -19,52 +19,11 @@
   height: 40vh;
 }
 
-#toggle {
-  position:absolute;
-  appearance:none;
-  cursor:pointer;
-  left:-100%;
-  top:-100%;
+.menu-active {
+  top: 0 !important;
+  height: 388px !important;
+  background-color: white;
 }
-
-#toggle + label {
-  position:absolute;
-  cursor:pointer;
-  padding:10px;
-  background: #26ae90;
-  width: 100px;
-  border-radius: 3px;
-  padding: 8px 10px;
-  color: #FFF;
-  line-height:20px;
-  font-size:12px;
-  text-align:center;
-  -webkit-font-smoothing: antialiased;
-  cursor: pointer;
-  margin:20px 50px;
-  transition:all 500ms ease;
-}
-
-#toggle + label:after {
-  content:"Open"
-}
-
-#toggle:checked + label {
-  background:#dd6149;
-}
-
-#toggle:checked + label:after {
-  content:"Close"
-}
-
-#toggle:checked ~ #nav-dropdown-menu {
-  top: 0;
-}
-
-#toggle:checked ~ #dash-body {
-  margin-top: 250px;
-}
-
 
 #side-nav-dropdown img {
   padding: 1em 2em 1em 0;

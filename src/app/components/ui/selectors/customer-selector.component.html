@@ -1,6 +1,6 @@
 <p class="menu-titles small-border-bottom border-gray small-padding-bottom">CUSTOMERS</p>
 <div class="form-group">
-  <select (change)="onSelect($event.target)" #selector class="form-control option-tag-box" size="4">
+  <select (change)="onSelect($event.target)" #selector class="form-control option-tag-box no-border" size="4">
     <option
         class="display-flex option-tag"
         *ngFor="let customer of dataProvider.customers" [value]="customer.name">{{customer.displayName}}</option>

@@ -30,6 +30,11 @@ export class DashboardComponent implements OnInit {
 
   loading = false;
   returnUrl: string;
+  toggled = false;
+
+  handleMenuToggle() {
+    this.toggled= !this.toggled;
+  }
 
   private account: Object;
 
