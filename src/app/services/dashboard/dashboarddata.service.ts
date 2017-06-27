@@ -155,8 +155,11 @@ export class DashboardDataService {
    * the data url can be a local file, or an http endpoint using GET
    */
   loadCustomerData(customerDataUrl: string): Observable<CustomerModel> {
+    console.log("loadCustomerData(" + customerDataUrl + ")");
+
     return this.http.get(customerDataUrl)
       .map((response: Response) => {
+        console.log("response: ", response);
         // login successful if there's a jwt token in the response
         let dashboardData = response.json();
         console.log("Customer Data was", dashboardData);

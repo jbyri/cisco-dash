@@ -15,7 +15,7 @@
         "title":"Action Item 3",
         "text":"lorem ipsum dolor sit amet consectetur adipiscing elit.",
         "performance":0.25
-      },
+      }
     ],
 
     "datapoints": [
