@@ -47,8 +47,8 @@ export class DashboardComponent implements OnInit {
   onCustomerSelectionChanged(customers : Customer[]) {
     console.log("Dashboard::onCustomerSelectionChange", customers);
     if(customers.length > 0) {
-      let c : Customer = customers[0];
-      let customerDataTask : Observable<CustomerModel> = this.dashboardDataService.loadCustomerData(c.dataUrl);
+      let customer : Customer = customers[0];
+      let customerDataTask : Observable<CustomerModel> = this.dashboardDataService.loadCustomerData(customer.dataUrl);
       customerDataTask.subscribe(customerModel => {
         console.debug("New Customer Model", customerModel);
       });
