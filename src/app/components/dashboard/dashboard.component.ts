@@ -16,46 +16,55 @@ import 'rxjs/add/operator/map'
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  model:any = {};
-  searchMenuModel : SearchMenuModel =  {
-    config : {
-      maxSelectableTags : 3,
-      maxSelectableCustomers : 1
+  model: any = {};
+  searchMenuModel: SearchMenuModel = {
+    config: {
+      maxSelectableTags: 3,
+      maxSelectableCustomers: 1
     },
-    customers : [],
+    customers: [],
     selectedCustomers: [],
-    selectedCustomerModels : [],
-    tags : [],
-    dataSelection : []
+    selectedTags: [],
+    tags: []
   };
 
   loading = false;
   returnUrl: string;
 
-  private account : Object;
+  private account: Object;
 
-  @ViewChild('searchMenu') searchMenuComponent : SearchMenuComponent;
+  @ViewChild('searchMenu') searchMenuComponent: SearchMenuComponent;
 
 
   constructor(
     private route: ActivatedRoute,
-    private router:Router,
-    private authenticationService:AuthenticationService,
-    private dashboardDataService : DashboardDataService ) {
-    console.log("Dashboard Component", route, router, authenticationService, dashboardDataService);
+    private router: Router,
+    private authenticationService: AuthenticationService,
+    private dashboardDataService: DashboardDataService) {
 
   }
 
+  onCustomerSelectionChanged(customers : Customer[]) {
+    console.log("Dashboard::onCustomerSelectionChange", customers);
+    if(customers.length > 0) {
+      let customer : Customer = customers[0];
+      let customerDataTask : Observable<CustomerModel> = this.dashboardDataService.loadCustomerData(customer.dataUrl);
+      customerDataTask.subscribe(customerModel => {
+        console.debug("New Customer Model", customerModel);
+      });
+    }
+  }
+
+  /**
+   * ngOnInit - description
+   *
+   * @return {type}  description
+   */
   ngOnInit() {
     // fetch tags and customers
     let tagsTask: Observable<Tag[]> = this.dashboardDataService.loadTags();
     let customersTask: Observable<Customer[]> = this.dashboardDataService.loadCustomers();
 
-    // check cookies for previous login
-    // login (oauth?)
-    // $('.message a').click(function(){
-    //    $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
-    // });
     tagsTask.subscribe(tags => {
       this.searchMenuModel.tags = tags;
     });
@@ -66,11 +75,9 @@ export class DashboardComponent implements OnInit {
   }
 
 
-    ngOnDestroy() {
-      
-    }
-
-    ngDoCheck() {
-
-    }
+  ngOnDestroy() {
+    this.searchMenuModel.tags = null;
+    this.searchMenuModel.customers = null;
+    this.searchMenuModel = null;
+  }
 }

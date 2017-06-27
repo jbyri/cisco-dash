@@ -1,23 +1,26 @@
 <div id="search-menu.container" class="">
   <div id="searchbox">
-    <!-- TODO @barcher SearchBox Component -->
+
     <div class="form-group display-flex medium-border-bottom border-whitesmoke">
       <label for="usr"><i class="fa fa-search" aria-hidden="true"></i></label>
       <tagbar #filterTagBar [model]='tagBarModel'></tagbar>
     </div>
+
   </div>
 
-
   <div id="menuSelectors" class="display-flex col-sm-6 col-md-6 col-lg-6">
-    <div id="filterSelection">
-      <customer-selector #customerSelector [dataProvider]='customerSelectorModel'></customer-selector>
-    </div>
-    <div id="customerSelection">
-      <tag-selector #tagSelector [model]='tagSelectorModel'></tag-selector>
-    <!-- <div  class= "col">
-      <h2>Data Selection</h2>
 
-    </div> -->
+    <div id="customerSelection">
+      <customer-selector #customerSelector
+        (selectionChanged)='onCustomerSelectionChange($event)'
+        [dataProvider]='customerSelectorModel'></customer-selector>
+    </div>
+
+    <div id="tagSelection">
+      <tag-selector #tagSelector
+        [hidden]="model.selectedCustomers.length == 0"
+        (selectionChanged)='onTagSelectionChange($event)'
+        [model]='tagSelectorModel'></tag-selector>
     </div>
   </div>
 </div>

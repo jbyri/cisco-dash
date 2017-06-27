@@ -8,9 +8,8 @@ export interface SearchMenuModel {
   config : SearchMenuConfig,
   customers : Customer[],
   selectedCustomers : Customer[],
-  selectedCustomerModels : CustomerModel[],
   tags : Tag[],
-  dataSelection : object[]
+  selectedTags : Tag[]
 }
 
 /**

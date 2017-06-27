@@ -1,8 +1,6 @@
-<p class="menu-titles medium-border-bottom border-whitesmoke small-padding-bottom">TAGS</p>
-<!-- TODO @wnamen fill out tags using ng-model -->
+<p class="menu-titles small-border-bottom border-gray small-padding-bottom">TAGS</p>
 <div class="form-group">
-  <select multiple class="form-control option-tag-box" id="sel1">
-    <!-- todo @wnamen wire up the tags here using ngModel and ng-repeat -->
-    <option class="display-flex option-tag font-gray" *ngFor="let tag of model.tags">{{tag.name}}</option>
+  <select #selector multiple (change)="onSelect($event.target)" class="form-control option-tag-box">
+    <option class="display-flex option-tag" *ngFor="let tag of model.tags" [value]="tag.id">{{tag.name}}</option>
   </select>
 </div>
