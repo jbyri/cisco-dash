@@ -35,7 +35,7 @@ export class DashboardComponent implements OnInit {
   handleMenuToggle() {
     this.toggled= !this.toggled;
   }
-
+  
   private account: Object;
 
   @ViewChild('searchMenu') searchMenuComponent: SearchMenuComponent;

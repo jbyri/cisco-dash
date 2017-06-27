@@ -9,7 +9,7 @@
         <img class="medium-border-right border-whitesmoke" src="/app/assets/images/cisco-logo.svg" />
       </div>
       <div class="col-sm-9 col-md-9 col-lg-9 large-padding">
-        <search-menu #searchMenu [model]='searchMenuModel'></search-menu>
+        <search-menu #searchMenu (customerSelectionChanged)=onCustomerSelectionChanged($event) [model]='searchMenuModel'></search-menu>
       </div>
       <div class="col-sm-2 col-md-2 col-lg-2">
         <button class="close-button medium-border border-red font-red card-radius right"
