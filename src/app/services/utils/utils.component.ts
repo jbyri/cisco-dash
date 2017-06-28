@@ -7,15 +7,18 @@ export class Utils {
 
   }
 
-  getSelected(list: any): object[] {
+  // Element Utilites
+  //
+  // Returns the list selected item values for a given
+  // select element.
+  getSelectedValues(optionElements: any[]): object[] {
     let options = [];
-    for (var i = 0; i < list.options.length; i++) {
-      var optionElement = list.options[i];
+    for (var i = 0; i < optionElements.length; i++) {
+      var optionElement = optionElements[i];
       if (optionElement.selected == true) {
         options[options.length] = optionElement.value;
       }
     }
-    console.log("Selected OPtions: ", options);
 
     return options;
   }

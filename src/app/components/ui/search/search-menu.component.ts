@@ -1,9 +1,14 @@
-import { Component, OnInit, Output, Input, EventEmitter, ViewChild } from '@angular/core';
+import {
+  Component,
+  OnInit, OnChanges,
+  SimpleChanges,
+  Output, Input,
+  EventEmitter, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { SearchMenuModel } from '../../../model/search-menu.model';
-import { CustomerSelectorModel } from '../../../model/customer-selector.model'
-import { TagSelectorModel } from '../../../model/tag-selector.model'
-import { TagBarModel } from '../../../model/tagbar.model';
+import { SearchMenuModel } from './search-menu.model';
+import { CustomerSelectorModel } from '../selectors/customer-selector.model'
+import { TagSelectorModel } from '../selectors/tag-selector.model'
+import { TagBarModel } from '../tagbar/tagbar.model';
 import { TagBarComponent } from '../tagbar/tagbar.component';
 import { CustomerSelectorComponent } from '../selectors/customer-selector.component'
 import { TagSelectorComponent } from '../selectors/tag-selector.component'
@@ -16,13 +21,14 @@ import 'rxjs/add/operator/map'
   templateUrl: './search-menu.component.html',
   styleUrls: ['./search-menu.component.css']
 })
-export class SearchMenuComponent implements OnInit {
+export class SearchMenuComponent implements OnInit, OnChanges {
   @ViewChild('filterTagBar') filterTagBar : TagBarComponent;
   @ViewChild('customerSelector') customerSelector : CustomerSelectorComponent;
   @ViewChild('tagSelector') tagSelector : TagSelectorComponent;
 
   @Output()
   customerSelectionChanged : EventEmitter<Customer[]> = new EventEmitter<Customer[]>();
+
 
   /**
    * @Input allows a model to be passed into this component
@@ -49,7 +55,7 @@ export class SearchMenuComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router:Router) {
-    console.log("SearchMenuComponent::construct", route, router);
+
   }
 
   /**
@@ -60,6 +66,10 @@ export class SearchMenuComponent implements OnInit {
   ngOnInit() {
     console.log("SearchMenuComponent::ngOnInit()", this.model);
 
+  }
+  ngOnChanges(changes: SimpleChanges) {
+     // changes.prop contains the old and the new value...
+     console.debug("ngOnChanges()", changes);
   }
 
   ngOnDestroy() {
@@ -111,10 +121,9 @@ export class SearchMenuComponent implements OnInit {
     this.model.tags.map(tag => {
       tagsById[tag.id] = tag;
     })
-    console.debug("onTagSelectionChange", tags);
     if(this.model.selectedTags.length > 0) {
       this.model.selectedTags.map(selectedTag => {
-        this.filterTagBar.tryRemovingTag(selectedTag.name.toLowerCase());
+        this.filterTagBar.tryRemovingTag(selectedTag.name.toLowerCase(), false);
       });
 
       this.model.selectedTags = [];
@@ -137,11 +146,9 @@ export class SearchMenuComponent implements OnInit {
       customersByName[customer.name] = customer;
     });
 
-    console.debug("onCustomerSelectionChange", customers);
-
     if(this.model.selectedCustomers.length > 0) {
       this.model.selectedCustomers.map(selectedCustomer => {
-        this.filterTagBar.tryRemovingTag(selectedCustomer.name.toLowerCase());
+        this.filterTagBar.tryRemovingTag(selectedCustomer.name.toLowerCase(), true);
       });
 
       this.model.selectedCustomers = [];

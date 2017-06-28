@@ -1,6 +1,6 @@
 import { Component, OnInit, OnChanges, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { TagBarItemModel } from '../../../model/tagbar.model'
+import { TagBarItemModel } from './tagbar.model'
 
 import 'rxjs/add/operator/map'
 
@@ -20,7 +20,6 @@ export class TagBarItemComponent implements OnInit, OnChanges {
   constructor(
     private route: ActivatedRoute,
     private router:Router) {
-    console.log("TagBarItemComponent::constructor", route, router);
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -29,16 +28,12 @@ export class TagBarItemComponent implements OnInit, OnChanges {
 
   onClick(event : any) {
     var target = event.target || event.srcElement || event.currentTarget;
-    console.log("TagBarItemComponent::onClick() ->", this.dataProvider, event);
     this.clicked.emit(this.dataProvider);
   }
 
   ngOnInit() {
-    console.log("TagBarItemComponent::ngOnInit()", this.dataProvider);
-
   }
 
   ngDoCheck(){
-    
   }
 }

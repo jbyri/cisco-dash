@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   private account : Object;
 
   constructor(private route: ActivatedRoute, private router:Router, private authenticationService:AuthenticationService) {
-    console.log("Login Component", route, router, authenticationService);
+
   }
 
   onSubmit(event : Event) {
