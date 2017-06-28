@@ -112,12 +112,6 @@ export class DashboardDataService {
         return tagList;
       });
 
-    // DEBUGGING
-    tagsTask.subscribe(tagsList =>
-      tagsList.forEach(tag => {
-        console.debug(tag);
-      })
-    );
 
     return tagsTask;
   }
@@ -140,13 +134,6 @@ export class DashboardDataService {
         return customers;
       });
 
-    // DEBUGGING
-    customersTask.subscribe(customerList =>
-      customerList.forEach(customer => {
-        console.debug(customer);
-      })
-    );
-
     return customersTask;
   }
 
@@ -156,13 +143,11 @@ export class DashboardDataService {
    */
   loadCustomerData(customerDataUrl: string): Observable<CustomerModel> {
     console.log("loadCustomerData(" + customerDataUrl + ")");
-
     return this.http.get(customerDataUrl)
       .map((response: Response) => {
-        console.log("response: ", response);
         // login successful if there's a jwt token in the response
         let dashboardData = response.json();
-        console.log("Customer Data was", dashboardData);
+        console.log("CustomerModel Data:", dashboardData);
         return dashboardData;
       });
   }

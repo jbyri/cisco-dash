@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../../services/authentication.service'
 import { DashboardDataService } from '../../services/dashboard/dashboarddata.service'
-import { SearchMenuModel } from '../../model/search-menu.model'
+import { SearchMenuModel } from '../ui/search/search-menu.model'
 import { Tag } from '../../model/tag.model'
 import { Customer, CustomerModel } from '../../model/customer.model'
 import { TagBarComponent } from '../ui/tagbar/tagbar.component'
@@ -10,12 +10,16 @@ import { SearchMenuComponent} from '../ui/search/search-menu.component'
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
 
+
+/**
+ * This component represents the dashboard page (routed to `/dashboard`)
+ */
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnChanges {
   model: any = {};
   searchMenuModel: SearchMenuModel = {
     config: {
@@ -24,6 +28,7 @@ export class DashboardComponent implements OnInit {
     },
     customers: [],
     selectedCustomers: [],
+    selectedCustomerModels : [],
     selectedTags: [],
     tags: []
   };
@@ -35,52 +40,56 @@ export class DashboardComponent implements OnInit {
   handleMenuToggle() {
     this.toggled= !this.toggled;
   }
-  
+
   private account: Object;
 
   @ViewChild('searchMenu') searchMenuComponent: SearchMenuComponent;
-
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
     private dashboardDataService: DashboardDataService) {
-
   }
 
-  onCustomerSelectionChanged(customers : Customer[]) {
-    console.log("Dashboard::onCustomerSelectionChange", customers);
+  // When the customer selection is changed, we repopulate the models.
+  onCustomerSelectionChanged(customers : Customer[]) : void {
+    console.debug("Dashboard::onCustomerSelectionChange", customers);
     if(customers.length > 0) {
       let customer : Customer = customers[0];
       let customerDataTask : Observable<CustomerModel> = this.dashboardDataService.loadCustomerData(customer.dataUrl);
-      customerDataTask.subscribe(customerModel => {
-        console.debug("New Customer Model", customerModel);
+      const subscription = customerDataTask.subscribe(customerModel => {
+        this.searchMenuModel.selectedCustomerModels = [customerModel];
+        subscription.unsubscribe();
       });
     }
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+     // changes.prop contains the old and the new value...
+     console.debug("ngOnChanges()", changes);
+  }
   /**
    * ngOnInit - description
-   *
-   * @return {type}  description
    */
-  ngOnInit() {
+  ngOnInit() : void {
     // fetch tags and customers
     let tagsTask: Observable<Tag[]> = this.dashboardDataService.loadTags();
     let customersTask: Observable<Customer[]> = this.dashboardDataService.loadCustomers();
 
-    tagsTask.subscribe(tags => {
+    const tagsSubscription = tagsTask.subscribe(tags => {
       this.searchMenuModel.tags = tags;
+      tagsSubscription.unsubscribe();
     });
 
-    customersTask.subscribe(customers => {
+    const custSubscription = customersTask.subscribe(customers => {
       this.searchMenuModel.customers = customers;
+      custSubscription.unsubscribe();
     });
   }
 
 
-  ngOnDestroy() {
+  ngOnDestroy() : void {
     this.searchMenuModel.tags = null;
     this.searchMenuModel.customers = null;
     this.searchMenuModel = null;
