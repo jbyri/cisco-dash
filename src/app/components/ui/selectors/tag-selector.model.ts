@@ -1,4 +1,4 @@
-import { Tag } from './tag.model'
+import { Tag } from '../../../model/tag.model'
 
 /**
  * The Model for the TagSelectorComponent

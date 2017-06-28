@@ -20,7 +20,15 @@ import 'rxjs/add/operator/map'
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit, OnChanges {
-  model: any = {};
+  model: any = {
+
+  };
+  selectedCustomerModel : CustomerModel = {
+    data : {
+      datapoints : [],
+      feedbacks : []
+    }
+  };
   searchMenuModel: SearchMenuModel = {
     config: {
       maxSelectableTags: 3,
@@ -52,6 +60,10 @@ export class DashboardComponent implements OnInit, OnChanges {
     private dashboardDataService: DashboardDataService) {
   }
 
+  public refreshDashboardData() {
+    this.selectedCustomerModel = this.searchMenuModel.selectedCustomerModels[0];
+  }
+
   // When the customer selection is changed, we repopulate the models.
   onCustomerSelectionChanged(customers : Customer[]) : void {
     console.debug("Dashboard::onCustomerSelectionChange", customers);
@@ -60,6 +72,7 @@ export class DashboardComponent implements OnInit, OnChanges {
       let customerDataTask : Observable<CustomerModel> = this.dashboardDataService.loadCustomerData(customer.dataUrl);
       const subscription = customerDataTask.subscribe(customerModel => {
         this.searchMenuModel.selectedCustomerModels = [customerModel];
+        this.refreshDashboardData()
         subscription.unsubscribe();
       });
     }

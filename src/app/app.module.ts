@@ -1,13 +1,14 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
-import { LoginComponent } from './components/login/login.component'
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { SearchMenuComponent } from './components/ui/search/search-menu.component';
+import { CardComponent } from './components/ui/card/card.component';
 import { CustomerSelectorComponent } from './components/ui/selectors/customer-selector.component'
-import { TagSelectorComponent } from './components/ui/selectors/tag-selector.component'
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { LoginComponent } from './components/login/login.component'
+import { SearchMenuComponent } from './components/ui/search/search-menu.component';
 import { TagBarComponent } from './components/ui/tagbar/tagbar.component'
 import { TagBarItemComponent } from './components/ui/tagbar/tagbar-item.component'
+import { TagSelectorComponent } from './components/ui/selectors/tag-selector.component'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent }  from './app.component';
 import { AuthenticationService } from './services/authentication.service'
@@ -27,12 +28,13 @@ import { Utils } from './services/utils/utils.component'
   ],
   declarations: [
     AppComponent,
+    CardComponent,
+    CustomerSelectorComponent,
     DashboardComponent,
     LoginComponent,
     SearchMenuComponent,
     TagBarComponent,
     TagBarItemComponent,
-    CustomerSelectorComponent,
     TagSelectorComponent
   ],
   // Add services and data providers here

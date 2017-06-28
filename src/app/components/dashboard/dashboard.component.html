@@ -2,6 +2,13 @@
   <!-- <div id="side-bar" class="col-sm-1 col-md-1 col-lg-1 large-padding small-border-right border-white background-blue">
     Cisco
   </div> -->
+  <!-- Draw the cards -->
+  <!-- TODO @wnamen - fix card layout -->
+  <div #cards class="card-container">
+    <card (clicked)=onCardClicked($event)
+      *ngFor="let dataPoint of selectedCustomerModel.data.datapoints"
+      [cardModel] ='{ title: dataPoint.title, content: dataPoint }'></card>
+  </div>
   <div id="dash-view" class="background-white">
     <div id="nav-dropdown-menu" class="display-flex bottom-shadow border-gray large-padding"
       [class.menu-active]="toggled">
@@ -15,16 +22,17 @@
         <button class="close-button medium-border border-red font-red card-radius right"
           (click)="handleMenuToggle()">&times;</button>
       </div>
-      <div class="col-sm-10 col-md-10 col-lg-10 display-none">
-        <!-- TODO @barcher, @wnamen eventually will display the tag items based on search selection -->
-        <tagbar #dashboardTagBar></tagbar>
-      </div>
+
+    </div>
+    <div class="col-sm-10 col-md-10 col-lg-10 display-none">
+      <!-- TODO @barcher, @wnamen eventually will display the tag items based on search selection -->
+      <tagbar #dashboardTagBar></tagbar>
     </div>
 
     <div id="dash-body" class="background-linen"
       [class.dash-active]="toggled">
       <div id="top-dash" class="background-blue">
-        <button id="toggle" (click)="handleMenuToggle()">toggle</button>
+        <button id="toggle" class="btn btn-danger" (click)="handleMenuToggle()">SEARCH</button>
       </div>
     </div>
   </div>
