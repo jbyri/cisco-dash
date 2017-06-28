@@ -13,7 +13,7 @@
     <div id="nav-dropdown-menu" class="display-flex bottom-shadow border-gray large-padding"
       [class.menu-active]="toggled">
       <div id="side-nav-dropdown" class="col-sm-1 col-md-1 col-lg-1 large-margin-right">
-        <img class="medium-border-right border-whitesmoke" src="/app/assets/images/cisco-logo.svg" />
+        <img class="medium-border-right border-whitesmoke" src="/app/assets/images/cisco-logo-blue.svg" />
       </div>
       <div class="col-sm-9 col-md-9 col-lg-9 large-padding">
         <search-menu #searchMenu (customerSelectionChanged)=onCustomerSelectionChanged($event) [model]='searchMenuModel'></search-menu>
@@ -31,8 +31,17 @@
 
     <div id="dash-body" class="background-linen"
       [class.dash-active]="toggled">
-      <div id="top-dash" class="background-blue">
-        <button id="toggle" class="btn btn-danger" (click)="handleMenuToggle()">SEARCH</button>
+
+      <div id="top-dash" class="background-blue display-flex large-padding">
+        <div class="col-sm-1 col-md-1 col-lg-1 large-margin-right">
+          <img class="medium-border-right border-whitesmoke" src="/app/assets/images/cisco-logo-white.svg" />
+        </div>
+        <div class="col-sm-10 col-md-10 col-lg-10 large-padding">
+          <button id="toggle" (click)="handleMenuToggle()">
+            <i class="fa fa-search large-margin-right font-whitesmoke" aria-hidden="true"></i>
+            <span class="font-whitesmoke">Search for customers, metrics, or categories</span>
+          </button>
+        </div>
       </div>
     </div>
   </div>

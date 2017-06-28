@@ -25,15 +25,32 @@
   background-color: white;
 }
 
-#side-nav-dropdown img {
+#side-nav-dropdown img, #top-dash img {
   padding: 1em 2em 1em 0;
 }
+
 
 // TODO @wnamen - fix card container styles.
 .card-container {
   width: 100%;
   padding: 3px;
   display:inline-grid;
+}
+
+#toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+#toggle i {
+  font-size: small;
+}
+
+#toggle span {
+  font-style: italic;
+  font-size: 12px;
+  font-weight: 200;
 }
 
 .close-button {
@@ -53,4 +70,22 @@
   box-shadow: none;
   outline: none;
   border: none;
+}
+
+.cards {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+	margin-top: 15px;
+	padding: 1.5%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.card {
+
 }
