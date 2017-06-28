@@ -1,5 +1,5 @@
-import { Customer, CustomerModel } from '../model/customer.model';
-import { Tag } from '../model/tag.model';
+import { Customer, CustomerModel } from '../../../model/customer.model';
+import { Tag } from '../../../model/tag.model';
 
 /**
  * The search menu model

@@ -2,13 +2,7 @@
   <!-- <div id="side-bar" class="col-sm-1 col-md-1 col-lg-1 large-padding small-border-right border-white background-blue">
     Cisco
   </div> -->
-  <!-- Draw the cards -->
-  <!-- TODO @wnamen - fix card layout -->
-  <div #cards class="card-container">
-    <card (clicked)=onCardClicked($event)
-      *ngFor="let dataPoint of selectedCustomerModel.data.datapoints"
-      [cardModel] ='{ title: dataPoint.title, content: dataPoint }'></card>
-  </div>
+
   <div id="dash-view" class="background-white">
     <div id="nav-dropdown-menu" class="display-flex bottom-shadow border-gray large-padding"
       [class.menu-active]="toggled">
@@ -41,7 +35,15 @@
             <i class="fa fa-search large-margin-right font-whitesmoke" aria-hidden="true"></i>
             <span class="font-whitesmoke">Search for customers, metrics, or categories</span>
           </button>
+          <!-- Draw the cards -->
+          <!-- TODO @wnamen - fix card layout -->
+          <div #cards class="card-container">
+            <card (clicked)=onCardClicked($event)
+              *ngFor="let dataPoint of selectedCustomerModel.data.datapoints"
+              [cardModel] ='{ title: dataPoint.title, content: dataPoint }'></card>
+          </div>
         </div>
+
       </div>
     </div>
   </div>

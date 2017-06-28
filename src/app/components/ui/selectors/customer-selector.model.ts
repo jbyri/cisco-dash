@@ -1,4 +1,4 @@
-import { Customer } from './customer.model'
+import { Customer } from '../../../model/customer.model'
 
 /**
  * The Model for the CustomerSelectorComponent
