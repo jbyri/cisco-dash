@@ -10,12 +10,14 @@ tag-selector {
 }
 
 .option-tag-box {
+  min-width: 10em;
   width: 15em;
   border: none;
   padding: 0;
 }
 
 .option-tag {
+  min-width: 10em;
   width: 15em;
   padding: 0.7em 0;
   text-align: left;
