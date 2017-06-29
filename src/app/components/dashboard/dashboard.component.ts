@@ -4,7 +4,8 @@ import { AuthenticationService } from '../../services/authentication.service'
 import { DashboardDataService } from '../../services/dashboard/dashboarddata.service'
 import { SearchMenuModel } from '../ui/search/search-menu.model'
 import { Tag } from '../../model/tag.model'
-import { Customer, CustomerModel } from '../../model/customer.model'
+import { CardContentModel } from '../ui/card/card-content.model';
+import { Customer, CustomerModel, CustomerDatapoint, CustomerDatapointContent } from '../../model/customer.model'
 import { TagBarComponent } from '../ui/tagbar/tagbar.component'
 import { SearchMenuComponent} from '../ui/search/search-menu.component'
 import { Observable } from 'rxjs/Observable';
@@ -64,6 +65,19 @@ export class DashboardComponent implements OnInit, OnChanges {
     this.selectedCustomerModel = this.searchMenuModel.selectedCustomerModels[0];
   }
 
+  public getTagsFromCustomerDatapoint( dataPoint : CustomerDatapoint ) : Tag[]{
+    let tags : Tag[] = [];
+    dataPoint.tagIds.map(tagId =>
+      Array.prototype.push.apply(tags,
+        this.searchMenuModel.tags.filter(tag => tag.id === tagId)));
+
+    if(tags.length < 1) {
+      console.error("no tags were in datapoint: ", dataPoint.title);
+    }
+
+    return tags;
+  }
+
   // When the customer selection is changed, we repopulate the models.
   onCustomerSelectionChanged(customers : Customer[]) : void {
     console.debug("Dashboard::onCustomerSelectionChange", customers);
@@ -82,6 +96,7 @@ export class DashboardComponent implements OnInit, OnChanges {
      // changes.prop contains the old and the new value...
      console.debug("ngOnChanges()", changes);
   }
+  
   /**
    * ngOnInit - description
    */
@@ -101,6 +116,13 @@ export class DashboardComponent implements OnInit, OnChanges {
     });
   }
 
+  buildCardContentModel(content : CustomerDatapointContent)  : CardContentModel {
+    let model : CardContentModel = {
+
+    }
+    console.log("buildCardContentModel", content,  model);
+    return model;
+  }
 
   ngOnDestroy() : void {
     this.searchMenuModel.tags = null;

@@ -4,7 +4,7 @@ import {Http} from "@angular/http";
 @Injectable()
 export class Charts {
   constructor(private http: Http) {
-
+    console.log("charts.construct()");
   }
 
 

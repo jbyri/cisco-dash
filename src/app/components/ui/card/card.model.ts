@@ -1,7 +1,9 @@
 import {Input} from '@angular/core'
-import {CustomerDatapointContent} from '../../../model/customer.model';
+import {CardContentModel} from './card-content.model';
+import { Tag } from '../../../model/tag.model';
 
 export interface CardModel {
-  title : String;
-  content : CustomerDatapointContent
+  title : String
+  tags : Tag[],
+  content : CardContentModel
 }

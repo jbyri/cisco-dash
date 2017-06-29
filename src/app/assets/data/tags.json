@@ -1,22 +1,27 @@
 [
   {
     "id":1,
-    "name":"Logistics"
+    "name":"Logistics",
+    "label":"LOG"
   },
   {
     "id":2,
-    "name":"TAC"
+    "name":"TAC",
+    "label":"TAC"
   },
   {
     "id":3,
-    "name":"Financial"
+    "name":"Financial",
+    "label":"FIN"
   },
   {
     "id":4,
-    "name":"InstallBase"
+    "name":"InstallBase",
+    "label":"INST"
   },
   {
     "id":5,
-    "name":"Compliance"
+    "name":"Compliance",
+    "label":"COMP"
   }
 ]

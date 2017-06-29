@@ -2,6 +2,7 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { CardComponent } from './components/ui/card/card.component';
+import { CardContentComponent } from './components/ui/card/card-content.component';
 import { CustomerSelectorComponent } from './components/ui/selectors/customer-selector.component'
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component'
@@ -29,6 +30,7 @@ import { Utils } from './services/utils/utils.component'
   declarations: [
     AppComponent,
     CardComponent,
+    CardContentComponent,
     CustomerSelectorComponent,
     DashboardComponent,
     LoginComponent,
