@@ -32,9 +32,8 @@
 
 // TODO @wnamen - fix card container styles.
 .card-container {
-  width: 100%;
-  padding: 3px;
-  display:inline-grid;
+  display:flex;
+  flex-wrap: wrap;
 }
 
 #toggle {

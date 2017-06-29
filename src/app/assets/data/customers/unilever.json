@@ -92,6 +92,38 @@
         "content": {
 
         }
+      },
+      {
+        "title": "Last Day Of Support % (Up To 5 Years)",
+        "tagIds": [1, 4],
+        "contentType": "chart",
+        "content": {
+
+        }
+      },
+      {
+        "title": "New Thing Again",
+        "tagIds": [1, 2],
+        "contentType": "chart",
+        "content": {
+
+        }
+      },
+      {
+        "title": "Last Day Of Support % (Up To 5 Years)",
+        "tagIds": [1, 4],
+        "contentType": "chart",
+        "content": {
+
+        }
+      },
+      {
+        "title": "New Thing Again",
+        "tagIds": [1, 2],
+        "contentType": "chart",
+        "content": {
+
+        }
       }
     ]
   }
