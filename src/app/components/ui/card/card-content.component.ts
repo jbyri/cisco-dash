@@ -5,11 +5,8 @@ import {
   ViewChild, EventEmitter
 } from '@angular/core';
 
-import { CardContentComponent } from './card-content.component';
-
-import { CardModel } from './card.model';
 import { CardContentModel } from './card-content.model';
-import { CustomerDatapointContent } from '../../../model/customer.model';
+
 
 /**
  * Visual Component for a CustomerDatapointContent Object
@@ -18,22 +15,19 @@ import { CustomerDatapointContent } from '../../../model/customer.model';
  * data will be decorated onto the chart template.
  */
 @Component({
-  selector: 'card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.css']
+  selector: 'card-content',
+  templateUrl: './card-content.component.html',
+  styleUrls: ['./card-content.component.css']
 })
-export class CardComponent implements OnInit, OnChanges {
+export class CardContentComponent implements OnInit, OnChanges {
   @Input()
-  cardModel : CardModel;
-
-  @ViewChild('content')
-  cardContent : CardContentComponent;
+  content:CardContentModel;
 
   constructor() {
   }
 
   ngOnInit() {
-    console.debug("ngOnInit", this.cardContent);
+    console.log("content", this.content);
   }
 
   ngOnChanges(changes:SimpleChanges) : void {

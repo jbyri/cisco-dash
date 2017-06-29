@@ -51,12 +51,19 @@ export class DashboardDataService {
       otherFormattedTagList.forEach(tagObject => {
         // TODO @wnamen if formatting tag data, translate the other data into a list of tags
         // FIXME @wnamen change this statement to be the proper translation format
-        tagList[tagList.length] = { name: tagObject['otherNameProp'], id: tagList.length };
+        tagList[tagList.length] = {
+          name: tagObject['otherNameProp'],
+          label: tagObject['otherDisplayNameProp'],
+          id: tagList.length };
       });
     } else {
       // TODO @wnamen, do whatever parsing of the data is necessary to build a list of Tag
       // FIXME @wnamen change this statement to be the proper translation format
-      tagList[0] = { name: json['otherNameProp'], id: 0 };
+      tagList[0] = {
+        name: json['otherNameProp'],
+        label: json['otherDisplayNameProp'],
+        id: 0
+      };
     }
 
     return tagList;

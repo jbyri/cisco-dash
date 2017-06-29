@@ -1,11 +1,9 @@
 <!-- TODO @wnamen  Style this puppy -->
 <div class="card card-instance">
-  <div class= "card-header">
+  <div class="card-header">
     {{cardModel.title}}
   </div>
-  <div class="card-block">
-    <!-- todo @barcher hookup card model data to chart -->
-    {{cardModel.content}}
+  <div class="card-content">
+    <card-content #content [content]="cardModel.content"></card-content>
   </div>
-
 </div>
