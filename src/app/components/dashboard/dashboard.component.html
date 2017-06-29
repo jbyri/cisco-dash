@@ -37,8 +37,8 @@
           </button>
           <!-- Draw the cards -->
           <!-- TODO @wnamen - fix card layout -->
-          <div #cards class="card-container">
-            <card (clicked)=onCardClicked($event)
+          <div #cards class="card-container large-margin-top">
+            <card class="large-margin" (clicked)=onCardClicked($event)
               *ngFor="let dataPoint of selectedCustomerModel.data.datapoints"
               [cardModel] ='{ title: dataPoint.title, content: dataPoint }'></card>
           </div>
