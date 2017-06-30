@@ -1,10 +1,10 @@
-import { Component, OnInit, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, ViewChild, TemplateRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../../services/authentication.service'
 import { DashboardDataService } from '../../services/dashboard/dashboarddata.service'
 import { SearchMenuModel } from '../ui/search/search-menu.model'
 import { Tag } from '../../model/tag.model'
-import { CardContentModel } from '../ui/card/card-content.model';
+import { CardContentModel, ChartContentModel } from '../ui/card/card-content.model';
 import { Customer, CustomerModel, CustomerDatapoint, CustomerDatapointContent } from '../../model/customer.model'
 import { TagBarComponent } from '../ui/tagbar/tagbar.component'
 import { SearchMenuComponent} from '../ui/search/search-menu.component'
@@ -45,6 +45,8 @@ export class DashboardComponent implements OnInit, OnChanges {
   returnUrl: string;
   toggled = false;
 
+  @ViewChild("barchartTemplate") barchartTemplate : TemplateRef<any>;
+
   handleMenuToggle() {
     this.toggled= !this.toggled;
   }
@@ -79,7 +81,7 @@ export class DashboardComponent implements OnInit, OnChanges {
       this.bricksInstance
         .on('pack',   () => console.log('ALL grid items packed.'))
         .on('update', () => console.log('NEW grid items packed.'))
-        .on('resize', size => console.log('The grid has be re-packed to accommodate a new BREAKPOINT.'))
+        .on('resize', (size : object) => console.log('The grid has be re-packed to accommodate a new BREAKPOINT.'))
   }
 
   public refreshDashboardData() {
@@ -118,10 +120,15 @@ export class DashboardComponent implements OnInit, OnChanges {
      console.debug("ngOnChanges()", changes);
   }
 
+  ngAfterViewInit() {
+      console.log("ngAfterViewInit, barchartTemplate", this.barchartTemplate);
+  }
   /**
    * ngOnInit - description
    */
   ngOnInit() : void {
+
+
     // fetch tags and customers
     let tagsTask: Observable<Tag[]> = this.dashboardDataService.loadTags();
     let customersTask: Observable<Customer[]> = this.dashboardDataService.loadCustomers();
@@ -137,12 +144,25 @@ export class DashboardComponent implements OnInit, OnChanges {
     });
   }
 
-  buildCardContentModel(content : CustomerDatapointContent)  : CardContentModel {
-    let model : CardContentModel = {
 
+  /**
+   * Builds the card content model which will also include its source view template.
+   */
+  buildCardContentModel(content : CustomerDatapointContent)  : CardContentModel {
+    let cardContentModel  : ChartContentModel = {
+      componentData : content.data
     }
-    console.log("buildCardContentModel", content,  model);
-    return model;
+
+
+    switch(content.type) {
+      case "barChart":
+
+        break;
+      default:
+        break;
+    }
+    console.log("buildCardContentModel", content,  cardContentModel);
+    return cardContentModel;
   }
 
   ngOnDestroy() : void {

@@ -22,9 +22,8 @@
         "tagIds": [1],
 
         "content": {
-          "type:": "chart",
+          "type:": "barChart",
           "data": {
-            "chartType": "bar",
             "labelKeys": ["QTRID"],
             "valueKeys": ["BOOK_NET"],
             "chartData": [{

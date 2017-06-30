@@ -5,5 +5,5 @@ import { Tag } from '../../../model/tag.model';
 export interface CardModel {
   title : String
   tags : Tag[],
-  content : CardContentModel
+  contentModel : CardContentModel
 }

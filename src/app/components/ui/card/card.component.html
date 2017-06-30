@@ -4,7 +4,10 @@
     {{cardModel.title}}
   </div>
   <div class="card-content">
-    <card-content #content [content]="cardModel.content"></card-content>
+    <card-content #content
+        [contentTemplate]="cardContentTemplate"
+        [contentBuilder]="cardModel.contentBuilder"
+        [contentModel]="cardModel.contentModel"></card-content>
   </div>
   <div class="">
   </div>
