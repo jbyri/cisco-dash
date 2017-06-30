@@ -1,11 +1,16 @@
 <!-- TODO @wnamen  Style this puppy -->
 <div class="dash-card card-radius medium-padding background-white">
-  <div class= "">
-    {{cardModel.title}}
+  <div class= "display-flex flex-row-spread">
+    <i class="card-indicator fa fa-arrow-circle-o-up font-green" aria-hidden="true"></i>
+    <p class="card-title">{{cardModel.title}}</p>
+    <button type="button" class="card-tag background-yellow font-white no-border">FIN</button>
   </div>
   <div class="card-content">
     <card-content #content [content]="cardModel.content"></card-content>
   </div>
-  <div class="">
+  <div>
+    <button type="button" class="no-background no-border" ngbPopover="You see, I show up on hover!" triggers="mouseenter:mouseleave" popoverTitle="Pop title" container="body">
+      <i class="fa fa-info-circle" aria-hidden="true"></i>
+    </button>
   </div>
 </div>

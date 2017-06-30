@@ -35,15 +35,15 @@
         <div class="col-sm-1 col-md-1 col-lg-1 large-margin-right">
           <img class="medium-border-right border-whitesmoke" src="/app/assets/images/cisco-logo-white.svg" />
         </div>
-        <div class="col-sm-11 col-md-11 col-lg-11 large-padding-top no-padding-left">
+        <div class="col-sm-10 col-md-10 col-lg-10 large-padding-top no-padding-left">
           <button id="toggle" (click)="handleMenuToggle()">
             <i class="fa fa-search large-margin-right font-whitesmoke" aria-hidden="true"></i>
             <span class="font-whitesmoke">Search for customers, metrics, or categories</span>
           </button>
           <!-- Draw the cards -->
           <!-- TODO @wnamen - fix card layout -->
-          <div #cards class="card-container large-margin-top">
-            <card class="large-margin" (clicked)=onCardClicked($event)
+          <div #cards class="card-columns large-margin-top">
+            <card data-packed class="card no-background no-border large-margin" (clicked)=onCardClicked($event)
               *ngFor="let dataPoint of selectedCustomerModel.data.datapoints"
               [cardModel] ='{
                 title: dataPoint.title,
