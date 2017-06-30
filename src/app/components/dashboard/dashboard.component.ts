@@ -11,7 +11,6 @@ import { SearchMenuComponent} from '../ui/search/search-menu.component'
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
 
-
 /**
  * This component represents the dashboard page (routed to `/dashboard`)
  */
@@ -49,6 +48,22 @@ export class DashboardComponent implements OnInit, OnChanges {
   handleMenuToggle() {
     this.toggled= !this.toggled;
   }
+  bricks = require('../../../../node_modules/bricks.js/dist/bricks.js')
+
+  sizes = [
+    { columns: 2, gutter: 10 },                   // assumed to be mobile, because of the missing mq property
+    { mq: '768px', columns: 3, gutter: 25 },
+    { mq: '1024px', columns: 4, gutter: 50 }
+  ]
+
+  bricksInstance = this.bricks({
+    container: '.card-container',
+    packed: 'data-packed',        // if not prefixed with 'data-', it will be added
+    sizes: this.sizes
+  })
+
+
+
 
   private account: Object;
 
@@ -59,6 +74,12 @@ export class DashboardComponent implements OnInit, OnChanges {
     private router: Router,
     private authenticationService: AuthenticationService,
     private dashboardDataService: DashboardDataService) {
+      console.log(this.bricksInstance)
+
+      this.bricksInstance
+        .on('pack',   () => console.log('ALL grid items packed.'))
+        .on('update', () => console.log('NEW grid items packed.'))
+        .on('resize', size => console.log('The grid has be re-packed to accommodate a new BREAKPOINT.'))
   }
 
   public refreshDashboardData() {
@@ -96,7 +117,7 @@ export class DashboardComponent implements OnInit, OnChanges {
      // changes.prop contains the old and the new value...
      console.debug("ngOnChanges()", changes);
   }
-  
+
   /**
    * ngOnInit - description
    */
