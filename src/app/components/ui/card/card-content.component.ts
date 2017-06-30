@@ -2,11 +2,23 @@ import {
   Input, Output,
   Component,
   OnInit, OnChanges, SimpleChanges,
-  ViewChild, EventEmitter
+  ViewChild, EventEmitter,
+  ViewContainerRef,
+  EmbeddedViewRef,
+  TemplateRef
 } from '@angular/core';
 
 import { CardContentModel } from './card-content.model';
 
+
+export interface CardContentObject {
+  // TODO tie up the card chart views data via this interface
+}
+
+export interface CardContentBuilder {
+  // builds an instance of card content
+  buildCardContent() : CardContentObject
+}
 
 /**
  * Visual Component for a CustomerDatapointContent Object
@@ -21,13 +33,29 @@ import { CardContentModel } from './card-content.model';
 })
 export class CardContentComponent implements OnInit, OnChanges {
   @Input()
-  content:CardContentModel;
+  contentModel:CardContentModel;
 
+  @Input()
+  contentBuilder : CardContentBuilder;
+
+  @Input()
+  contentTemplate : TemplateRef<any>
+
+  @ViewChild("vc", {read: ViewContainerRef}) vc: ViewContainerRef;
   constructor() {
+
+  }
+
+  /**
+   * Hook to insert the dynamic view content (using templates)
+   */
+  ngAfterViewInit() {
+    let view : EmbeddedViewRef<any> = this.contentTemplate.createEmbeddedView(null);
+    this.vc.insert(view);
   }
 
   ngOnInit() {
-    console.log("content", this.content);
+    console.log("content", this.contentModel);
   }
 
   ngOnChanges(changes:SimpleChanges) : void {

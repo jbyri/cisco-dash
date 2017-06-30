@@ -45,6 +45,7 @@
           <div #cards class="card-columns large-margin-top">
             <card data-packed class="card no-background no-border large-margin" (clicked)=onCardClicked($event)
               *ngFor="let dataPoint of selectedCustomerModel.data.datapoints"
+              [cardContentTemplate]='barchartTemplate'
               [cardModel] ='{
                 title: dataPoint.title,
                 tags: getTagsFromCustomerDatapoint(dataPoint),
@@ -58,3 +59,28 @@
   </div>
 
 </div>
+
+<!-- Chart Templates used to build card components. Passed in to card components as Template Refs -->
+
+<!-- Bar Chart -->
+<template #barchartTemplate>
+  Bar Chart Component
+  <!--<bar-chart></bar-chart>-->
+</template>
+<!-- Line Chart -->
+<template #lineChart>
+  Bar Chart Component
+  <!--<bar-chart></bar-chart>-->
+</template>
+
+<!-- Pie Chart -->
+<template #pieChart>
+  Bar Chart Component
+  <!--<bar-chart></bar-chart>-->
+</template>
+
+<!-- Donut Chart -->
+<template #donutChart>
+  Bar Chart Component
+  <!--<bar-chart></bar-chart>-->
+</template>

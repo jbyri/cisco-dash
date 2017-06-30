@@ -2,7 +2,8 @@ import {
   Input, Output,
   Component,
   OnInit, OnChanges, SimpleChanges,
-  ViewChild, EventEmitter
+  ViewChild, EventEmitter,
+  TemplateRef
 } from '@angular/core';
 
 import { CardContentComponent } from './card-content.component';
@@ -29,6 +30,10 @@ export class CardComponent implements OnInit, OnChanges {
   @ViewChild('content')
   cardContent : CardContentComponent;
 
+
+  @Input()
+  cardContentTemplate : TemplateRef<any>
+  
   constructor() {
   }
 

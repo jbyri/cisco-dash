@@ -7,6 +7,7 @@ _test-output
 *.spec.js
 *.module.js
 *.service.js
+*.abstract.js
 src/main.js
 lupaProject.json
 */app/assets/styles/**/*.css

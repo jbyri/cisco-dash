@@ -6,7 +6,10 @@
     <button type="button" class="card-tag background-yellow font-white no-border">FIN</button>
   </div>
   <div class="card-content">
-    <card-content #content [content]="cardModel.content"></card-content>
+    <card-content #content
+        [contentTemplate]="cardContentTemplate"
+        [contentBuilder]="cardModel.contentBuilder"
+        [contentModel]="cardModel.contentModel"></card-content>
   </div>
   <div>
     <button type="button" class="no-background no-border" ngbPopover="You see, I show up on hover!" triggers="mouseenter:mouseleave" popoverTitle="Pop title" container="body">
