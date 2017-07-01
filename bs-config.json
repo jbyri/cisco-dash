@@ -1,6 +1,4 @@
 {
-  "open": false,
-  "port": 8080,
   "server": {
     "baseDir": "src",
     "routes": {
