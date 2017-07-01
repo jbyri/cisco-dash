@@ -1,1 +1,1 @@
-web: gulp
+web: npm run serve:e2e
