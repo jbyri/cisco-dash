@@ -1,0 +1,26 @@
+.dash-card {
+  z-index: 98;
+  max-width: 25em;
+  max-height: 25em;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  text-transform: uppercase;
+  font-size: small;
+  font-weight: 600; }
+
+.card-indicator {
+  font-size: large; }
+
+.card-title {
+  margin: 0 1em;
+  letter-spacing: 1px; }
+
+.card-tag {
+  text-align: center;
+  width: 4em;
+  height: 1.75em;
+  border-radius: 5px;
+  cursor: pointer; }
+
+.card-tag:focus {
+  border: none;
+  outline: none; }
