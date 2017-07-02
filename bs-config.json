@@ -1,6 +1,6 @@
 {
+   "files": ["./src/**/*.{html,htm,css,js}"],
   "server": {
-    "port": 8080,
     "baseDir": "src",
     "routes": {
       "/node_modules": "node_modules"
