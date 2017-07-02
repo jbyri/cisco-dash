@@ -1,10 +1,7 @@
 module.exports = {
-    port: process.env.port,    
-    server: {
-    baseDir: "src",
-    routes: {
-      "/node_modules": "node_modules"
+    port: process.env.PORT,
+    files: ['./**/*.{html,htm,css,js}'],
+    server:{
+        baseDir: "./src"
     }
-  }
-
 };
