@@ -13,3 +13,4 @@ lupaProject.json
 */app/assets/styles/**/*.css
 /src/styles.css
 */app/components/**/*.component.css
+.npm-debug.log
