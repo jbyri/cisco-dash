@@ -4,8 +4,16 @@ var ts = require("gulp-typescript");
 var sass = require('gulp-sass');
 var tsProject = ts.createProject("src/tsconfig.json");
 var tsE2ETests = ts.createProject("e2e/tsconfig.json");
+
+var spawn = require('child_process').spawn;
+
+gulp.task('serve', function() {
+  spawn('node', ['app.js'], { stdio: 'inherit' });
+});
+
+
 // main task
-gulp.task('default', ['tsCompile', 'sass']);
+gulp.task('default', ['tsCompile', 'sass','serve']);
 gulp.task('e2e', ['e2eTsCompile']);
 
 // compile typescript
@@ -27,6 +35,7 @@ gulp.task('sass', function () {
     .pipe(sass.sync().on('error', sass.logError))
     .pipe(gulp.dest('src'));
 });
+
 gulp.task('sass:watch', function () {
   gulp.watch('./src/**/*.scss', ['sass']);
 });
