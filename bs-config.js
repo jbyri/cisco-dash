@@ -11,5 +11,4 @@ module.exports = {
         "0": null
         }
     }
-
 };
