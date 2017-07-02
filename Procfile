@@ -1,1 +1,1 @@
-worker: npm run serve:e2e
+web: npm run serve:e2e
