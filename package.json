@@ -8,7 +8,6 @@
     "build:e2e": "gulp e2e",
     "serve": "lite-server -c=bs-config.json",
     "serve:e2e": "node app.js",
-     "postinstall": "gulp default",
     "prestart": "npm run build",
     "start": "concurrently \"gulp sass:watch\" \"npm run build:watch\" \"npm run serve\"",
     "pree2e": "npm run build:e2e",
