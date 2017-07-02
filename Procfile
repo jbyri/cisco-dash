@@ -1,2 +1,1 @@
-web: npm run serve:e2e
-worker: npm start
+worker: npm run serve:e2e
