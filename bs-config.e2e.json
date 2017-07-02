@@ -2,8 +2,7 @@
   "server": {
     "baseDir": "src",
     "routes": {
-      "/node_modules": "node_modules",
-      "/chartJS-templates": "chartJS-templates"
+      "/node_modules": "node_modules"
     }
   }
 }
