@@ -9,7 +9,6 @@
     "serve": "lite-server -c=bs-config.json",
     "serve:e2e": "gulp default",
     "prestart": "npm run build",
-    "postinstall": "npm run build",
     "start": "concurrently \"gulp sass:watch\" \"npm run build:watch\" \"npm run serve\"",
     "pree2e": "npm run build:e2e",
     "e2e": "concurrently \"npm run serve:e2e\" \"npm run protractor\" --kill-others --success first",
