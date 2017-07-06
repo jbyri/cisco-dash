@@ -4,16 +4,16 @@ import { AuthenticationService } from '../../services/authentication.service'
 import 'rxjs/add/operator/map'
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.css']
 })
-export class LoginComponent implements OnInit {
-  model: any = {};
+export class SignUpComponent implements OnInit {
+  model:any = {};
   loading = false;
   returnUrl: string;
 
-  private account: Object;
+  private account : Object;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,25 +21,19 @@ export class LoginComponent implements OnInit {
     private authenticationService: AuthenticationService)
   { }
 
-  onSubmit(event: Event) {
-    console.log('onSubmit');
+  onSubmit(event : Event) {
+    console.log("onSubmit");
     event.preventDefault();
-    this.login();
+    this.signup();
   }
 
-  logout() {
-    this.authenticationService.logout()
-      .subscribe(success => {
-        this.router.navigate(['/login']);
-      });
-  }
   /**
    * Submit login credentials
    */
-  login() {
-    this.authenticationService.login(this.model.email, this.model.password)
+  signup() {
+    this.authenticationService.signup(this.model.firstName, this.model.lastName, this.model.email, this.model.password)
       .subscribe(success => {
-        console.log("Login Successs!");
+        console.log("SignUp Successs!");
         this.router.navigate(['/dashboard']);
       });
 
@@ -50,7 +44,7 @@ export class LoginComponent implements OnInit {
 
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
 
-    console.log('LoginComponent::ngOnInit()');
+    console.log("SignUpComponent::ngOnInit()");
     // check cookies for previous login
     // login (oauth?)
     // $('.message a').click(function(){

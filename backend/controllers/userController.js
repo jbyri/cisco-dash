@@ -28,6 +28,8 @@ signup = (req, res) => {
   const lastName = req.body.lastName;
   const password = req.body.password;
 
+  console.log(email, firstName, lastName, password);
+
   // Return error if no email provided
   if (!email) {
     return res.status(422).send({ error: 'You must enter an email address.'});
@@ -75,6 +77,7 @@ signup = (req, res) => {
 
 login = (req, res) => {
 	let userInfo = setUserInfo(req.user);
+  console.log(userInfo);
 
   res.status(200).json({
     token: generateToken(userInfo),

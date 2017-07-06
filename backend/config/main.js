@@ -1,5 +1,5 @@
 module.exports = {
-  secret: 'customreactboilerplateisawesome',
+  secret: 'cisco-dash',
   database: 'mongodb://localhost:27017',
-  port: 6969,
+  port: 5000,
 };

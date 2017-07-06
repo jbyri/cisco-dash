@@ -22,6 +22,7 @@ import { CardComponent } from './components/ui/card/card.component';
 import { CardContentComponent } from './components/ui/card/card-content.component';
 import { CustomerSelectorComponent } from './components/ui/selectors/customer-selector.component'
 import { SearchMenuComponent } from './components/ui/search/search-menu.component';
+import { SignUpComponent } from './components/signup/signup.component'
 import { TagBarComponent } from './components/ui/tagbar/tagbar.component'
 import { TagBarItemComponent } from './components/ui/tagbar/tagbar-item.component'
 import { TagSelectorComponent } from './components/ui/selectors/tag-selector.component'
@@ -46,6 +47,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     CustomerSelectorComponent,
     DashboardComponent,
     LoginComponent,
+    SignUpComponent,
     SearchMenuComponent,
     TagBarComponent,
     TagBarItemComponent,

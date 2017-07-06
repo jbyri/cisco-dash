@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost/custom-react-boilerplate");
+mongoose.connect("mongodb://localhost/cisco-dash");
 
-module.exports.Tutorial = require("./tutorial.js");
 module.exports.User = require("./user.js");
