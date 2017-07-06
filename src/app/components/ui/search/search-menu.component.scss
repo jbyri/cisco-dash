@@ -2,6 +2,17 @@
   margin-top: 3em;
 }
 
-#filterSelection, #customerSelection {
+#tagSelection, #customerSelection {
   margin-right: 3em;
+}
+
+@media only screen and (max-width : 767px) {
+  #tagSelection, #customerSelection {
+    margin-right: 0;
+    width: 50vw;
+  }
+
+  #menuSelectors {
+    padding: 0;
+  }
 }

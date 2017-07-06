@@ -6,14 +6,14 @@
       <tagbar #filterTagBar [model]='tagBarModel'></tagbar>
     </div>
   </div>
-  <div id="menuSelectors" class="display-flex col-sm-8 col-md-8 col-lg-8">
-    <div id="customerSelection">
+  <div id="menuSelectors" class="display-flex col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div id="customerSelection" class="col-md-4 col-lg-4">
       <customer-selector #customerSelector
         (selectionChanged)='onCustomerSelectionChange($event)'
         [dataProvider]='customerSelectorModel'></customer-selector>
     </div>
 
-    <div id="tagSelection">
+    <div id="tagSelection" class="col-md-4 col-lg-4">
       <tag-selector #tagSelector
         [hidden]="model.selectedCustomers.length == 0"
         (selectionChanged)='onTagSelectionChange($event)'

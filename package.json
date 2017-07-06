@@ -44,7 +44,7 @@
     "express": "^4.14.0",
     "font-awesome": "^4.7.0",
     "jsonwebtoken": "^7.3.0",
-    "mongodb": "^2.2.24",
+    "mongodb": "^2.2.29",
     "mongoose": "^4.10.8",
     "ngx-bootstrap": "^1.7.1",
     "passport": "^0.3.2",
