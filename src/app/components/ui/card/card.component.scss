@@ -2,8 +2,6 @@
 .dash-card {
   z-index: 98;
   width: 100%;
-  max-width: 25em;
-  max-height: 25em;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   text-transform: uppercase;
   font-size: small;
@@ -20,7 +18,7 @@
 }
 
 .card-tag-container {
-  
+
 }
 
 .card-tag {

@@ -61,3 +61,10 @@
 #login-redirect a:hover {
   text-decoration: underline;
 }
+
+
+@media only screen and (max-width: 767px) {
+  #signup-inputs, #signup-button {
+    width: 65vw;
+  }
+}
