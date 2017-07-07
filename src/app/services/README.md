@@ -19,7 +19,9 @@ Insure you've installed mongodb and Node.js
    5. Run `npm start run:win` to start the windows build
 2. Mac
    1.visit: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/#install-mongodb-community-edition-with-homebrew
-   2. follow instructions
+   2. follow instructions to install mongo
+   3. follow instructions to configure mongo environment (local)
+   4. Run `npm run start` to start the mac build
 
 #### Requirements
 1. express
@@ -35,8 +37,7 @@ Insure you've installed mongodb and Node.js
 You can find all these packages through the node package manager (npm) - https://www.npmjs.com/
 
 #### Steps
-1. Mac
-  1. Setup MongoDB - https://docs.mongodb.com/manual/administration/install-community/
-  2. Setup Node (current version) - https://nodejs.org/en/
-  3. Run `$ npm i`
-  4. All packages should install and be ready for application start.
+1. Setup MongoDB - https://docs.mongodb.com/manual/administration/install-community/
+2. Setup Node (current version) - https://nodejs.org/en/
+3. Run `$ npm i`
+4. All packages should install and be ready for application start.
