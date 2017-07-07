@@ -7,6 +7,7 @@ This service handles signup, login, forgotten passwords, etc.
 
 
 ### Deployment for Authentication
+
 #### For Local Deployment
 Insure you've installed mongodb and Node.js
 1. Windows
@@ -17,7 +18,9 @@ Insure you've installed mongodb and Node.js
        ![AllowAccessDialog](../../../wiki_src/images/MongoDAllowAccess.jpg)
    5. Run `npm start run:win` to start the windows build
 2. Mac
-   1.
+   1.visit: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/#install-mongodb-community-edition-with-homebrew
+   2. follow instructions
+
 #### Requirements
 1. express
 2. mongodb
@@ -29,7 +32,11 @@ Insure you've installed mongodb and Node.js
 8. passport-jwt
 9. passport-local
 
-#### Steps
+You can find all these packages through the node package manager (npm) - https://www.npmjs.com/
 
-1.
-2.
+#### Steps
+1. Mac
+  1. Setup MongoDB - https://docs.mongodb.com/manual/administration/install-community/
+  2. Setup Node (current version) - https://nodejs.org/en/
+  3. Run `$ npm i`
+  4. All packages should install and be ready for application start.
