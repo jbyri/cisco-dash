@@ -19,8 +19,15 @@ Insure you've installed mongodb and Node.js
 2. Mac
    1.
 #### Requirements
-1.
-2.
+1. express
+2. mongodb
+3. mongoose
+4. jsonwebtoken
+5. crypto
+6. bcrypt-nodejs
+7. passport
+8. passport-jwt
+9. passport-local
 
 #### Steps
 
