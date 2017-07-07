@@ -1,23 +1,34 @@
-import { NgModule }      from '@angular/core';
+// Angular Imports.
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule }   from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { NgModule }      from '@angular/core';
+
+// Application imports
+import { AppComponent }  from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+
+// bootstrap
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+// Services
+import { AuthenticationService } from './services/authentication.service'
+import { DashboardDataService } from './services/dashboard/dashboarddata.service'
+import { Utils } from './services/utils/utils.component'
+
+// UI Components
+import { BarChartComponent } from './components/ui/chart/bar-chart.component';
 import { CardComponent } from './components/ui/card/card.component';
 import { CardContentComponent } from './components/ui/card/card-content.component';
 import { CustomerSelectorComponent } from './components/ui/selectors/customer-selector.component'
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { LoginComponent } from './components/login/login.component'
 import { SearchMenuComponent } from './components/ui/search/search-menu.component';
 import { TagBarComponent } from './components/ui/tagbar/tagbar.component'
 import { TagBarItemComponent } from './components/ui/tagbar/tagbar-item.component'
 import { TagSelectorComponent } from './components/ui/selectors/tag-selector.component'
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent }  from './app.component';
-import { AuthenticationService } from './services/authentication.service'
-import { DashboardDataService } from './services/dashboard/dashboarddata.service'
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule }   from '@angular/forms';
-import { Utils } from './services/utils/utils.component'
 
+// Route handling components.
+import { LoginComponent } from './components/login/login.component'
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   imports: [
@@ -29,6 +40,7 @@ import { Utils } from './services/utils/utils.component'
   ],
   declarations: [
     AppComponent,
+    BarChartComponent,
     CardComponent,
     CardContentComponent,
     CustomerSelectorComponent,
@@ -46,6 +58,9 @@ import { Utils } from './services/utils/utils.component'
     Utils,
     AuthenticationService,
     DashboardDataService
+  ],
+  entryComponents: [
+    BarChartComponent
   ],
   bootstrap:    [ AppComponent ]
 })

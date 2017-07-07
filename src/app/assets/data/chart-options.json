@@ -1,0 +1,176 @@
+[{
+    "id": "barChart1",
+    "data": {
+      "legend": {
+        "display": false
+      },
+      "scales": {
+        "xAxes": [{
+          "barPercentage": 0.3,
+          "gridLines": {
+            "display": false
+          }
+        }],
+        "yAxes": [{
+          "gridLines": {
+            "drawBorder": false
+          },
+          "ticks": {
+            "padding": 20,
+            "beginAtZero": true,
+            "maxTicksLimit": 4
+          }
+        }]
+      }
+    }
+  },
+  {
+    "id": "barChart2",
+    "data": {
+      "legend": {
+        "display": false
+      },
+      "scales": {
+        "xAxes": [{
+          "display": false,
+          "gridLines": {
+            "drawBorder": false,
+            "display": false
+          }
+        }],
+        "yAxes": [{
+          "barPercentage": 0.3,
+          "gridLines": {
+            "drawBorder": false,
+            "display": false
+          },
+          "ticks": {
+            "padding": 20,
+            "fontSize": 16,
+            "beginAtZero": true
+          }
+        }]
+      }
+    }
+  },
+  {
+    "id": "barChart3",
+    "data": {
+      "elements": {
+        "point": {
+          "radius": 0
+        }
+      },
+      "legend": {
+        "display": false
+      },
+      "scales": {
+        "xAxes": [{
+          "barPercentage": 0.3,
+          "gridLines": {
+            "display": false
+          }
+        }],
+        "yAxes": [{
+          "gridLines": {
+            "drawBorder": false
+          },
+          "ticks": {
+            "padding": 20,
+            "beginAtZero": true,
+            "stepSize": 10,
+            "max": 20
+          }
+        }]
+      }
+    }
+  },
+  {
+    "id": "barChart4",
+    "data": {
+      "elements": {
+        "point": {
+          "radius": 0
+        }
+      },
+      "legend": {
+        "display": false
+      },
+      "scales": {
+        "xAxes": [{
+          "barPercentage": 0.3,
+          "gridLines": {
+            "display": false
+          }
+        }],
+        "yAxes": [{
+          "gridLines": {
+            "drawBorder": false
+          },
+          "ticks": {
+            "padding": 20,
+            "beginAtZero": true,
+            "stepSize": 5,
+            "max": 15
+          }
+        }]
+      }
+    }
+  },
+  {
+    "id": "barChart5",
+    "data": {
+      "elements": {
+        "point": {
+          "radius": 0
+        }
+      },
+      "legend": {
+        "display": false
+      },
+      "scales": {
+        "xAxes": [{
+          "barPercentage": 0.3,
+          "gridLines": {
+            "display": false
+          }
+        }],
+        "yAxes": [{
+          "gridLines": {
+            "drawBorder": false
+          },
+          "ticks": {
+            "padding": 20,
+            "beginAtZero": true,
+            "stepSize": 5
+          }
+        }]
+      }
+    }
+  },
+  {
+    "id": "stackedBarChart1",
+    "data": {
+      "scales": {
+        "xAxes": [{
+          "stacked": true,
+          "barPercentage": 0.3,
+          "gridLines": {
+            "display": false
+          }
+        }],
+        "yAxes": [{
+          "stacked": true,
+          "gridLines": {
+            "drawBorder": false
+          },
+          "ticks": {
+            "padding": 20,
+            "beginAtZero": true,
+            "stepSize": 15
+          }
+        }]
+      }
+    }
+  }
+]

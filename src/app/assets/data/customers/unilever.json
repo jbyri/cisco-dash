@@ -22,106 +22,629 @@
         "tagIds": [1],
 
         "content": {
-          "type:": "barChart",
+          "type": "barChart",
           "data": {
+            "chartOptionsId": "barChart1",
             "labelKeys": ["QTRID"],
             "valueKeys": ["BOOK_NET"],
-            "chartData": [{
-              "QTRID": "2015Q1",
-              "BOOK_NET": "5515889.59"
-            }, {
-              "QTRID": "2015Q2",
-              "BOOK_NET": "14556308.41"
-            }, {
-              "QTRID": "2015Q3",
-              "BOOK_NET": "5160012.52"
-            }, {
-              "QTRID": "2015Q4",
-              "BOOK_NET": "13008010.35"
-            }, {
-              "QTRID": "2016Q1",
-              "BOOK_NET": "5555839.59"
-            }, {
-              "QTRID": "2016Q2",
-              "BOOK_NET": "15198515.34"
-            }, {
-              "QTRID": "2016Q3",
-              "BOOK_NET": "12735451.16"
-            }, {
-              "QTRID": "2016Q4",
-              "BOOK_NET": "11310894.38"
-            }, {
-              "QTRID": "2017Q1",
-              "BOOK_NET": "8986517.02"
-            }, {
-              "QTRID": "2017Q2",
-              "BOOK_NET": "12232259.61"
-            }]
+            "chartData": {
+              "datasets": [{
+                "backgroundColor": "#67AAF9",
+                "values": [{
+                  "QTRID": "2015Q1",
+                  "BOOK_NET": "5515889.59"
+                }, {
+                  "QTRID": "2015Q2",
+                  "BOOK_NET": "14556308.41"
+                }, {
+                  "QTRID": "2015Q3",
+                  "BOOK_NET": "5160012.52"
+                }, {
+                  "QTRID": "2015Q4",
+                  "BOOK_NET": "13008010.35"
+                }, {
+                  "QTRID": "2016Q1",
+                  "BOOK_NET": "5555839.59"
+                }, {
+                  "QTRID": "2016Q2",
+                  "BOOK_NET": "15198515.34"
+                }, {
+                  "QTRID": "2016Q3",
+                  "BOOK_NET": "12735451.16"
+                }, {
+                  "QTRID": "2016Q4",
+                  "BOOK_NET": "11310894.38"
+                }, {
+                  "QTRID": "2017Q1",
+                  "BOOK_NET": "8986517.02"
+                }]
+              }]
+            }
+          }
+        }
+      },
+
+      {
+        "title": "RMA Exceptions (Uplift)",
+        "tagIds": [5],
+
+        "content": {
+          "type": "barChart",
+          "data": {
+            "chartOptionsId": "barChart1",
+            "labelKeys": ["QTRID"],
+            "valueKeys": ["VALUE"],
+            "chartData": {
+              "datasets": [{
+                "backgroundColor": "#67AAF9",
+                "values": [{
+                  "QTRID": "Q1",
+                  "VALUE": "10"
+                }, {
+                  "QTRID": "Q2",
+                  "VALUE": "8"
+                }, {
+                  "QTRID": "5Q3",
+                  "VALUE": "4"
+                }, {
+                  "QTRID": "Q4",
+                  "VALUE": "14"
+                }]
+              }]
+            }
+          }
+        }
+      },
+
+      {
+        "title": "RMA Exceptions (Other)",
+        "tagIds": [5],
+
+        "content": {
+          "type": "barChart",
+          "data": {
+            "chartOptionsId": "barChart1",
+            "labelKeys": ["QTRID"],
+            "valueKeys": ["VALUE"],
+            "chartData": {
+              "datasets": [{
+                "backgroundColor": "#67AAF9",
+                "values": [{
+                  "QTRID": "Q1",
+                  "VALUE": "8"
+                }, {
+                  "QTRID": "Q2",
+                  "VALUE": "0"
+                }, {
+                  "QTRID": "Q3",
+                  "VALUE": "13"
+                }, {
+                  "QTRID": "Q4",
+                  "VALUE": "1"
+                }]
+              }]
+            }
+          }
+        }
+      },
+
+      {
+        "title": "Bookings - Products (Total)",
+        "tagIds": [3],
+
+        "content": {
+          "type": "barChart",
+          "data": {
+            "chartOptionsId": "barChart4",
+            "labelKeys": ["QTRID"],
+            "valueKeys": ["VALUE"],
+            "chartData": {
+              "datasets": [{
+                "backgroundColor": "#67AAF9",
+                "type": "bar",
+                "values": [{
+                  "QTRID": "Q1",
+                  "VALUE": "8"
+                }, {
+                  "QTRID": "Q2",
+                  "VALUE": "0"
+                }, {
+                  "QTRID": "Q3",
+                  "VALUE": "13"
+                }, {
+                  "QTRID": "Q4",
+                  "VALUE": "1"
+                }]
+              }]
+            }
           }
         }
       },
       {
-        "title": "Last Day Of Support % (Up To 5 Years)",
-        "tagIds": [1, 5],
-        "contentType": "chart",
-        "content": {
+        "title": "Bookings - By Architecture",
+        "tagIds": [3],
 
+        "content": {
+          "type": "barChart",
+          "data": {
+            "chartOptionsId": "barChart1",
+            "labelKeys": ["LABEL"],
+            "valueKeys": ["VALUE"],
+            "chartData": {
+              "datasets": [{
+                  "backgroundColor": "#67AAF9",
+                  "label": "Collaboration",
+                  "type": "bar",
+                  "values": [{
+                    "LABEL": "Q1",
+                    "VALUE": "8"
+                  }, {
+                    "LABEL": "Q2",
+                    "VALUE": "11"
+                  }, {
+                    "LABEL": "Q3",
+                    "VALUE": "9"
+                  }, {
+                    "LABEL": "Q4",
+                    "VALUE": "3"
+                  }]
+                },
+                {
+                  "backgroundColor": "#FFBB41",
+                  "label": "Data Center",
+                  "type": "bar",
+                  "values": [{
+                    "LABEL": "Q1",
+                    "VALUE": "9"
+                  }, {
+                    "LABEL": "Q2",
+                    "VALUE": "10"
+                  }, {
+                    "LABEL": "Q3",
+                    "VALUE": "7"
+                  }, {
+                    "LABEL": "Q4",
+                    "VALUE": "11"
+                  }]
+                },
+                {
+                  "backgroundColor": "#37394C",
+                  "label": "Enterprise Networking",
+                  "type": "bar",
+                  "values": [{
+                    "LABEL": "Q1",
+                    "VALUE": "11"
+                  }, {
+                    "LABEL": "Q2",
+                    "VALUE": "10"
+                  }, {
+                    "LABEL": "Q3",
+                    "VALUE": "21"
+                  }, {
+                    "LABEL": "Q4",
+                    "VALUE": "15"
+                  }]
+                },
+                {
+                  "backgroundColor": "#D1E5FD",
+                  "label": "Security",
+                  "type": "bar",
+                  "values": [{
+                    "LABEL": "Q1",
+                    "VALUE": "14"
+                  }, {
+                    "LABEL": "Q2",
+                    "VALUE": "15"
+                  }, {
+                    "LABEL": "Q3",
+                    "VALUE": "10"
+                  }, {
+                    "LABEL": "Q4",
+                    "VALUE": "18"
+                  }]
+                },
+                {
+                  "backgroundColor": "#D1E5FD",
+                  "label": "Other",
+                  "type": "bar",
+                  "values": [{
+                    "LABEL": "Q1",
+                    "VALUE": "17"
+                  }, {
+                    "LABEL": "Q2",
+                    "VALUE": "13"
+                  }, {
+                    "LABEL": "Q3",
+                    "VALUE": "18"
+                  }, {
+                    "LABEL": "Q4",
+                    "VALUE": "19"
+                  }]
+                }
+              ]
+            }
+          }
+        }
+      },
+
+      {
+        "title": "Bookings - Services (Total)",
+        "tagIds": [3],
+
+        "content": {
+          "type": "barChart",
+          "data": {
+            "chartOptionsId": "barChart4",
+            "labelKeys": ["LABEL"],
+            "valueKeys": ["VALUE"],
+            "chartData": {
+              "datasets": [{
+                "backgroundColor": "#67AAF9",
+                "type": "bar",
+                "values": [{
+                  "LABEL": "Q1",
+                  "VALUE": "8"
+                }, {
+                  "LABEL": "Q2",
+                  "VALUE": "11"
+                }, {
+                  "LABEL": "Q3",
+                  "VALUE": "9"
+                }, {
+                  "LABEL": "Q4",
+                  "VALUE": "3"
+                }]
+              }]
+            }
+          }
+        }
+      },
+
+      {
+        "title": "Bookings - Services (TS)",
+        "tagIds": [3],
+
+        "content": {
+          "type": "barChart",
+          "data": {
+            "chartOptionsId": "barChart4",
+            "labelKeys": ["LABEL"],
+            "valueKeys": ["VALUE"],
+            "chartData": {
+              "datasets": [{
+                "backgroundColor": "#67AAF9",
+                "type": "bar",
+                "values": [{
+                  "LABEL": "Q1",
+                  "VALUE": "8"
+                }, {
+                  "LABEL": "Q2",
+                  "VALUE": "11"
+                }, {
+                  "LABEL": "Q3",
+                  "VALUE": "9"
+                }, {
+                  "LABEL": "Q4",
+                  "VALUE": "3"
+                }]
+              }]
+            }
+          }
         }
       },
       {
-        "title": "Last Day Of Support % (Up To 5 Years)",
-        "tagIds": [1, 4],
-        "contentType": "chart",
-        "content": {
+        "title": "Bookings by TS Offers",
+        "tagIds": [3],
 
+        "content": {
+          "type": "barChart",
+          "data": {
+            "chartOptionsId": "barChart5",
+            "labelKeys": ["LABEL"],
+            "valueKeys": ["VALUE"],
+            "chartData": {
+              "datasets": [{
+                  "backgroundColor": "#67AAF9",
+                  "type": "bar",
+                  "label": "Cloud Managed Services",
+                  "values": [{
+                    "LABEL": "Q1",
+                    "VALUE": "4"
+                  }, {
+                    "LABEL": "Q2",
+                    "VALUE": "10"
+                  }, {
+                    "LABEL": "Q3",
+                    "VALUE": "8"
+                  }, {
+                    "LABEL": "Q4",
+                    "VALUE": "11"
+                  }]
+                },
+                {
+                  "backgroundColor": "#FFBB41",
+                  "type": "bar",
+                  "label": "Network Support",
+                  "values": [{
+                    "LABEL": "Q1",
+                    "VALUE": "9"
+                  }, {
+                    "LABEL": "Q2",
+                    "VALUE": "10"
+                  }, {
+                    "LABEL": "Q3",
+                    "VALUE": "7"
+                  }, {
+                    "LABEL": "Q4",
+                    "VALUE": "11"
+                  }]
+                },
+                {
+                  "backgroundColor": "#37394C",
+                  "type": "bar",
+                  "label": "Product Offer Support",
+                  "values": [{
+                    "LABEL": "Q1",
+                    "VALUE": "9"
+                  }, {
+                    "LABEL": "Q2",
+                    "VALUE": "10"
+                  }, {
+                    "LABEL": "Q3",
+                    "VALUE": "7"
+                  }, {
+                    "LABEL": "Q4",
+                    "VALUE": "11"
+                  }]
+                },
+                {
+                  "backgroundColor": "#D1E5FD",
+                  "type": "bar",
+                  "label": "SCV Offer Support",
+                  "values": [{
+                    "LABEL": "Q1",
+                    "VALUE": "14"
+                  }, {
+                    "LABEL": "Q2",
+                    "VALUE": "15"
+                  }, {
+                    "LABEL": "Q3",
+                    "VALUE": "10"
+                  }, {
+                    "LABEL": "Q4",
+                    "VALUE": "18"
+                  }]
+                },
+                {
+                  "backgroundColor": "#F4F1EA",
+                  "type": "bar",
+                  "label": "Solution Support",
+                  "values": [{
+                    "LABEL": "Q1",
+                    "VALUE": "17"
+                  }, {
+                    "LABEL": "Q2",
+                    "VALUE": "13"
+                  }, {
+                    "LABEL": "Q3",
+                    "VALUE": "18"
+                  }, {
+                    "LABEL": "Q4",
+                    "VALUE": "19"
+                  }]
+                }
+              ]
+            }
+          }
+        }
+      },
+
+      {
+        "title": "Bookings - Services (AS)",
+        "tagIds": [3],
+
+        "content": {
+          "type": "barChart",
+          "data": {
+            "chartOptionsId": "barChart5",
+            "labelKeys": ["LABEL"],
+            "valueKeys": ["VALUE"],
+            "chartData": {
+              "datasets": [{
+                "backgroundColor": "#67AAF9",
+                "type": "bar",
+                "values": [{
+                  "LABEL": "Q1",
+                  "VALUE": "4"
+                }, {
+                  "LABEL": "Q2",
+                  "VALUE": "10"
+                }, {
+                  "LABEL": "Q3",
+                  "VALUE": "8"
+                }, {
+                  "LABEL": "Q4",
+                  "VALUE": "12"
+                }]
+              }]
+            }
+          }
         }
       },
       {
-        "title": "New Thing Again",
-        "tagIds": [1, 2],
-        "contentType": "chart",
-        "content": {
+        "title": "Bookings - Services (CMS)",
+        "tagIds": [3],
 
+        "content": {
+          "type": "barChart",
+          "data": {
+            "chartOptionsId": "barChart4",
+            "labelKeys": ["LABEL"],
+            "valueKeys": ["VALUE"],
+            "chartData": {
+              "datasets": [{
+                "backgroundColor": "#67AAF9",
+                "type": "bar",
+                "values": [{
+                  "LABEL": "Q1",
+                  "VALUE": "4"
+                }, {
+                  "LABEL": "Q2",
+                  "VALUE": "10"
+                }, {
+                  "LABEL": "Q3",
+                  "VALUE": "8"
+                }, {
+                  "LABEL": "Q4",
+                  "VALUE": "12"
+                }]
+              }]
+            }
+          }
         }
       },
       {
-        "title": "New Thing",
-        "tagIds": [1, 3, 5],
-        "contentType": "chart",
+        "title": "Multiyear Bookings",
+        "tagIds": [3],
         "content": {
-
+          "type": "barChart",
+          "data": {
+            "chartOptionsId": "stackedBarChart1",
+            "labelKeys": ["LABEL"],
+            "valueKeys": ["VALUE"],
+            "chartData": {
+              "datasets": [{
+                  "backgroundColor": "#67AAF9",
+                  "label": "Bookings",
+                  "values": [{
+                    "LABEL": "Q1",
+                    "VALUE": "4"
+                  }, {
+                    "LABEL": "Q2",
+                    "VALUE": "10"
+                  }, {
+                    "LABEL": "Q3",
+                    "VALUE": "8"
+                  }, {
+                    "LABEL": "Q4",
+                    "VALUE": "12"
+                  }]
+                },
+                {
+                  "backgroundColor": "#FFBB41",
+                  "label": "Multiyear Bookings",
+                  "values": [{
+                    "LABEL": "Q1",
+                    "VALUE": "11"
+                  }, {
+                    "LABEL": "Q2",
+                    "VALUE": "10"
+                  }, {
+                    "LABEL": "Q3",
+                    "VALUE": "21"
+                  }, {
+                    "LABEL": "Q4",
+                    "VALUE": "15"
+                  }]
+                }
+              ]
+            }
+          }
         }
       },
       {
-        "title": "Last Day Of Support % (Up To 5 Years)",
-        "tagIds": [1, 4],
-        "contentType": "chart",
-        "content": {
+        "title": "Revenue",
+        "tagIds": [3],
 
+        "content": {
+          "type": "barChart",
+          "data": {
+            "chartOptionsId": "barChart5",
+            "labelKeys": ["LABEL"],
+            "valueKeys": ["VALUE"],
+            "chartData": {
+              "datasets": [{
+                "backgroundColor": "#67AAF9",
+                "type": "bar",
+                "values": [{
+                  "LABEL": "Q1",
+                  "VALUE": "17"
+                }, {
+                  "LABEL": "Q2",
+                  "VALUE": "13"
+                }, {
+                  "LABEL": "Q3",
+                  "VALUE": "18"
+                }, {
+                  "LABEL": "Q4",
+                  "VALUE": "19"
+                }]
+              }]
+            }
+          }
         }
       },
       {
-        "title": "New Thing Again",
-        "tagIds": [1, 2],
-        "contentType": "chart",
-        "content": {
+        "title": "IB -Yield",
+        "tagIds": [3],
 
+        "content": {
+          "type": "barChart",
+          "data": {
+            "chartOptionsId": "barChart5",
+            "labelKeys": ["LABEL"],
+            "valueKeys": ["VALUE"],
+            "chartData": {
+              "datasets": [{
+                "backgroundColor": "#67AAF9",
+                "type": "bar",
+                "values": [{
+                  "LABEL": "Q1",
+                  "VALUE": "11"
+                }, {
+                  "LABEL": "Q2",
+                  "VALUE": "10"
+                }, {
+                  "LABEL": "Q3",
+                  "VALUE": "21"
+                }, {
+                  "LABEL": "Q4",
+                  "VALUE": "15"
+                }]
+              }]
+            }
+          }
         }
       },
       {
-        "title": "Last Day Of Support % (Up To 5 Years)",
-        "tagIds": [1, 4],
-        "contentType": "chart",
+        "title": "Profitability of Customer",
+        "tagIds": [3],
         "content": {
-
-        }
-      },
-      {
-        "title": "New Thing Again",
-        "tagIds": [1, 2],
-        "contentType": "chart",
-        "content": {
-
+          "type": "barChart",
+          "data": {
+            "chartOptionsId": "barChart5",
+            "labelKeys": ["LABEL"],
+            "valueKeys": ["VALUE"],
+            "chartData": {
+              "datasets": [{
+                "backgroundColor": "#67AAF9",
+                "type": "bar",
+                "values": [{
+                  "LABEL": "Q1",
+                  "VALUE": "4"
+                }, {
+                  "LABEL": "Q2",
+                  "VALUE": "10"
+                }, {
+                  "LABEL": "Q3",
+                  "VALUE": "8"
+                }, {
+                  "LABEL": "Q4",
+                  "VALUE": "15"
+                }]
+              }]
+            }
+          }
         }
       }
     ]

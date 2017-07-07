@@ -1,1 +1,1 @@
-<div> </div>
+<div #chartContainer (window:resize)="onChartResize($event)" class="full-size"><canvas #chartContent  (mousemove)="onMouseMove($event)" (pointerover)="onPointerOver($event)"></canvas></div>

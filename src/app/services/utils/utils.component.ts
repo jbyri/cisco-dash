@@ -1,5 +1,5 @@
-import {Injectable, ElementRef} from "@angular/core";
-import {Http} from "@angular/http";
+import {Injectable} from '@angular/core';
+import {Http} from '@angular/http';
 
 @Injectable()
 export class Utils {
@@ -13,9 +13,9 @@ export class Utils {
   // select element.
   getSelectedValues(optionElements: any[]): object[] {
     let options = [];
-    for (var i = 0; i < optionElements.length; i++) {
-      var optionElement = optionElements[i];
-      if (optionElement.selected == true) {
+    for (let i = 0; i < optionElements.length; i++) {
+      let optionElement = optionElements[i];
+      if (optionElement.selected === true) {
         options[options.length] = optionElement.value;
       }
     }

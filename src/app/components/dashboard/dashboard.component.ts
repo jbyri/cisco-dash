@@ -1,15 +1,25 @@
-import { Component, OnInit, OnChanges, SimpleChanges, ViewChild, TemplateRef } from '@angular/core';
+import {
+  Component, ComponentFactory, ComponentFactoryResolver,
+  OnInit,
+  ViewChild,
+  TemplateRef } from '@angular/core';
+
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthenticationService } from '../../services/authentication.service'
+import { AuthenticationService } from '../../services/authentication.service';
 import { DashboardDataService } from '../../services/dashboard/dashboarddata.service'
 import { SearchMenuModel } from '../ui/search/search-menu.model'
 import { Tag } from '../../model/tag.model'
 import { CardContentModel, ChartContentModel } from '../ui/card/card-content.model';
-import { Customer, CustomerModel, CustomerDatapoint, CustomerDatapointContent } from '../../model/customer.model'
-import { TagBarComponent } from '../ui/tagbar/tagbar.component'
-import { SearchMenuComponent} from '../ui/search/search-menu.component'
+import { ChartOptions } from '../../model/chart-options.model'
+import { CardModel } from '../ui/card/card.model';
+import { DashboardModel } from './dashboard.model';
+import { CardContentBuilder } from '../ui/card/card-content.component';
+import { Customer, CustomerModel, CustomerDatapoint } from '../../model/customer.model';
+import { BarChartContentBuilder } from '../ui/chart/bar-chart.component';
+import { SearchMenuComponent} from '../ui/search/search-menu.component';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map'
+
+import 'rxjs/add/operator/map';
 
 
 /**
@@ -20,24 +30,27 @@ import 'rxjs/add/operator/map'
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit, OnChanges {
-  model: any = {
-
+export class DashboardComponent implements OnInit {
+  dashboardModel: DashboardModel = {
+    chartOptions: []
   };
-  selectedCustomerModel : CustomerModel = {
-    data : {
-      datapoints : [],
-      feedbacks : []
+
+  selectedCustomerModel: CustomerModel = {
+    data: {
+      datapoints: [],
+      feedbacks: []
     }
   };
+
   searchMenuModel: SearchMenuModel = {
     config: {
       maxSelectableTags: 3,
       maxSelectableCustomers: 1
     },
+
     customers: [],
     selectedCustomers: [],
-    selectedCustomerModels : [],
+    selectedCustomerModels: [],
     selectedTags: [],
     tags: []
   };
@@ -46,71 +59,137 @@ export class DashboardComponent implements OnInit, OnChanges {
   returnUrl: string;
   toggled = false;
 
-  @ViewChild("barchartTemplate") barchartTemplate : TemplateRef<any>;
+  barchartComponentFactory: ComponentFactory<any>;
 
-  private account: Object;
+  @ViewChild('barchartTemplate') barchartTemplate: TemplateRef<any>;
+
+  /**
+   * Map of chart type name to ComponentFactory
+   */
+  private chartBuilders: { [key: string]: CardContentBuilder; } = {};
 
   @ViewChild('searchMenu') searchMenuComponent: SearchMenuComponent;
+
+  private cardContentModelCache: Map<CustomerDatapoint, CardContentModel> = new Map();
+  private cardModelCache: Map<CustomerDatapoint, CardModel> = new Map();
+  private tagsCache: Map<CustomerDatapoint, Tag[]> = new Map();
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
-    private dashboardDataService: DashboardDataService) {
+    private dashboardDataService: DashboardDataService,
+    private componentFactoryResolver: ComponentFactoryResolver) {
+
+    // Add Chart Type here
+    this.chartBuilders['barChart'] = new BarChartContentBuilder(componentFactoryResolver);
   }
 
-  public refreshDashboardData() {
+  public getContentBuilder(builderId: string): CardContentBuilder {
+    return this.chartBuilders[builderId];
+  }
+
+
+  public refreshCustomerSelection() {
     this.selectedCustomerModel = this.searchMenuModel.selectedCustomerModels[0];
   }
 
-  public getTagsFromCustomerDatapoint( dataPoint : CustomerDatapoint ) : Tag[]{
-    let tags : Tag[] = [];
+  /**
+   * Extracts an array of Tag instances from a CustomerDatapoint instance.
+   */
+  public getTagsFromCustomerDatapoint(dataPoint: CustomerDatapoint): Tag[] {
+    let tags: Tag[];
+
+    if (this.tagsCache.has(dataPoint)) {
+      return this.tagsCache.get(dataPoint);
+    }
+    console.debug('getTagsFromCustomerDatapoint()', dataPoint);
+
+    // cache this puppy
+    tags = [];
+    this.tagsCache.set(dataPoint, tags);
+
     dataPoint.tagIds.map(tagId =>
       Array.prototype.push.apply(tags,
         this.searchMenuModel.tags.filter(tag => tag.id === tagId)));
 
-    if(tags.length < 1) {
-      console.error("no tags were in datapoint: ", dataPoint.title);
+    if (tags.length < 1) {
+      console.error('no tags were in datapoint: ', dataPoint.title);
     }
 
     return tags;
   }
 
-  // When the customer selection is changed, we repopulate the models.
-  onCustomerSelectionChanged(customers : Customer[]) : void {
-    console.debug("Dashboard::onCustomerSelectionChange", customers);
-    if(customers.length > 0) {
-      let customer : Customer = customers[0];
-      let customerDataTask : Observable<CustomerModel> = this.dashboardDataService.loadCustomerData(customer.dataUrl);
+  onTagSelectionChange(tags: Tag[]): void {
+
+  }
+  /**
+   * When the customer selection is changed, we repopulate the models.
+   */
+  onCustomerSelectionChanged(customers: Customer[]): void {
+    this.clearCache();
+
+    console.debug('Dashboard::onCustomerSelectionChange', customers);
+    if (customers.length > 0) {
+      let customer: Customer = customers[0];
+      let customerDataTask: Observable<CustomerModel> = this.dashboardDataService.loadCustomerData(customer.dataUrl);
       const subscription = customerDataTask.subscribe(customerModel => {
         this.searchMenuModel.selectedCustomerModels = [customerModel];
-        this.refreshDashboardData()
+        this.refreshCustomerSelection()
         subscription.unsubscribe();
       });
     }
   }
 
+  /**
+   * Open and close the dashboard search menu
+   */
   handleMenuToggle() {
-    this.toggled= !this.toggled;
+    this.toggled = !this.toggled;
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-     // changes.prop contains the old and the new value...
-     console.debug("ngOnChanges()", changes);
-  }
 
-  ngAfterViewInit() {
-      console.log("ngAfterViewInit, barchartTemplate", this.barchartTemplate);
-  }
   /**
    * ngOnInit - description
    */
-  ngOnInit() : void {
+  ngOnInit(): void {
+    this.refresh()
+  }
 
+  /**
+   * Filter the datapoints based on the tags selection.
+   */
+  filterCustomerDatapoints(datapoints: CustomerDatapoint[]) {
 
+    return datapoints.filter(dataPoint => {
+      let isMatch = true;
+
+      if (this.searchMenuModel.selectedTags.length > 0) {
+        isMatch = false;
+
+        dataPoint.tagIds.map(tagId => {
+          this.searchMenuModel.selectedTags.map(tag => {
+            if (!isMatch && tag.id === tagId) {
+              isMatch = true;
+            }
+          })
+        })
+      }
+
+      return isMatch;
+    });
+  }
+
+  /**
+   * Refresh the dashboard data source.
+   */
+  refresh() {
+    console.debug('refresh()');
+    this.clearCache();
     // fetch tags and customers
     let tagsTask: Observable<Tag[]> = this.dashboardDataService.loadTags();
     let customersTask: Observable<Customer[]> = this.dashboardDataService.loadCustomers();
+    let chartOptionsTask: Observable<ChartOptions[]> = this.dashboardDataService.loadChartOptions();
 
     const tagsSubscription = tagsTask.subscribe(tags => {
       this.searchMenuModel.tags = tags;
@@ -121,30 +200,80 @@ export class DashboardComponent implements OnInit, OnChanges {
       this.searchMenuModel.customers = customers;
       custSubscription.unsubscribe();
     });
+
+    const chartOptsSubscription = chartOptionsTask.subscribe(options => {
+      this.dashboardModel.chartOptions = options;
+      chartOptsSubscription.unsubscribe();
+    });
+  }
+
+  /**
+   * Build a CardModel out of the CustomerDatapoint. Called by view bindings
+   * so we cache the result value against the source data point to avoid unneccessary object creation
+   */
+  buildCardModel(dataPoint: CustomerDatapoint) {
+    if (this.cardModelCache.has(dataPoint)) {
+      return this.cardModelCache.get(dataPoint);
+    }
+
+    console.debug('buildCardModel()', dataPoint);
+    let cardModel: CardModel =
+      {
+        title: dataPoint.title,
+        tags: this.getTagsFromCustomerDatapoint(dataPoint),
+        contentModel: this.buildCardContentModel(dataPoint)
+      }
+
+    this.cardModelCache.set(dataPoint, cardModel);
+
+    return cardModel;
   }
 
 
   /**
    * Builds the card content model which will also include its source view template.
+   * This method is called from the view when passing its data into each card for the
+   * current customer's Data points. Called by view bindings
+   * so we cache the result value against the source data point to avoid unneccessary object creation
    */
-  buildCardContentModel(content : CustomerDatapointContent)  : CardContentModel {
-    let cardContentModel  : ChartContentModel = {
-      componentData : content.data
+  buildCardContentModel(datapoint: CustomerDatapoint): CardContentModel {
+
+    if (this.cardContentModelCache.has(datapoint)) {
+      return <ChartContentModel>this.cardContentModelCache.get(datapoint);
     }
 
-
-    switch(content.type) {
-      case "barChart":
-
-        break;
-      default:
-        break;
+    console.debug('buildCardContentModel()', datapoint);
+    // here we simply change wrapper types. We don't do any further 'formatting'
+    // of the content data so that we're not tied to something specific.
+    // the card content builder mechanism can own that logic.
+    let cardContentModel: ChartContentModel = {
+      cardContentData: datapoint.content.data,
+      chartType: datapoint.content.type,
+      chartOptions: this.getChartOptionsFromCustomerDatapoint(datapoint)
     }
-    console.log("buildCardContentModel", content,  cardContentModel);
+
+    this.cardContentModelCache.set(datapoint, cardContentModel);
     return cardContentModel;
   }
 
-  ngOnDestroy() : void {
+  public getChartOptionsFromCustomerDatapoint(datapoint: CustomerDatapoint): ChartOptions {
+    console.debug('getChartOptionsFromCustomerDatapoint()');
+    // let chartOptionId : string = datapoint.
+    let chartOptionsId: string = datapoint.content.data.chartOptionsId;
+    let matches: ChartOptions[] = this.dashboardModel.chartOptions.filter(options => options.id === chartOptionsId);
+    console.debug('matches for id', chartOptionsId, matches.length);
+    return matches.length > 0 ? matches[0] : null;
+  }
+
+  public clearCache() {
+    console.debug('clearCache()');
+    this.cardModelCache.clear();
+    this.cardContentModelCache.clear();
+  }
+
+  ngOnDestroy(): void {
+    console.debug('ngOnDestroy()');
+    this.clearCache();
     this.searchMenuModel.tags = null;
     this.searchMenuModel.customers = null;
     this.searchMenuModel = null;

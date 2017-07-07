@@ -1,16 +1,12 @@
 import {
-  Input, Output,
+  Input,
   Component,
-  OnInit, OnChanges, SimpleChanges,
-  ViewChild, EventEmitter,
-  TemplateRef
+  ViewChild
 } from '@angular/core';
 
-import { CardContentComponent } from './card-content.component';
-
+import { CardContentComponent, CardContentBuilder } from './card-content.component';
+import { LifecycleHooks } from '../../abstract/lifecycle-hooks.abstract'
 import { CardModel } from './card.model';
-import { CardContentModel } from './card-content.model';
-import { CustomerDatapointContent } from '../../../model/customer.model';
 
 /**
  * Visual Component for a CustomerDatapointContent Object
@@ -23,25 +19,21 @@ import { CustomerDatapointContent } from '../../../model/customer.model';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css']
 })
-export class CardComponent implements OnInit, OnChanges {
-  @Input()
-  cardModel : CardModel;
+export class CardComponent extends LifecycleHooks {
+  @Input() cardModel: CardModel = { tags: null, title: null, contentModel: null };
+  @Input() cardContentBuilder: CardContentBuilder;
 
-  @ViewChild('content')
-  cardContent : CardContentComponent;
+  @ViewChild('content') cardContent: CardContentComponent;
 
-
-  @Input()
-  cardContentTemplate : TemplateRef<any>
-  
+  // TODO @wnamen - these are ordered by 'tagId + 1' starting at 0. so tag with id 1 will get 'background-yellow' as its color.
+  private tagClasses: Array<string> = ['background-yellow', 'background-red', 'background-green', 'background-blue', 'background-orange'];
   constructor() {
+    super();
+    this.addInput('cardModel');
+    this.addInput('cardContentBuilder');
   }
 
-  ngOnInit() {
-    console.debug("ngOnInit", this.cardContent);
-  }
-
-  ngOnChanges(changes:SimpleChanges) : void {
-    console.log("ngOnChanges", changes);
+  getTagClass(tagId: number) {
+    return this.tagClasses[tagId - 1];
   }
 }

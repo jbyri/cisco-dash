@@ -18,9 +18,16 @@
   letter-spacing: 1px;
 }
 
+.card-tag-container {
+  
+}
+
 .card-tag {
+  margin-left: 2px;
+  margin-right:2px;
+  font-size:small;
   text-align: center;
-  width: 4em;
+  width: 3em;
   height: 1.75em;
   border-radius: 5px;
   cursor: pointer;

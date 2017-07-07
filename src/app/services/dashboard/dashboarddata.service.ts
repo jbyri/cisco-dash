@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, Response } from '@angular/http';
+import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
 import { Tag } from '../../model/tag.model'
 import { Customer, CustomerModel } from '../../model/customer.model'
+import { ChartOptions } from '../../model/chart-options.model'
+
+
 
 /**
  * This class is the main Data Service for the Dashboard. Its responsible for
@@ -17,25 +20,25 @@ export class DashboardDataService {
   // TODO @wnamen change this to true if the server containing the
   // tagsEndpoint returns a format that needs to be coerced into a
   // collection of Tag
-  private needsTagCoersion: boolean = false;
+  private needsTagCoersion = false;
 
   // TODO @wnamen change this to call the cisco server endpoint
-  private tagsEndpoint: string = '/app/assets/data/tags.json';
+  private tagsEndpoint = '/app/assets/data/tags.json';
   // TODO @wnamen change this to true if the server containing the
   // customerDataEndpoint returns a format that needs to be coerced into a
   // collection of Customer
-  private needsCustomerDataCoersion: boolean = false;
+  private needsCustomerDataCoersion = false;
   // TODO @wnamen change this to call the cisco server endpoint for customer data
-  private customerDataEndpoint: string = '/app/assets/data/customers.json';
+  private customerDataEndpoint = '/app/assets/data/customers.json';
 
-  // list of Customer data loaded from the customerDataEndpoint
-  private customers: Customer[];
+
+  private chartOptionsEndpoint = '/app/assets/data/chart-options.json'
 
   // the currently selected customer
   private customerModel: CustomerModel;
 
-  constructor(private http: Http) {
-    console.debug("DashboardDataService Construct");
+  constructor(private http: Http) {
+    console.debug('DashboardDataService Construct');
   }
 
   // formats some tag data from Ciscos Secret Server
@@ -54,7 +57,8 @@ export class DashboardDataService {
         tagList[tagList.length] = {
           name: tagObject['otherNameProp'],
           label: tagObject['otherDisplayNameProp'],
-          id: tagList.length };
+          id: tagList.length
+        };
       });
     } else {
       // TODO @wnamen, do whatever parsing of the data is necessary to build a list of Tag
@@ -102,7 +106,7 @@ export class DashboardDataService {
   }
 
   loadTags(): Observable<Tag[]> {
-    console.debug("loadTags");
+    console.debug('loadTags');
     // TODO @wnamen - if we ever need to load this data from another service modify
     // the call here. It will likely be a RESTful or basic HTTP GET request.
     let tagsTask: Observable<Tag[]> = this.http.get(this.tagsEndpoint)
@@ -127,11 +131,11 @@ export class DashboardDataService {
    * load the customer data.
    */
   loadCustomers(): Observable<Customer[]> {
-    console.debug("loadCustomers()");
+    console.debug('loadCustomers()');
     let customersTask: Observable<Customer[]> = this.http.get(this.customerDataEndpoint)
       .map((response: Response) => {
         let customers: Customer[];
-        if (this.needsTagCoersion) {
+        if (this.needsCustomerDataCoersion) {
           // TODO @wnamen if the data needs to be coerced here is where that would happen
           customers = this.formatCustomersData(response.json());
         } else {
@@ -142,19 +146,33 @@ export class DashboardDataService {
       });
 
     return customersTask;
-  }
+  }
+
+  loadChartOptions(): Observable<ChartOptions[]> {
+    let chartOptionsTask: Observable<ChartOptions[]> = this.http.get(this.chartOptionsEndpoint)
+      .map((response: Response) => {
+        let chartOptions: ChartOptions[];
+        // TODO @wnamen if the data needs to be coerced here is where that would happen
+        chartOptions = response.json();
+        console.log('ChartOptions Data:', chartOptions);
+
+        return chartOptions;
+      });
+
+    return chartOptionsTask;
+  }
 
   /**
    * Loads the data for a specific customer from the customerDataUrl
    * the data url can be a local file, or an http endpoint using GET
    */
   loadCustomerData(customerDataUrl: string): Observable<CustomerModel> {
-    console.log("loadCustomerData(" + customerDataUrl + ")");
+    console.log('loadCustomerData(' + customerDataUrl + ')');
     return this.http.get(customerDataUrl)
       .map((response: Response) => {
         // login successful if there's a jwt token in the response
         let dashboardData = response.json();
-        console.log("CustomerModel Data:", dashboardData);
+        console.log('CustomerModel Data:', dashboardData);
         return dashboardData;
       });
   }

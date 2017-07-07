@@ -8,11 +8,10 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'dashboard', component: DashboardComponent },
     { path: '', redirectTo: 'login' , pathMatch: 'full' }
-    //{ path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes, {useHash:true})],
+    imports: [RouterModule.forRoot(routes, {useHash: true})],
     exports: [
       RouterModule
     ]

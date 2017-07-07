@@ -1,8 +1,6 @@
-import { Input, Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Input, Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TagBarModel, TagBarItemModel } from './tagbar.model'
-import { Tag } from '../../../model/tag.model'
-import { TagBarItemComponent } from './tagbar-item.component'
 import 'rxjs/add/operator/map'
 
 @Component({
@@ -13,7 +11,7 @@ import 'rxjs/add/operator/map'
 export class TagBarComponent implements OnInit {
   @Input()
   model: TagBarModel = {
-    nextTagInput: "",
+    nextTagInput: '',
     sourceData: [
 
     ],
@@ -22,18 +20,18 @@ export class TagBarComponent implements OnInit {
     ]
   };
 
-  public placholderLabel: string = "thing";
+  public placholderLabel = 'thing';
 
   constructor(
     private route: ActivatedRoute,
     private router: Router) {
   }
 
-  tryRemovingTag(lwrValue: string, force : boolean) : void {
+  tryRemovingTag(lwrValue: string, force: boolean): void {
 
     let index = -1;
     this.model.dataProvider.map(eachSource => {
-      if(eachSource.enabled || force) {
+      if (eachSource.enabled || force) {
         let eachLwr = eachSource.content.toLowerCase()
         if (eachLwr === lwrValue || eachLwr.indexOf(lwrValue) > -1) {
           index = this.model.dataProvider.indexOf(eachSource);
@@ -57,14 +55,14 @@ export class TagBarComponent implements OnInit {
         return matchingItems.length === 0 ? this.model.dataProvider.push(matchedSource) : null;
       });
 
-    this.model.nextTagInput = "";
+    this.model.nextTagInput = '';
   }
 
 
   tryAddingTagFromInput(input: any): boolean {
-    if (input.value != null && input.value !== "") {
+    if (input.value != null && input.value !== '') {
       this.tryAddingTag(input.value.toLowerCase());
-      input.value = "";
+      input.value = '';
       input.focus();
       return true;
     }
@@ -77,20 +75,20 @@ export class TagBarComponent implements OnInit {
   }
 
   onTagbarSearchClear(event: any) {
-    if (event.code === "Tab") {
-      event.target.value = "";
+    if (event.code === 'Tab') {
+      event.target.value = '';
     }
   }
   onTagbarSearchInput(event: any): void {
-    if (event.code === "Tab") {
+    if (event.code === 'Tab') {
       return;
     } else {
       if (this.model.dataProvider.length > 0) {
-        var endTag : TagBarItemModel = this.model.dataProvider[this.model.dataProvider.length-1];
-        if(endTag.enabled) {
+        let endTag: TagBarItemModel = this.model.dataProvider[this.model.dataProvider.length - 1];
+        if (endTag.enabled) {
           // if we're deleting nothing, remove the previous tag.
-          if (event.code === "Backspace" || event.code === "Delete") {
-            if (this.model.nextTagInput === "" && event.target.value === "") {
+          if (event.code === 'Backspace' || event.code === 'Delete') {
+            if (this.model.nextTagInput === '' && event.target.value === '') {
               // remove the last tag
               this.model.dataProvider.pop();
               event.target.focus();
@@ -100,11 +98,11 @@ export class TagBarComponent implements OnInit {
       }
 
       // add the current text (as a tag if it exists in the source)
-      if (event.code === "Space") {
+      if (event.code === 'Space') {
         event.target.value = this.model.nextTagInput;
         this.tryAddingTagFromInput(event.target);
-      } else if (event.code === "Escape") {
-        event.target.value = "";
+      } else if (event.code === 'Escape') {
+        event.target.value = '';
         event.target.blur();
       }
 

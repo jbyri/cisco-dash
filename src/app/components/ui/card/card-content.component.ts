@@ -1,23 +1,26 @@
 import {
-  Input, Output,
+  Input,
   Component,
-  OnInit, OnChanges, SimpleChanges,
-  ViewChild, EventEmitter,
+  ViewChild,
   ViewContainerRef,
-  EmbeddedViewRef,
-  TemplateRef
+  EmbeddedViewRef
 } from '@angular/core';
 
 import { CardContentModel } from './card-content.model';
-
+import { LifecycleHooks } from '../../abstract/lifecycle-hooks.abstract'
 
 export interface CardContentObject {
   // TODO tie up the card chart views data via this interface
+  configure(cardContentModel: CardContentModel): CardContentObject;
 }
 
 export interface CardContentBuilder {
+  // pass in a reference to create the content and insert it into a view
+  setViewContainerRef(viewContainerRef: ViewContainerRef): CardContentBuilder;
+  getViewContainerRef(): ViewContainerRef;
+
   // builds an instance of card content
-  buildCardContent() : CardContentObject
+  buildCardContent(): CardContentObject;
 }
 
 /**
@@ -31,34 +34,31 @@ export interface CardContentBuilder {
   templateUrl: './card-content.component.html',
   styleUrls: ['./card-content.component.css']
 })
-export class CardContentComponent implements OnInit, OnChanges {
-  @Input()
-  contentModel:CardContentModel;
+export class CardContentComponent extends LifecycleHooks {
+  @Input() contentModel: CardContentModel;
+  @Input() contentBuilder: CardContentBuilder;
 
-  @Input()
-  contentBuilder : CardContentBuilder;
+  @ViewChild('viewContainerRef', { read: ViewContainerRef }) viewContainerRef: ViewContainerRef;
 
-  @Input()
-  contentTemplate : TemplateRef<any>
+  private view: EmbeddedViewRef<any>
+  private content: CardContentObject;
 
-  @ViewChild("vc", {read: ViewContainerRef}) vc: ViewContainerRef;
   constructor() {
-
+    super();
+    this.addInput('contentModel');
+    this.addInput('contentBuilder');
+    this.addInput('viewContainerRef');
   }
 
-  /**
-   * Hook to insert the dynamic view content (using templates)
-   */
-  ngAfterViewInit() {
-    let view : EmbeddedViewRef<any> = this.contentTemplate.createEmbeddedView(null);
-    this.vc.insert(view);
+  getContent(): CardContentObject {
+    return this.content
   }
 
-  ngOnInit() {
-    console.log("content", this.contentModel);
-  }
-
-  ngOnChanges(changes:SimpleChanges) : void {
-    console.log("ngOnChanges", changes);
+  onAllInputsReady() {
+    this.content = this.contentBuilder.setViewContainerRef(this.viewContainerRef).buildCardContent();
+    if (this.content != null && this.contentModel != null) {
+      this.content.configure(this.contentModel);
+    }
+    console.log('onAllInputsReady()', this.content);
   }
 }

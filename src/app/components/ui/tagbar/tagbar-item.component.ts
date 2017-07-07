@@ -11,29 +11,28 @@ import 'rxjs/add/operator/map'
 })
 export class TagBarItemComponent implements OnInit, OnChanges {
   @Input()
-  dataProvider : TagBarItemModel;
+  dataProvider: TagBarItemModel;
 
   // output when clicked
   @Output()
-  clicked : EventEmitter<TagBarItemModel> = new EventEmitter<TagBarItemModel>();
+  clicked: EventEmitter<TagBarItemModel> = new EventEmitter<TagBarItemModel>();
 
   constructor(
     private route: ActivatedRoute,
-    private router:Router) {
+    private router: Router) {
   }
 
   ngOnChanges(changes: SimpleChanges) {
 
   }
 
-  onClick(event : any) {
-    var target = event.target || event.srcElement || event.currentTarget;
+  onClick(event: any) {
     this.clicked.emit(this.dataProvider);
   }
 
   ngOnInit() {
   }
 
-  ngDoCheck(){
+  ngDoCheck() {
   }
 }

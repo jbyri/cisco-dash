@@ -1,27 +1,27 @@
 // customer
 export interface Customer {
-  name : string,
-  displayName : string,
-  dataUrl : string
+  name: string,
+  displayName: string,
+  dataUrl: string
 }
 
 // the customer model
 export interface CustomerModel {
-  data : CustomerData
+  data: CustomerData
 }
 
 // customer feedback model
 export interface CustomerFeedback {
-  title : string,
-  text : string,
-  performance : number
+  title: string,
+  text: string,
+  performance: number
 }
 
 // customer datapoint
 export interface CustomerDatapoint {
   title: string,
-  tagIds : number[],
-  content : CustomerDatapointContent
+  tagIds: number[],
+  content: CustomerDatapointContent
 }
 
 // content of the data point
@@ -30,12 +30,12 @@ export interface CustomerDatapoint {
 // point it would be up to ui to render it based
 // on these fields and the data content.
 export interface CustomerDatapointContent {
-  type : string,
-  data : any
+  type: string,
+  data: any
 }
 
 // customer data model
 export interface CustomerData {
-  feedbacks : CustomerFeedback[],
-  datapoints : CustomerDatapoint[]
+  feedbacks: CustomerFeedback[],
+  datapoints: CustomerDatapoint[]
 }

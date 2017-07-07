@@ -9,18 +9,18 @@ import 'rxjs/add/operator/map'
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  model:any = {};
+  model: any = {};
   loading = false;
   returnUrl: string;
 
-  private account : Object;
+  private account: Object;
 
-  constructor(private route: ActivatedRoute, private router:Router, private authenticationService:AuthenticationService) {
+  constructor(private route: ActivatedRoute, private router: Router, private authenticationService: AuthenticationService) {
 
   }
 
-  onSubmit(event : Event) {
-    console.log("onSubmit");
+  onSubmit(event: Event) {
+    console.log('onSubmit');
     event.preventDefault();
     this.login();
   }
@@ -34,8 +34,8 @@ export class LoginComponent implements OnInit {
    * Submit login credentials
    */
   login() {
-    this.authenticationService.login("nobody", "important").then(success => {
-      console.log("Login Successs!");
+    this.authenticationService.login('nobody', 'important').then(success => {
+      console.log('Login Successs!');
       this.router.navigate(['/dashboard']);
     });
 
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
 
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
 
-    console.log("LoginComponent::ngOnInit()");
+    console.log('LoginComponent::ngOnInit()');
     // check cookies for previous login
     // login (oauth?)
     // $('.message a').click(function(){

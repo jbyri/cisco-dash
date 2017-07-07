@@ -2,17 +2,22 @@
 <div class="dash-card card-radius medium-padding background-white">
   <div class= "display-flex flex-row-spread large-margin-bottom">
     <i class="card-indicator fa fa-arrow-circle-o-up font-green" aria-hidden="true"></i>
-    <p class="card-title">{{cardModel.title}}</p>
-    <button type="button" class="card-tag background-yellow font-white no-border">FIN</button>
+    <p class="card-title">{{cardModel === undefined ? '' : cardModel.title}}</p>
+    <div class="row card-tag-container">
+      <button *ngFor="let tag of cardModel.tags" type="button"  class="card-tag {{getTagClass(tag.id)}} font-white no-border">{{tag.name.substring(0,3).toUpperCase()}}</button>
+    </div>
   </div>
   <div class="card-content">
     <card-content #content
-        [contentTemplate]="cardContentTemplate"
-        [contentBuilder]="cardModel.contentBuilder"
+        [contentBuilder]="cardContentBuilder"
         [contentModel]="cardModel.contentModel"></card-content>
   </div>
   <div class="large-margin-top">
-    <button type="button" class="no-background no-border" ngbPopover="You see, I show up on hover!" triggers="mouseenter:mouseleave" popoverTitle="Pop title" container="body">
+    <button type="button"
+            class="no-background no-border"
+            ngbPopover="You see, I show up on hover!"
+            triggers="mouseenter:mouseleave"
+            popoverTitle="Pop title" container="body">
       <i class="fa fa-info-circle" aria-hidden="true"></i>
     </button>
   </div>

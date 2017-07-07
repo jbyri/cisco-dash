@@ -5,12 +5,12 @@ export interface Tag {
   /**
    * The fully readable name
    */
-  name : string;
+  name: string;
 
   /**
    * the label displayed in the Tag UI (when displayed as a UI element standalone)
    */
-  label : string;
+  label: string;
 
   /**
    * -The tag id (unique)

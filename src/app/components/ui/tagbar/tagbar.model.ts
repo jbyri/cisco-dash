@@ -1,11 +1,11 @@
 export interface TagBarItemModel {
-  content : string,
-  enabled : boolean
+  content: string,
+  enabled: boolean
 }
 
 
 export interface TagBarModel {
-  nextTagInput : string,
-  sourceData : TagBarItemModel[],
-  dataProvider : TagBarItemModel[]
+  nextTagInput: string,
+  sourceData: TagBarItemModel[],
+  dataProvider: TagBarItemModel[]
 }

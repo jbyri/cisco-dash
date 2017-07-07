@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {ViewEncapsulation} from '@angular/core';
-import { HostListener,Directive,HostBinding} from '@angular/core';
 
 // TODO @wnamen figure out how to add full-size class to host element for this
 // component `cisco-dash-app`
