@@ -12,12 +12,11 @@ export class AuthenticationService {
             .map((response: Response) => {
                 // login successful if there's a jwt token in the response
                 let user = response.json();
-                console.log(user);
                 if (user && user.token) {
                   // store user details and jwt token in local storage to keep user logged in between page refreshes
-                  localStorage.setItem('currentUser', JSON.stringify(user));
+                  localStorage.setItem('token', JSON.stringify(user.token));
                 } else {
-                  localStorage.setItem('currentUser', '{}');
+                  localStorage.setItem('token', null);
                 }
 
                 return user;
@@ -29,12 +28,11 @@ export class AuthenticationService {
             .map((response: Response) => {
                 // login successful if there's a jwt token in the response
                 let user = response.json();
-                console.log(user);
                 if (user && user.token) {
                   // store user details and jwt token in local storage to keep user logged in between page refreshes
-                  localStorage.setItem('currentUser', JSON.stringify(user));
+                  localStorage.setItem('token', JSON.stringify(user.token));
                 } else {
-                  localStorage.setItem('currentUser', '{}');
+                  localStorage.setItem('token', null);
                 }
 
                 return user;
@@ -44,8 +42,7 @@ export class AuthenticationService {
     logout() : Observable<boolean> {
         console.log("Login Service Logout");
         // remove user from local storage to log user out
-        localStorage.removeItem('currentUser');
-
+        localStorage.removeItem('token');
         return Observable.create(true);
     }
 
