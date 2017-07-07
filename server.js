@@ -1,3 +1,4 @@
+// jshint esversion: 6
 // server.js
 const express = require('express');
 const path = require('path');
@@ -13,7 +14,7 @@ const app = express();
 // serve our static stuff like index.css
 app.use(express.static(__dirname + '/src'));
 app.use(bodyParser.json()); // for parsing application/json
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(passport.initialize());
 
 // Middleware to require login/auth

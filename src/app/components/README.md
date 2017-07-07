@@ -17,10 +17,11 @@ This component displays the charts and data, provides a search interface
 and allows the user to filter the data, and show subsets.
 
 ### `LoginComponent`
-Self explanatory
+Collects user credentials and sends them to the auth service for validation and then
+redirects to the DashboardComponent route.
 
 ### `SignUpComponent`
-Self explanatory
+Collects user information and allows them to create an account in the local Database.
 
 ## UI
 These components represent individual widgets, or groups of widgets, forms, or
