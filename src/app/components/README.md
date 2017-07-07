@@ -19,6 +19,8 @@ and allows the user to filter the data, and show subsets.
 ### `LoginComponent`
 Self explanatory
 
+### `SignUpComponent`
+Self explanatory
 
 ## UI
 These components represent individual widgets, or groups of widgets, forms, or

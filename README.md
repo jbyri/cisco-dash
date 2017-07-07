@@ -114,7 +114,31 @@ which is easier to read; this file is excluded from source control.
 
 Shut it down manually with `Ctrl-C`.
 
+
+## Editor of choice
+Atom https://atom.io
+
+### Atom Packages
+#### Linter
+1. [Linter](https://atom.io/packages/linter)
+2. [HTML Hint](https://atom.io/packages/linter-htmlhint)
+3. [CSS Lint](https://atom.io/packages/linter-csslint)
+4. [JS Hint](https://atom.io/packages/linter-jshint)
+
+#### Code Style
+
+##### Beautify and Indentation Detect
+Auto format and indent code
+
+1. [Indentation Auto-Detection](https://atom.io/packages/auto-detect-indentation)
+2. [Atom Beautify](https://atom.io/packages/atom-beautify)
+
+##### Pigments
+Add some color to your code...
+1. [Pigments](https://atom.io/packages/pigments)
+
 ## Points of interest
   - [Application Directory](./src/app/README.md)
   - [Components Directory](./src/app/components/README.md)
   - [Assets Directory](./src/app/assets/README.md)
+  - [Services](./src/app/services/README.md)

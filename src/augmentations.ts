@@ -6,3 +6,5 @@ declare module 'rxjs/Subject' {
     lift<R>(operator: Operator<T, R>): Observable<R>
   }
 }
+
+console.log("AUGMENTATIONS HAS RUN");

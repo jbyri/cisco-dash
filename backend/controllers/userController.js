@@ -1,3 +1,5 @@
+// jshint esversion : 6
+//
 const User = require("../models/user");
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
@@ -7,7 +9,7 @@ generateToken = (user) => {
   return jwt.sign(user, config.secret, {
     expiresIn: 2592000000
   });
-}
+};
 
 setUserInfo = (request) => {
   return {
@@ -16,7 +18,7 @@ setUserInfo = (request) => {
     lastName: request.lastName,
     email: request.email
   };
-}
+};
 
 index = (req, res) => {
 	res.json({message: "Brah Why we no use ES6 when we are compiling our code anyways!"});
@@ -73,7 +75,7 @@ signup = (req, res) => {
       });
     });
   });
-}
+};
 
 login = (req, res) => {
 	let userInfo = setUserInfo(req.user);
@@ -83,7 +85,7 @@ login = (req, res) => {
     token: generateToken(userInfo),
     user: userInfo
   });
-}
+};
 
 
 module.exports = {

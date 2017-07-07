@@ -1,3 +1,4 @@
+// jshint esversion : 6
 index = (req, res) => {
   res.json({
     message: "Welcome to custom-react-boilerplate!",
