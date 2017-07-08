@@ -34,7 +34,7 @@ export class BarChartContentBuilder extends BaseChartContentBuilder {
 @Component({
   selector: 'bar-chart',
   templateUrl: './bar-chart.component.html',
-  styleUrls: ['./bar-chart.component.scss']
+  styleUrls: ['./bar-chart.component.css']
 })
 export class BarChartComponent extends BaseChartComponent implements CardContentObject {
   constructor() {
