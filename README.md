@@ -138,6 +138,7 @@ Add some color to your code...
 1. [Pigments](https://atom.io/packages/pigments)
 
 ## Points of interest
+  - [Deployment Instructions (Local Win/Mac/*NIX, AWS)](./backend/README.md)
   - [Application Directory](./src/app/README.md)
   - [Components Directory](./src/app/components/README.md)
   - [Assets Directory](./src/app/assets/README.md)
