@@ -50,14 +50,10 @@
           <!-- Draw the cards -->
           <!-- TODO @wnamen - fix card layout -->
           <div #cards class="card-columns large-margin-top">
-            <card data-packed class="card no-background no-border" (clicked)=onCardClicked($event)
-              *ngFor="let dataPoint of selectedCustomerModel.data.datapoints"
-              [cardContentTemplate]='barchartTemplate'
-              [cardModel] ='{
-                title: dataPoint.title,
-                tags: getTagsFromCustomerDatapoint(dataPoint),
-                content: buildCardContentModel(dataPoint.content)
-              }'></card>
+            <card data-packed class="card no-background no-border"
+              *ngFor="let dataPoint of filterCustomerDatapoints(selectedCustomerModel.data.datapoints)"
+              [cardContentBuilder]="getContentBuilder(dataPoint.content.type)"
+              [cardModel] ='buildCardModel(dataPoint)'></card>
           </div>
         </div>
       </div>
