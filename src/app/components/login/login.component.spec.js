@@ -20,4 +20,3 @@ describe('LoginComponent', function () {
         expect(component).toBeTruthy();
     });
 });
-//# sourceMappingURL=login.component.spec.js.map

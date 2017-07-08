@@ -25,4 +25,3 @@ describe('AppComponent', function () {
         expect(h1.innerText).toMatch(/angular/i, '<h1> should say something about "Angular"');
     });
 });
-//# sourceMappingURL=app.component.spec.js.map
