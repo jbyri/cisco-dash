@@ -16,3 +16,5 @@ lupaProject.json
 */app/components/**/*.component.css
 */**/*.pem
 *.ppk
+*.log
+
