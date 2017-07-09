@@ -51,8 +51,8 @@ You're ready to write your application.
 We've captured many of the most useful commands in npm scripts defined in the `package.json`:
 
 * `npm start` - runs the compiler and a server at the same time, both in "watch mode".
-* `npm run build` - runs the TypeScript compiler once.
-* `npm run build:w` - runs the TypeScript compiler in watch mode; the process keeps running, awaiting changes to TypeScript files and re-compiling when it sees them.
+* `gulp build` - runs the TypeScript and SaSS compilers once.
+* `npm run build:watch` - runs the TypeScript compiler in watch mode; the process keeps running, awaiting changes to TypeScript files and re-compiling when it sees them.
 * `npm run serve` - runs the [lite-server](https://www.npmjs.com/package/lite-server), a light-weight, static file server, written and maintained by
 [John Papa](https://github.com/johnpapa) and
 [Christopher Martin](https://github.com/cgmartin)
@@ -67,7 +67,6 @@ This build uses gulp to compile typescript code. The resulting js / map files ar
 placed alongside their .ts counterparts. (\* see gulp.js)
 
 ## Testing
-
 The QuickStart documentation doesn't discuss testing.
 This repo adds both karma/jasmine unit test and protractor end-to-end testing support.
 
@@ -114,6 +113,16 @@ which is easier to read; this file is excluded from source control.
 
 Shut it down manually with `Ctrl-C`.
 
+# Passport Authentication
+Authentication is supported with Node JS, which runs on the local server at port 5000.
+## mongod
+mongo db is used to store the user credentials, and must be running
+run `./start-mongod.sh` to start mongo db.
+run `./start-server.sh` to start the app
+
+## Develpoment (Local)
+`npm run start:win` (Windows) or `npm run start` (OSX, Unix)
+
 
 ## Editor of choice
 Atom https://atom.io
@@ -138,7 +147,8 @@ Add some color to your code...
 1. [Pigments](https://atom.io/packages/pigments)
 
 ## Points of interest
-  - [Deployment Instructions (Local Win/Mac/*NIX, AWS)](./backend/README.md)
+  - [Passport Deployment Instructions](./backend/README.md)
+  - [AWS Deployment Instructions](./backend/aws/README.md)
   - [Application Directory](./src/app/README.md)
   - [Components Directory](./src/app/components/README.md)
   - [Assets Directory](./src/app/assets/README.md)
