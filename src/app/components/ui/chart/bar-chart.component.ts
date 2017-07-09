@@ -96,7 +96,6 @@ export class BarChartComponent extends BaseChartComponent implements CardContent
   }
 
   public buildDatasets(valueKey: string): Array<any> {
-    console.log('buildDatasets()', valueKey, this.chartUIData, this.chartData);
     let i = 0;
     let count = this.chartData.datasets.length;
 
@@ -120,7 +119,6 @@ export class BarChartComponent extends BaseChartComponent implements CardContent
       options: this.chartUIData.chartOptions.data
     });
 
-    console.log('Chart: ', this.Chart, myChart);
     this.onChartResize(null);
   }
 }

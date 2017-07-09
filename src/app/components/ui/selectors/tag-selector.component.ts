@@ -1,4 +1,4 @@
-import { Input, Output, Component, EventEmitter } from '@angular/core';
+import { Input, Output, Component, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { TagSelectorModel } from './tag-selector.model'
 import { Tag } from '../../../model/tag.model'
 import { Utils } from '../../../services/utils/utils.component'
@@ -9,20 +9,39 @@ import { Utils } from '../../../services/utils/utils.component'
 })
 export class TagSelectorComponent {
 
-  @Input()
-  model: TagSelectorModel;
+
+  model: TagSelectorModel = {
+    tags: []
+  };
+
+  // gate for circular emission
+  emittingSelectionChange: boolean = false;
 
   // output when clicked
   @Output()
   selectionChanged: EventEmitter<Tag[]> = new EventEmitter<Tag[]>();
 
+  @ViewChild('selector')
+  selector: ElementRef;
+
   constructor(private utils: Utils) {
 
   }
 
-  onSelect(event: any): void {
-    console.log('tagSelector::onSelect() - ', event);
-    let selectedTags = this.utils.getSelectedValues(event.options);
-    this.selectionChanged.emit(<Tag[]>selectedTags);
+  clearSelection() {
+    this.utils.clearSelection(<HTMLSelectElement>this.selector.nativeElement);
+  }
+
+  public setSelectedElements(selectedElements: any[]) {
+    this.utils.setSelection(<HTMLSelectElement>this.selector.nativeElement, selectedElements);
+  }
+
+  onSelect(selectElement: any): void {
+    let selectedTags = this.utils.getSelectedValues(selectElement.options);
+    if (!this.emittingSelectionChange) {
+      this.emittingSelectionChange = true;
+      this.selectionChanged.emit(<Tag[]>selectedTags);
+      this.emittingSelectionChange = false;
+    }
   }
 }

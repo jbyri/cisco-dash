@@ -14,7 +14,7 @@
           <button class="close-button medium-border border-red font-red card-radius right"
             (click)="handleMenuToggle()">&times;</button>
         </div>
-        <search-menu #searchMenu (customerSelectionChanged)=onCustomerSelectionChanged($event) [model]='searchMenuModel'></search-menu>
+        <search-menu #searchMenu (customerSelectionChanged)='onCustomerSelectionChanged($event)'></search-menu>
       </div>
       <div class="hidden-sm-down col-md-2 col-lg-2">
         <button class="close-button medium-border border-red font-red card-radius right"

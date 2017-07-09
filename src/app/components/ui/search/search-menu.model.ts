@@ -10,7 +10,8 @@ export interface SearchMenuModel {
   selectedCustomers: Customer[],
   selectedCustomerModels: CustomerModel[],
   tags: Tag[],
-  selectedTags: Tag[]
+  selectedTags: Tag[],
+  tagsById: Map<number, Tag>
 }
 
 /**

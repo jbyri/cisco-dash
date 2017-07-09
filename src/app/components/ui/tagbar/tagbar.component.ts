@@ -1,6 +1,8 @@
-import { Input, Component, OnInit } from '@angular/core';
+import { Input, Output, Component, OnInit, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TagBarModel, TagBarItemModel } from './tagbar.model'
+
+
 import 'rxjs/add/operator/map'
 
 @Component({
@@ -9,22 +11,38 @@ import 'rxjs/add/operator/map'
   styleUrls: ['./tagbar.component.css']
 })
 export class TagBarComponent implements OnInit {
-  @Input()
+
   model: TagBarModel = {
     nextTagInput: '',
-    sourceData: [
-
-    ],
-    dataProvider: [
-
-    ]
+    sourceData: [],
+    dataProvider: []
   };
+
+  emittingTagsRemoved: boolean = false;
+  emittingTagsAdded: boolean = false;
+  emittingTagsChanged: boolean = false;
+  @Output()
+  tagsRemoved: EventEmitter<TagBarItemModel[]> = new EventEmitter<TagBarItemModel[]>();
+
+  @Output()
+  tagsAdded: EventEmitter<TagBarItemModel[]> = new EventEmitter<TagBarItemModel[]>();
+
+  @Output()
+  tagsChanged: EventEmitter<TagBarItemModel[]> = new EventEmitter<TagBarItemModel[]>();
 
   public placholderLabel = 'thing';
 
   constructor(
     private route: ActivatedRoute,
     private router: Router) {
+  }
+
+  emitTagsChanged() {
+    if (!this.emittingTagsChanged) {
+      this.emittingTagsChanged = true;
+      this.tagsChanged.emit(this.model.dataProvider);
+      this.emittingTagsChanged = false;
+    }
   }
 
   tryRemovingTag(lwrValue: string, force: boolean): void {
@@ -38,7 +56,14 @@ export class TagBarComponent implements OnInit {
         }
 
         if (index > -1) {
-          this.model.dataProvider.splice(index, 1);
+          let removed: TagBarItemModel[] = this.model.dataProvider.splice(index, 1);
+          if (!this.emittingTagsRemoved) {
+            this.emittingTagsRemoved = true;
+            this.tagsRemoved.emit(removed);
+            this.emittingTagsRemoved = false;
+          }
+
+          this.emitTagsChanged();
         }
       }
     });
@@ -52,7 +77,19 @@ export class TagBarComponent implements OnInit {
       })
       .map(matchedSource => {
         let matchingItems = this.model.dataProvider.filter(eachData => eachData.content.toLowerCase() === lwrValue);
-        return matchingItems.length === 0 ? this.model.dataProvider.push(matchedSource) : null;
+        let result = matchingItems.length === 0 ? this.model.dataProvider.push(matchedSource) : null;
+
+        if (result != null) {
+          let added: TagBarItemModel[] = [matchedSource];
+          if (!this.emittingTagsAdded) {
+            this.emittingTagsAdded = true;
+            this.tagsAdded.emit(added);
+            this.emittingTagsAdded = false;
+          }
+
+          this.emitTagsChanged();
+        }
+        return result;
       });
 
     this.model.nextTagInput = '';
@@ -79,6 +116,7 @@ export class TagBarComponent implements OnInit {
       event.target.value = '';
     }
   }
+
   onTagbarSearchInput(event: any): void {
     if (event.code === 'Tab') {
       return;
@@ -90,7 +128,15 @@ export class TagBarComponent implements OnInit {
           if (event.code === 'Backspace' || event.code === 'Delete') {
             if (this.model.nextTagInput === '' && event.target.value === '') {
               // remove the last tag
-              this.model.dataProvider.pop();
+              let lastItem = this.model.dataProvider.pop();
+              let removed: TagBarItemModel[] = [lastItem]
+              if (!this.emittingTagsRemoved) {
+                this.emittingTagsRemoved = true;
+                this.tagsRemoved.emit(removed);
+                this.emittingTagsRemoved = false;
+              }
+
+              this.emitTagsChanged();
               event.target.focus();
             }
           }
@@ -116,7 +162,13 @@ export class TagBarComponent implements OnInit {
     if (tagBarModel.enabled) {
       let index = this.model.dataProvider.indexOf(tagBarModel);
       if (index > -1) {
-        this.model.dataProvider.splice(index, 1);
+        let removedItems = this.model.dataProvider.splice(index, 1);
+        if (!this.emittingTagsRemoved) {
+          this.emittingTagsRemoved = true;
+          this.tagsRemoved.emit(removedItems);
+          this.emittingTagsRemoved = false;
+        }
+        this.emitTagsChanged();
       }
     }
   }

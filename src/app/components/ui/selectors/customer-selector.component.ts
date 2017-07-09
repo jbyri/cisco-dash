@@ -11,7 +11,6 @@ import { Utils } from '../../../services/utils/utils.component'
 export class CustomerSelectorComponent {
 
   // can be set from html [dataProvider]=someDataProviderVar
-  @Input()
   dataProvider: CustomerSelectorModel = {
     customers: []
   }
@@ -21,8 +20,8 @@ export class CustomerSelectorComponent {
   selectionChanged: EventEmitter<Customer[]> = new EventEmitter<Customer[]>();
   onSelect(event: any): void {
     console.log('customerSelector::onSelect() - ', event);
-    let selectedCustomers = this.utils.getSelectedValues(event);
-    this.selectionChanged.emit(<Customer[]>selectedCustomers);
+    let selectedCustomers: Customer[] = <Customer[]>this.utils.getSelectedValues(event);
+    this.selectionChanged.emit(selectedCustomers);
   }
 
   constructor(private utils: Utils) {

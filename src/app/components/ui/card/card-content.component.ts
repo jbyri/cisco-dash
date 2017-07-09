@@ -59,6 +59,5 @@ export class CardContentComponent extends LifecycleHooks {
     if (this.content != null && this.contentModel != null) {
       this.content.configure(this.contentModel);
     }
-    console.log('onAllInputsReady()', this.content);
   }
 }

@@ -16,11 +16,9 @@
         "performance": 0.25
       }
     ],
-
     "datapoints": [{
         "title": "Bookings",
         "tagIds": [1],
-
         "content": {
           "type": "barChart",
           "data": {
@@ -63,11 +61,9 @@
           }
         }
       },
-
       {
         "title": "RMA Exceptions (Uplift)",
         "tagIds": [5],
-
         "content": {
           "type": "barChart",
           "data": {
@@ -95,11 +91,9 @@
           }
         }
       },
-
       {
         "title": "RMA Exceptions (Other)",
         "tagIds": [5],
-
         "content": {
           "type": "barChart",
           "data": {
@@ -127,11 +121,9 @@
           }
         }
       },
-
       {
         "title": "Bookings - Products (Total)",
         "tagIds": [3],
-
         "content": {
           "type": "barChart",
           "data": {
@@ -163,7 +155,6 @@
       {
         "title": "Bookings - By Architecture",
         "tagIds": [3],
-
         "content": {
           "type": "barChart",
           "data": {
@@ -266,11 +257,9 @@
           }
         }
       },
-
       {
         "title": "Bookings - Services (Total)",
         "tagIds": [3],
-
         "content": {
           "type": "barChart",
           "data": {
@@ -303,7 +292,6 @@
       {
         "title": "Bookings - Services (TS)",
         "tagIds": [3],
-
         "content": {
           "type": "barChart",
           "data": {
@@ -335,7 +323,6 @@
       {
         "title": "Bookings by TS Offers",
         "tagIds": [3],
-
         "content": {
           "type": "barChart",
           "data": {
@@ -438,11 +425,9 @@
           }
         }
       },
-
       {
         "title": "Bookings - Services (AS)",
         "tagIds": [3],
-
         "content": {
           "type": "barChart",
           "data": {
@@ -474,7 +459,6 @@
       {
         "title": "Bookings - Services (CMS)",
         "tagIds": [3],
-
         "content": {
           "type": "barChart",
           "data": {
@@ -555,7 +539,6 @@
       {
         "title": "Revenue",
         "tagIds": [3],
-
         "content": {
           "type": "barChart",
           "data": {
@@ -587,7 +570,6 @@
       {
         "title": "IB -Yield",
         "tagIds": [3],
-
         "content": {
           "type": "barChart",
           "data": {

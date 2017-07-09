@@ -9,6 +9,8 @@ import { CustomerSelectorModel } from '../selectors/customer-selector.model'
 import { TagSelectorModel } from '../selectors/tag-selector.model'
 import { TagBarModel } from '../tagbar/tagbar.model';
 import { TagBarComponent } from '../tagbar/tagbar.component';
+import { TagBarItemModel } from '../tagbar/tagbar.model';
+
 import { CustomerSelectorComponent } from '../selectors/customer-selector.component'
 import { TagSelectorComponent } from '../selectors/tag-selector.component'
 import { Customer } from '../../../model/customer.model'
@@ -31,28 +33,22 @@ export class SearchMenuComponent extends LifecycleHooks {
 
   @Output()
   tagSelectionChanged: EventEmitter<Tag[]> = new EventEmitter<Tag[]>();
+  emittingTagSelectionChanged: boolean = false;
+  emittingCustomerSelectionChanged: boolean = false;
 
-  /**
-   * @Input allows a model to be passed into this component
-   *
-   * Provided are default values to avoid any issues.
-   */
-  @Input()
-  model: SearchMenuModel;
+  model: SearchMenuModel = {
+    config: {
+      maxSelectableTags: 3,
+      maxSelectableCustomers: 1
+    },
 
-  tagBarModel: TagBarModel = {
-    nextTagInput: '',
-    sourceData: [],
-    dataProvider: []
+    customers: [],
+    selectedCustomers: [],
+    selectedCustomerModels: [],
+    selectedTags: [],
+    tags: [],
+    tagsById: new Map()
   };
-
-  customerSelectorModel: CustomerSelectorModel = {
-    customers: []
-  }
-
-  tagSelectorModel: TagSelectorModel = {
-    tags: []
-  }
 
   constructor(
     private route: ActivatedRoute,
@@ -64,38 +60,24 @@ export class SearchMenuComponent extends LifecycleHooks {
     this.addInput('tagSelector');
   }
 
-  /**
-   * ngOnInit - description
-   *
-   * @return {type}  description
-   */
-  ngOnInit() {
-    console.log('SearchMenuComponent::ngOnInit()', this.model);
-
-  }
-  ngOnChanges(changes: SimpleChanges) {
-    // changes.prop contains the old and the new value...
-    console.debug('ngOnChanges()', changes);
-  }
-
-  ngOnDestroy() {
-    console.log('SearchMenuComponent::ngOnDestroy()');
-  }
-
   refreshTagbarModelData() {
     // convert data for use in the tagbar models.
-    this.tagBarModel.sourceData = [];
+    this.filterTagBar.model.sourceData = [];
 
     this.model.tags.map(tag => {
-      this.tagBarModel.sourceData.push({
+      this.filterTagBar.model.sourceData.push({
         content: tag.name,
+        tagId: tag.id,
         enabled: true
       });
     });
 
+    // customer tags aren't selectable as other tags are
+    // so here we avoid its tag id and disable it.
     this.model.customers.map(customer => {
-      this.tagBarModel.sourceData.push({
+      this.filterTagBar.model.sourceData.push({
         content: customer.name,
+        tagId: -1,
         enabled: false
       });
     });
@@ -103,30 +85,46 @@ export class SearchMenuComponent extends LifecycleHooks {
 
   ngDoCheck() {
     this.refreshTagbarModelData();
-    this.tagSelectorModel.tags = this.model.tags;
+    this.tagSelector.model.tags = this.model.tags;
     this.customerSelector.dataProvider.customers = this.model.customers;
+    if (this.model.tagsById.size == 0) {
+      this.buildTagIndex();
+    }
   }
 
-  ngAfterViewChecked() {
-
-  }
-
-  ngAfterViewInit() {
-    // console.log("SearchMenuComponent::ngAfterViewInit()");
-  }
-
-  ngAfterContentInit() {
-    // console.log("SearchMenuComponent::ngAfterContentInit()");
-  }
-  ngAfterContentChecked() {
-    // console.log("SearchMenuComponent::ngAfterContentChecked()");
-  }
-
-  onTagSelectionChange(tags: number[]) {
-    let tagsById: { [key: number]: any } = {};
+  buildTagIndex() {
+    this.model.tagsById.clear();
     this.model.tags.map(tag => {
-      tagsById[tag.id] = tag;
-    })
+      if (tag != undefined) {
+        this.model.tagsById.set(tag.id, tag);
+      }
+    });
+  }
+
+  findTag(tagId: any): Tag {
+    let tag: Tag;
+    if (typeof (tagId) === 'string') {
+      tag = this.model.tagsById.get(parseInt(tagId));
+    } else if (typeof (tagId) === 'number') {
+      tag = this.model.tagsById.get(tagId);
+    }
+
+    return tag;
+  }
+
+  onTagBarSelectionChange(tagBarItemModels: TagBarItemModel[]) {
+    let newTagSelection: number[] = [];
+    tagBarItemModels.map(tagBarItemModel => {
+      if (tagBarItemModel.enabled) {
+        newTagSelection.push(tagBarItemModel.tagId);
+      }
+    });
+
+    // rerun the tag selection
+    this.onTagSelectionChange(newTagSelection);
+  }
+
+  onTagSelectionChange(tagIds: number[]) {
     if (this.model.selectedTags.length > 0) {
       this.model.selectedTags.map(selectedTag => {
         this.filterTagBar.tryRemovingTag(selectedTag.name.toLowerCase(), false);
@@ -134,16 +132,22 @@ export class SearchMenuComponent extends LifecycleHooks {
 
       this.model.selectedTags = [];
     }
-    tags.map(tagId => {
-      let tag: Tag = tagsById[tagId];
-      this.model.selectedTags.push(tag);
+
+    tagIds.map(tagId => {
+      let tag: Tag = this.findTag(tagId);
+      if (tag !== undefined) {
+        this.model.selectedTags.push(tag);
+      } else {
+        console.error('could not find tag: ' + tagId + ", " + typeof (tagId));
+      }
     });
 
     this.model.selectedTags.map(selectedTag => {
       this.filterTagBar.tryAddingTag(selectedTag.name.toLowerCase());
     });
 
-    this.tagSelectionChanged.emit(this.model.selectedTags);
+    this.tagSelector.setSelectedElements(tagIds);
+    this.emitTagSelectionChanged();
   }
 
   onCustomerSelectionChange(customers: string[]) {
@@ -170,6 +174,21 @@ export class SearchMenuComponent extends LifecycleHooks {
       this.filterTagBar.tryAddingTag(selectedCustomer.name.toLowerCase());
     });
 
-    this.customerSelectionChanged.emit(this.model.selectedCustomers);
+    this.emitCustomerSelectionChanged();
+  }
+
+  emitCustomerSelectionChanged() {
+    if (!this.emittingCustomerSelectionChanged) {
+      this.emittingCustomerSelectionChanged = true;
+      this.customerSelectionChanged.emit(this.model.selectedCustomers);
+      this.emittingCustomerSelectionChanged = false;
+    }
+  }
+  emitTagSelectionChanged() {
+    if (!this.emittingTagSelectionChanged) {
+      this.emittingTagSelectionChanged = true;
+      this.tagSelectionChanged.emit(this.model.selectedTags);
+      this.emittingTagSelectionChanged = false;
+    }
   }
 }

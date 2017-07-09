@@ -42,18 +42,6 @@ export class DashboardComponent implements OnInit {
     }
   };
 
-  searchMenuModel: SearchMenuModel = {
-    config: {
-      maxSelectableTags: 3,
-      maxSelectableCustomers: 1
-    },
-
-    customers: [],
-    selectedCustomers: [],
-    selectedCustomerModels: [],
-    selectedTags: [],
-    tags: []
-  };
 
   loading = false;
   returnUrl: string;
@@ -91,7 +79,7 @@ export class DashboardComponent implements OnInit {
 
 
   public refreshCustomerSelection() {
-    this.selectedCustomerModel = this.searchMenuModel.selectedCustomerModels[0];
+    this.selectedCustomerModel = this.searchMenuComponent.model.selectedCustomerModels[0];
   }
 
   /**
@@ -111,7 +99,7 @@ export class DashboardComponent implements OnInit {
 
     dataPoint.tagIds.map(tagId =>
       Array.prototype.push.apply(tags,
-        this.searchMenuModel.tags.filter(tag => tag.id === tagId)));
+        this.searchMenuComponent.model.tags.filter(tag => tag.id === tagId)));
 
     if (tags.length < 1) {
       console.error('no tags were in datapoint: ', dataPoint.title);
@@ -121,7 +109,7 @@ export class DashboardComponent implements OnInit {
   }
 
   onTagSelectionChange(tags: Tag[]): void {
-
+    console.log("onTagSelectionChange");
   }
   /**
    * When the customer selection is changed, we repopulate the models.
@@ -134,7 +122,7 @@ export class DashboardComponent implements OnInit {
       let customer: Customer = customers[0];
       let customerDataTask: Observable<CustomerModel> = this.dashboardDataService.loadCustomerData(customer.dataUrl);
       const subscription = customerDataTask.subscribe(customerModel => {
-        this.searchMenuModel.selectedCustomerModels = [customerModel];
+        this.searchMenuComponent.model.selectedCustomerModels = [customerModel];
         this.refreshCustomerSelection()
         subscription.unsubscribe();
       });
@@ -162,18 +150,20 @@ export class DashboardComponent implements OnInit {
   filterCustomerDatapoints(datapoints: CustomerDatapoint[]) {
 
     return datapoints.filter(dataPoint => {
-      let isMatch = true;
+      let isMatch = false;
+      let selectedTags : Tag[] = this.searchMenuComponent.model.selectedTags;
 
-      if (this.searchMenuModel.selectedTags.length > 0) {
+      if (selectedTags.length > 0) {
         isMatch = false;
-
         dataPoint.tagIds.map(tagId => {
-          this.searchMenuModel.selectedTags.map(tag => {
+          selectedTags.map(tag => {
             if (!isMatch && tag.id === tagId) {
               isMatch = true;
             }
           })
-        })
+        });
+      } else {
+        isMatch = true;
       }
 
       return isMatch;
@@ -192,12 +182,12 @@ export class DashboardComponent implements OnInit {
     let chartOptionsTask: Observable<ChartOptions[]> = this.dashboardDataService.loadChartOptions();
 
     const tagsSubscription = tagsTask.subscribe(tags => {
-      this.searchMenuModel.tags = tags;
+      this.searchMenuComponent.model.tags = tags;
       tagsSubscription.unsubscribe();
     });
 
     const custSubscription = customersTask.subscribe(customers => {
-      this.searchMenuModel.customers = customers;
+      this.searchMenuComponent.model.customers = customers;
       custSubscription.unsubscribe();
     });
 
@@ -274,8 +264,5 @@ export class DashboardComponent implements OnInit {
   ngOnDestroy(): void {
     console.debug('ngOnDestroy()');
     this.clearCache();
-    this.searchMenuModel.tags = null;
-    this.searchMenuModel.customers = null;
-    this.searchMenuModel = null;
   }
 }

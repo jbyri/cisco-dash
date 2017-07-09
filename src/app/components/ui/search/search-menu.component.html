@@ -3,21 +3,19 @@
 
     <div class="form-group display-flex medium-border-bottom border-whitesmoke">
       <label for="usr"><i class="fa fa-search large-margin-right" aria-hidden="true"></i></label>
-      <tagbar #filterTagBar [model]='tagBarModel'></tagbar>
+      <tagbar (tagsChanged)='onTagBarSelectionChange($event)' #filterTagBar></tagbar>
     </div>
   </div>
   <div id="menuSelectors" class="display-flex col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <div id="customerSelection" class="col-md-4 col-lg-4">
       <customer-selector #customerSelector
-        (selectionChanged)='onCustomerSelectionChange($event)'
-        [dataProvider]='customerSelectorModel'></customer-selector>
+        (selectionChanged)='onCustomerSelectionChange($event)'></customer-selector>
     </div>
 
     <div id="tagSelection" class="col-md-4 col-lg-4">
       <tag-selector #tagSelector
         [hidden]="model.selectedCustomers.length == 0"
-        (selectionChanged)='onTagSelectionChange($event)'
-        [model]='tagSelectorModel'></tag-selector>
+        (selectionChanged)='onTagSelectionChange($event)'></tag-selector>
     </div>
   </div>
 </div>
