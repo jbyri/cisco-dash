@@ -23,16 +23,16 @@ export class DashboardDataService {
   private needsTagCoersion = false;
 
   // TODO @wnamen change this to call the cisco server endpoint
-  private tagsEndpoint = '/app/assets/data/tags.json';
+  private tagsEndpoint = 'app/assets/data/tags.json';
   // TODO @wnamen change this to true if the server containing the
   // customerDataEndpoint returns a format that needs to be coerced into a
   // collection of Customer
   private needsCustomerDataCoersion = false;
   // TODO @wnamen change this to call the cisco server endpoint for customer data
-  private customerDataEndpoint = '/app/assets/data/customers.json';
+  private customerDataEndpoint = 'app/assets/data/customers.json';
 
-
-  private chartOptionsEndpoint = '/app/assets/data/chart-options.json'
+  
+  private chartOptionsEndpoint = 'app/assets/data/chart-options.json'
 
   // the currently selected customer
   private customerModel: CustomerModel;

@@ -97,15 +97,15 @@ $ sudo service apache2 start
 Build and deploy the site.
 ```
 $ cd ~/git/cisco-dash/
-$ npm install -g gulp
-$ sudo npm install -g gulp
-$ sudo gulp default fullDistro copyToServer
+$ sudo npm install -g gulp-cli
+$ sudo npm install -g 'gulpjs/gulp#4.0'
+$ sudo gulp copyToServer
 $ cd /var/www/html/
 ```
 
 Start the Server using forever
 ```
-$ ./start.sh &
+$ ./start-server.sh &
 ```
 
 ### Deploying to Production
@@ -114,9 +114,15 @@ $ ./start.sh &
    ```
    cd ~/git/cisco-dash && git pull origin master
    ```
+3. Stop the Passport service and MongoD
+  ```
+  ./stop-server.sh
+  sudo service stop mongod
+  ```
+
 3. Build, distribute, and copy to prod
    ```
-   gulp default fullDistro copyToServer
+   gulp copyToServer
    ```
 4. Start MongoDB
    ```
@@ -124,5 +130,5 @@ $ ./start.sh &
    ```
 5. Start Passport
    ```
-   cd /var/www/html && ./start.sh &
+   cd /var/www/html && ./start-server.sh &
    ```

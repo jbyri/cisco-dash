@@ -1,117 +1,229 @@
 // jshint esversion: 6
-var gulp = require('gulp');
-// var typescript = require('gulp-tsc');
-var ts = require("gulp-typescript");
-var sass = require('gulp-sass');
-var gulpClean = require('gulp-clean');
+// ES Modules
+const gulp = require('gulp');
+const ts = require("gulp-typescript");
+const gulpSass = require('gulp-sass');
+const gulpClean = require('gulp-clean');
+const uglify = require('gulp-uglify');
+const uglifycss = require('gulp-uglifycss');
+const jsonminify = require('gulp-jsonminify');
+const pump = require('pump');
+const del = require("del");
 
-var tsProject = ts.createProject("src/tsconfig.json");
+// locations
+const backendDir = 'backend/';
+const appSrcDir = './src/';
+const serverSrcDir = './' + backendDir;
+const distDir = './dist/';
+
+const httpRootDir = '/var/www/html/';
+
+// TypeScript compilation projects.
+var tsProject = ts.createProject(appSrcDir + "tsconfig.json");
 var tsE2ETests = ts.createProject("e2e/tsconfig.json");
-var del = require("del");
 
-var distDir = 'dist/';
+function e2e() {
+  e2eTsCompile();
+}
+e2e.description = "Run End to End tests";
+gulp.task(e2e, ['e2eTsCompile']);
 
-var serverDir = '/var/www/html/';
-// main task
-gulp.task('default', ['tsCompile', 'sass']);
-gulp.task('build:watch', ['tsCompile', 'sass', 'ts:watch', 'sass:watch']);
-gulp.task('e2e', ['e2eTsCompile']);
 
-// compile typescript
-gulp.task('tsCompile', function() {
+/**
+ * Typescript Compilation
+ */
+function tsCompile() {
   return tsProject.src()
     .pipe(tsProject())
     .js.pipe(gulp.dest("src"));
-});
+}
 
-gulp.task('e2eTsCompile', ['tsCompile', 'sass'], function() {
+gulp.task(tsCompile);
+
+
+function e2eTsCompile() {
+  tsCompile();
+  sass();
   return tsE2ETests.src()
     .pipe(tsE2ETests())
     .js.pipe(gulp.dest("e2e"));
-});
+}
 
+/**
+ * End-to-end testing Compilation
+ */
+gulp.task(e2eTsCompile);
 
-gulp.task('sass', function() {
-  return gulp.src('src/**/*.scss')
-    .pipe(sass.sync().on('error', sass.logError))
+function sass() {
+  return gulp.src(appSrcDir + '**/*.scss')
+    .pipe(gulpSass.sync().on('error', gulpSass.logError))
     .pipe(gulp.dest('src'));
-});
+}
+/**
+ * Compile SCSS Files to css
+ */
+gulp.task(sass);
 
-gulp.task('sass:watch', function() {
-  gulp.watch('./src/**/*.scss', ['sass']);
-});
+/**
+ * Cleans the node_modules directory
+ */
+function cleanNodeModules() {
+  return del([distDir + 'node_modules/**/*']);
+}
+gulp.task(cleanNodeModules);
 
-gulp.task('ts:watch', function() {
-  gulp.watch('./src/**/*.ts', ['tsCompile']);
-});
-
-
-
-
-gulp.task('cleanNodeModules', function() {
-  console.log('cleanNodeModules');
-  return del.sync([distDir + 'node_modules/**/*']);
-});
-
-gulp.task('cleanBackend', function() {
+function cleanOurCode() {
   let sources = [
-    backendDir + '**/*',
+    distDir + '**/*.{js,css,png,html,png,svg,jpg,ico}',
     // we don't want to clean this file though so we negate the pattern
-    '!' + backendDir + 'node_modules/'
+    '!' + distDir,
+    '!' + distDir + 'node_modules/**/*'
   ];
-  console.log('cleanBackend', sources);
-  return del.sync(sources);
-});
+  return del(sources);
+}
+/**
+ * Cleans only Our code (Skips node_modules)
+ */
+gulp.task(cleanOurCode);
 
-gulp.task('cleanFrontend', function() {
-  let sources = [
-    frontendDir + '**/*',
-    // we don't want to clean this file though so we negate the pattern
-    '!' + frontendDir + 'node_modules/'
-  ];
-  console.log('cleanFrontend', sources);
-  return del.sync(sources);
+function compressAndCopyJSON() {
+  return gulp.src(appSrcDir + '**/*.json')
+    .pipe(jsonminify())
+    .pipe(gulp.dest(distDir));
+}
+/**
+ * Compress and minify JSON and move to dist folder
+ */
+gulp.task(compressAndCopyJSON);
 
-});
-gulp.task('clean', ['cleanFrontend', 'cleanBackend', 'cleanNodeModules']);
+function compressAndCopyCSS() {
+  return gulp.src(appSrcDir + '**/*.css')
+    .pipe(uglifycss({
+      "maxLineLen": 80,
+      "uglyComments": true
+    }))
+    .pipe(gulp.dest(distDir));
+}
+/**
+ * Compress and uglify CSS and move to dist folder
+ */
+gulp.task(compressAndCopyCSS);
+
+function compressAndCopyFrontendJS(cb) {
+  // all app js and main server.js go in root of distro folder
+  gulp.src([appSrcDir + '**/*.js'])
+             .pipe(uglify())
+             .pipe(gulp.dest(distDir));
+
+  cb();
+}
+
+gulp.task(compressAndCopyFrontendJS);
 
 
-gulp.task('copyNodeModules', function() {
+function copyStaticAssets(cb) {
+  gulp.src([appSrcDir + '**/*.{html,json,svg,ico,png,jpg}']).pipe(gulp.dest(distDir));
+  gulp.src([appSrcDir + '/app/assets/javascripts/**/*.js']).pipe(gulp.dest(distDir + '/app/assets/javascripts/'));
+  cb();
+}
+
+gulp.task(copyStaticAssets);
+
+function copyBackendJs(cb) {
+  gulp.src('server.js').pipe(gulp.dest(distDir));
+
+  // backend server code is segregated into the backend dir.
+  gulp.src(serverSrcDir + '**/*.js').pipe(gulp.dest(distDir + backendDir));
+
+  cb();
+}
+
+gulp.task(copyBackendJs);
+
+/**
+* Copy node modules to distribution dir
+*/
+function copyNodeModules(cb) {
   gulp.src([
     './node_modules/**/*'
   ]).pipe(gulp.dest(distDir + 'node_modules/'));
-});
 
-gulp.task('copyFrontend', function() {
-  gulp.src([
-    './src/**/*.js',
-    './src/**/*.css',
-    './src/**/*.html',
-    './src/**/*.json',
-    './src/**/*.png',
-    './src/**/*.svg',
-    './src/**/*.jpg'
-  ]).pipe(gulp.dest(distDir));
-});
+  cb();
+}
+gulp.task(copyNodeModules);
 
-gulp.task('copyBackend', function() {
-  gulp.src('server.js').pipe(gulp.dest(distDir));
+/**
+ * clean all files currently in http root
+ * so we can 'overwrite' them with new ones.
+ */
+function cleanServer() {
+  return del([httpRootDir + '**/*'], {force:true});
+}
 
-  gulp.src([
-    './backend/**/*'
-  ]).pipe(gulp.dest(distDir + 'backend/'));
-});
-
-gulp.task('copyToServer', function() {
+function doCopyToServer(cb) {
   gulp.src([
     distDir + '**/*',
-  ]).pipe(gulp.dest(serverDir))
-});
+  ]).pipe(gulp.dest(httpRootDir));
 
-gulp.task('deployRelease', ['clean', 'copyFrontend', 'copyBackend', 'copyNodeModules', 'copyToServer']);
-gulp.task('quickDistro', ['cleanFrontend', 'cleanBackend', 'copyBackend', 'copyFrontend']);
+  cb();
+}
 
-// distribute all the things
-gulp.task('fullDistro', ['copyBackend', 'copyNodeModules', 'copyFrontend']);
-gulp.task('deploy', ['default', 'fullDistro']);
-gulp.task('quickDeploy', ['default', 'quickDistro']);
+function watch() {
+  console.log("devWatch");
+  return gulp.watch([
+      appSrcDir + '**/*.scss',
+      appSrcDir + '**/*.ts',
+      appSrcDir + '**/*.{json,png,svg,ico,jpg}'
+    ],
+    gulp.series('build'));
+}
+
+gulp.task(cleanServer);
+
+/**
+ * Compress and uglify Javascripts and move to dist folder
+ */
+gulp.task('compressAndCopyJavascript', gulp.parallel('compressAndCopyFrontendJS', 'copyBackendJs'));
+
+
+/**
+ * Clean everything
+ */
+gulp.task('clean', gulp.parallel('cleanOurCode', 'cleanNodeModules'));
+
+gulp.task('build', gulp.parallel('tsCompile', 'sass'));
+
+
+gulp.task(watch);
+
+/**
+ * Compress (js, css, json) and copy all static assets
+ */
+gulp.task('copyAssets', gulp.parallel('compressAndCopyCSS', 'compressAndCopyJavascript', 'compressAndCopyJSON', 'copyStaticAssets'));
+
+
+/**
+ * Watch for SCSS, JS, and Asset Changes
+ */
+gulp.task('devWatch', gulp.series('build', 'watch'));
+
+// clean, build and redistribute everything (run copyToServer after this to deploy)
+gulp.task('fullDistro', gulp.series('clean', 'build', 'copyAssets', 'copyNodeModules'));
+
+
+gulp.task(doCopyToServer);
+
+function copyStartScriptsToServer() {
+  return gulp.src('*.sh').pipe(gulp.dest(httpRootDir));
+}
+
+gulp.task(copyStartScriptsToServer);
+// copy all files from the distribution directory
+// to www root. Run this only on the Amazon Server.
+gulp.task('copyToServer', gulp.series('cleanServer', 'doCopyToServer', 'copyStartScriptsToServer'));
+
+// cleans only OUR code and assets (not node_modules)
+gulp.task('quickDistro', gulp.series('cleanOurCode', 'build', 'copyAssets'));
+
+// This cleans and copies EVERYTHING to Http Root
+gulp.task('deployRelease', gulp.series('fullDistro', 'copyToServer'));

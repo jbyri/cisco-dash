@@ -64,6 +64,10 @@ export class SearchMenuComponent extends LifecycleHooks {
     // convert data for use in the tagbar models.
     this.filterTagBar.model.sourceData = [];
 
+    if(this.model.tags === undefined) {
+      this.model.tags = [];
+    }
+
     this.model.tags.map(tag => {
       this.filterTagBar.model.sourceData.push({
         content: tag.name,
