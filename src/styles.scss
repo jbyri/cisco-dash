@@ -21,3 +21,8 @@ html {
 html body {
     min-height: 100%
 }
+
+
+.no-interaction {
+  pointer-events: none;
+}

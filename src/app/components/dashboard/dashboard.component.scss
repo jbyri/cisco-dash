@@ -86,15 +86,33 @@
 
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1600px) and (max-width: 4096px) {
   .card-columns {
-        column-count: 4;
+    column-count: 5;
+  }
+}
+
+@media (min-width: 1600px) and (max-width: 2400px) {
+  .card-columns {
+    column-count: 4;
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1599px) {
+  .card-columns {
+     column-count: 3;
   }
 }
 
 @media (min-width: 577px) and (max-width: 1000px) {
   .card-columns {
-        column-count: 2;
+      column-count: 2;
+  }
+}
+
+@media (min-width: 100px) and (max-width: 576px) {
+  .card-columns {
+      column-count: 1;
   }
 }
 

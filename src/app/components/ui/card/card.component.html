@@ -4,7 +4,7 @@
     <i class="card-indicator fa fa-arrow-circle-o-up font-green" aria-hidden="true"></i>
     <p class="card-title">{{cardModel === undefined ? '' : cardModel.title}}</p>
     <div class="row card-tag-container">
-      <button *ngFor="let tag of cardModel.tags" type="button"  class="card-tag large-margin-right {{getTagClass(tag.id)}} font-white no-border">{{tag.name.substring(0,3).toUpperCase()}}</button>
+      <button *ngFor="let tag of cardModel.tags" type="button"  class="card-tag large-margin-right {{getTagClass(tag.id)}} font-white no-border">{{tag.label.substring(0,5).toUpperCase()}}</button>
     </div>
   </div>
   <div class="card-content">

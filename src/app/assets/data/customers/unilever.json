@@ -27,6 +27,7 @@
             "valueKeys": ["BOOK_NET"],
             "chartData": {
               "datasets": [{
+                "datasetTransformerId": "",
                 "backgroundColor": "#67AAF9",
                 "values": [{
                   "QTRID": "2015Q1",
@@ -72,6 +73,7 @@
             "valueKeys": ["VALUE"],
             "chartData": {
               "datasets": [{
+                "datasetTransformerId": "",
                 "backgroundColor": "#67AAF9",
                 "values": [{
                   "QTRID": "Q1",
@@ -102,6 +104,7 @@
             "valueKeys": ["VALUE"],
             "chartData": {
               "datasets": [{
+                "datasetTransformerId": "",
                 "backgroundColor": "#67AAF9",
                 "values": [{
                   "QTRID": "Q1",
@@ -132,6 +135,7 @@
             "valueKeys": ["VALUE"],
             "chartData": {
               "datasets": [{
+                "datasetTransformerId": "",
                 "backgroundColor": "#67AAF9",
                 "type": "bar",
                 "values": [{
@@ -163,6 +167,7 @@
             "valueKeys": ["VALUE"],
             "chartData": {
               "datasets": [{
+                  "datasetTransformerId": "",
                   "backgroundColor": "#67AAF9",
                   "label": "Collaboration",
                   "type": "bar",
@@ -181,6 +186,7 @@
                   }]
                 },
                 {
+                  "datasetTransformerId": "",
                   "backgroundColor": "#FFBB41",
                   "label": "Data Center",
                   "type": "bar",
@@ -199,6 +205,7 @@
                   }]
                 },
                 {
+                  "datasetTransformerId": "",
                   "backgroundColor": "#37394C",
                   "label": "Enterprise Networking",
                   "type": "bar",
@@ -217,6 +224,7 @@
                   }]
                 },
                 {
+                  "datasetTransformerId": "",
                   "backgroundColor": "#D1E5FD",
                   "label": "Security",
                   "type": "bar",
@@ -235,6 +243,7 @@
                   }]
                 },
                 {
+                  "datasetTransformerId": "",
                   "backgroundColor": "#D1E5FD",
                   "label": "Other",
                   "type": "bar",
@@ -268,6 +277,7 @@
             "valueKeys": ["VALUE"],
             "chartData": {
               "datasets": [{
+                "datasetTransformerId": "",
                 "backgroundColor": "#67AAF9",
                 "type": "bar",
                 "values": [{
@@ -300,6 +310,7 @@
             "valueKeys": ["VALUE"],
             "chartData": {
               "datasets": [{
+                "datasetTransformerId": "",
                 "backgroundColor": "#67AAF9",
                 "type": "bar",
                 "values": [{
@@ -331,6 +342,7 @@
             "valueKeys": ["VALUE"],
             "chartData": {
               "datasets": [{
+                  "datasetTransformerId": "",
                   "backgroundColor": "#67AAF9",
                   "type": "bar",
                   "label": "Cloud Managed Services",
@@ -349,6 +361,7 @@
                   }]
                 },
                 {
+                  "datasetTransformerId": "",
                   "backgroundColor": "#FFBB41",
                   "type": "bar",
                   "label": "Network Support",
@@ -367,6 +380,7 @@
                   }]
                 },
                 {
+                  "datasetTransformerId": "",
                   "backgroundColor": "#37394C",
                   "type": "bar",
                   "label": "Product Offer Support",
@@ -385,6 +399,7 @@
                   }]
                 },
                 {
+                  "datasetTransformerId": "",
                   "backgroundColor": "#D1E5FD",
                   "type": "bar",
                   "label": "SCV Offer Support",
@@ -403,6 +418,7 @@
                   }]
                 },
                 {
+                  "datasetTransformerId": "",
                   "backgroundColor": "#F4F1EA",
                   "type": "bar",
                   "label": "Solution Support",
@@ -436,6 +452,7 @@
             "valueKeys": ["VALUE"],
             "chartData": {
               "datasets": [{
+                "datasetTransformerId": "",
                 "backgroundColor": "#67AAF9",
                 "type": "bar",
                 "values": [{
@@ -467,6 +484,7 @@
             "valueKeys": ["VALUE"],
             "chartData": {
               "datasets": [{
+                "datasetTransformerId": "",
                 "backgroundColor": "#67AAF9",
                 "type": "bar",
                 "values": [{
@@ -498,6 +516,7 @@
             "valueKeys": ["VALUE"],
             "chartData": {
               "datasets": [{
+                  "datasetTransformerId": "",
                   "backgroundColor": "#67AAF9",
                   "label": "Bookings",
                   "values": [{
@@ -515,6 +534,7 @@
                   }]
                 },
                 {
+                  "datasetTransformerId": "",
                   "backgroundColor": "#FFBB41",
                   "label": "Multiyear Bookings",
                   "values": [{
@@ -542,11 +562,13 @@
         "content": {
           "type": "barChart",
           "data": {
+
             "chartOptionsId": "barChart5",
             "labelKeys": ["LABEL"],
             "valueKeys": ["VALUE"],
             "chartData": {
               "datasets": [{
+                "datasetTransformerId": "",
                 "backgroundColor": "#67AAF9",
                 "type": "bar",
                 "values": [{
@@ -573,11 +595,13 @@
         "content": {
           "type": "barChart",
           "data": {
+
             "chartOptionsId": "barChart5",
             "labelKeys": ["LABEL"],
             "valueKeys": ["VALUE"],
             "chartData": {
               "datasets": [{
+                "datasetTransformerId": "",
                 "backgroundColor": "#67AAF9",
                 "type": "bar",
                 "values": [{
@@ -604,11 +628,13 @@
         "content": {
           "type": "barChart",
           "data": {
+
             "chartOptionsId": "barChart5",
             "labelKeys": ["LABEL"],
             "valueKeys": ["VALUE"],
             "chartData": {
               "datasets": [{
+                "datasetTransformerId": "",
                 "backgroundColor": "#67AAF9",
                 "type": "bar",
                 "values": [{
@@ -623,6 +649,196 @@
                 }, {
                   "LABEL": "Q4",
                   "VALUE": "15"
+                }]
+              }]
+            }
+          }
+        }
+      },
+
+      {
+        "title": "Uncovered Install-Base",
+        "tagIds": [4],
+        "content": {
+          "type": "barChart",
+          "data": {
+
+            "chartOptionsId": "barChart6",
+            "labelKeys": ["LABEL"],
+            "valueKeys": ["VALUE"],
+            "chartData": {
+              "datasets": [{
+                  "datasetTransformerId": "",
+                  "backgroundColor": "#67AAF9",
+                  "label": "Total IB",
+                  "type": "bar",
+                  "values": [{
+                    "LABEL": "Q1",
+                    "VALUE": "4"
+                  }, {
+                    "LABEL": "Q2",
+                    "VALUE": "10"
+                  }, {
+                    "LABEL": "Q3",
+                    "VALUE": "8"
+                  }, {
+                    "LABEL": "Q4",
+                    "VALUE": "15"
+                  }]
+                },
+                {
+                  "datasetTransformerId": "",
+                  "backgroundColor": "#FFBB41",
+                  "label": "Uncovered IB",
+                  "type": "bar",
+                  "values": [{
+                    "LABEL": "Q1",
+                    "VALUE": "14"
+                  }, {
+                    "LABEL": "Q2",
+                    "VALUE": "10"
+                  }, {
+                    "LABEL": "Q3",
+                    "VALUE": "18"
+                  }, {
+                    "LABEL": "Q4",
+                    "VALUE": "21"
+                  }]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "title": "Attach Rate",
+        "tagIds": [4],
+        "content": {
+          "type": "barChart",
+          "data": {
+
+            "chartOptionsId": "barChart7",
+            "labelKeys": ["LABEL"],
+            "valueKeys": ["VALUE"],
+            "chartData": {
+              "datasets": [{
+                "datasetTransformerId": "",
+                "backgroundColor": "#67AAF9",
+                "type": "bar",
+                "values": [{
+                  "LABEL": "Q1",
+                  "VALUE": "25"
+                }, {
+                  "LABEL": "Q2",
+                  "VALUE": "35"
+                }, {
+                  "LABEL": "Q3",
+                  "VALUE": "23"
+                }, {
+                  "LABEL": "Q4",
+                  "VALUE": "54"
+                }]
+              }]
+            }
+          }
+        }
+      },
+      {
+        "title": "Renewall Rate",
+        "tagIds": [4],
+        "content": {
+          "type": "barChart",
+          "data": {
+
+            "chartOptionsId": "barChart7",
+            "labelKeys": ["LABEL"],
+            "valueKeys": ["VALUE"],
+            "chartData": {
+              "datasets": [{
+                "datasetTransformerId": "",
+                "backgroundColor": "#67AAF9",
+                "type": "bar",
+                "values": [{
+                  "LABEL": "Q1",
+                  "VALUE": "65"
+                }, {
+                  "LABEL": "Q2",
+                  "VALUE": "75"
+                }, {
+                  "LABEL": "Q3",
+                  "VALUE": "83"
+                }, {
+                  "LABEL": "Q4",
+                  "VALUE": "54"
+                }]
+              }]
+            }
+          }
+        }
+      },
+      {
+        "title": "Software Attach Rate",
+        "tagIds": [4],
+        "content": {
+          "type": "barChart",
+          "data": {
+
+            "chartOptionsId": "barChart7",
+            "labelKeys": ["LABEL"],
+            "valueKeys": ["VALUE"],
+            "chartData": {
+              "datasets": [{
+                "datasetTransformerId": "",
+                "backgroundColor": "#67AAF9",
+                "type": "bar",
+                "values": [{
+                  "LABEL": "Q1",
+                  "VALUE": "75"
+                }, {
+                  "LABEL": "Q2",
+                  "VALUE": "35"
+                }, {
+                  "LABEL": "Q3",
+                  "VALUE": "73"
+                }, {
+                  "LABEL": "Q4",
+                  "VALUE": "64"
+                }]
+              }]
+            }
+          }
+        }
+      },
+      {
+        "title": "Last Day Of Support",
+        "tagIds": [4],
+        "content": {
+          "type": "barChart",
+          "data": {
+
+            "chartOptionsId": "barChart6",
+            "labelKeys": ["LABEL"],
+            "valueKeys": ["VALUE"],
+            "chartData": {
+              "datasets": [{
+                "datasetTransformerId": "",
+                "backgroundColor": "#67AAF9",
+                "type": "bar",
+                "values": [{
+                  "LABEL": "2017",
+                  "VALUE": "21"
+                }, {
+                  "LABEL": "2018",
+                  "VALUE": "12"
+                }, {
+                  "LABEL": "2019",
+                  "VALUE": "34"
+                }, {
+                  "LABEL": "2020",
+                  "VALUE": "42"
+                }, {
+                  "LABEL": "2021",
+                  "VALUE": "32"
                 }]
               }]
             }

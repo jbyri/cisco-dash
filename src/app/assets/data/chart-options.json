@@ -149,6 +149,61 @@
     }
   },
   {
+    "id":"barChart6",
+    "data": {
+      "scales": {
+        "xAxes": [{
+          "stacked": true,
+          "barPercentage": 0.3,
+          "gridLines": {
+            "display":false
+          }
+        }],
+        "yAxes": [{
+          "stacked": true,
+          "gridLines" : {
+            "drawBorder": false
+          },
+          "ticks": {
+            "padding": 20,
+            "beginAtZero":true,
+            "stepSize": 15
+          }
+        }]
+      }
+    }
+  },
+  {
+    "id": "barChart7",
+    "data": {
+      "elements": {
+        "point": {
+          "radius":0
+        }
+      },
+      "legend": {
+        "display": false
+      },
+      "scales": {
+        "xAxes": [{
+          "barPercentage":0.3,
+          "gridLines": {
+            "display": false
+          }
+        }],
+        "yAxes": [{
+          "gridLines": {
+            "drawBorder": false
+          },
+          "ticks": {
+            "padding": 20,
+            "beginAtZero": true
+          }
+        }]
+      }
+    }
+  },
+  {
     "id": "stackedBarChart1",
     "data": {
       "scales": {

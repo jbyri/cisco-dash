@@ -13,7 +13,7 @@
 }
 
 .card-title {
-  margin: 0 1em;
+  margin: 0 2em;
   letter-spacing: 1px;
 }
 
@@ -22,9 +22,11 @@
 }
 
 .card-tag {
-  font-size:small;
   text-align: center;
-  width: 3em;
+  margin: 2px;
+  font-size: 12px;
+  font-weight: bold;
+  width: auto;
   height: 1.75em;
   border-radius: 5px;
   cursor: pointer;
@@ -33,4 +35,17 @@
 .card-tag:focus {
   border: none;
   outline: none;
+}
+
+@media (min-width: 577px) {
+  .dash-card {
+      margin-top:0px
+  }
+}
+
+@media (min-width: 100px) and (max-width: 576px) {
+  .dash-card {
+      column-count: 1;
+      margin-top: 10px;
+  }
 }

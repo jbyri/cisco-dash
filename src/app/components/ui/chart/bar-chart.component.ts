@@ -26,7 +26,6 @@ export class BarChartContentBuilder extends BaseChartContentBuilder {
     // component factory.
     let componentFactory: ComponentFactory<CardContentObject> = this.componentFactoryResolver.resolveComponentFactory(BarChartComponent);
     this.cardContent = this.viewContainerRef.createComponent(componentFactory, 0).instance;
-
     return this.cardContent;
   }
 }
@@ -37,23 +36,15 @@ export class BarChartContentBuilder extends BaseChartContentBuilder {
   styleUrls: ['./bar-chart.component.css']
 })
 export class BarChartComponent extends BaseChartComponent implements CardContentObject {
-  constructor() {
-    super();
-    console.debug('BarChartComponent::constructor()');
-  }
 
-  public onPointerOver(event: any) {
-    event.preventDefault();
-  }
-
-  public onMouseMove(event: any) {
-    event.preventDefault();
-  }
-
+  /**
+   * Configure the Chart component given a CardContentModel
+   *
+   * this will contain the values / labels and UIData all mixed together
+   * so we can fully build a beautiful chart.
+   */
   public configure(cardContentModel: CardContentModel): CardContentObject {
     let chartContentModel: ChartContentModel = <ChartContentModel>cardContentModel;
-
-    console.debug('configure()', cardContentModel);
 
     this.labelKeys = chartContentModel.cardContentData.labelKeys;
     this.valueKeys = chartContentModel.cardContentData.valueKeys;
@@ -67,6 +58,11 @@ export class BarChartComponent extends BaseChartComponent implements CardContent
     return this;
   }
 
+  /**
+   * Build the labels for our datasets. we can do this
+   * by simply grabbing the FIRST data set and reading its unique
+   * labels. We'll then apply that to all dataset.
+   */
   public buildLabels(labelKey : string): Array<any> {
     let dataEntries : Array<any> = this.chartData.datasets[0].values;
     let labels : Array<string> = [];
@@ -78,6 +74,10 @@ export class BarChartComponent extends BaseChartComponent implements CardContent
     return labels;
   }
 
+
+  /**
+   * build the current data set.
+   */
   public buildDataset(inputDataset : CiscoDataset, valueKey : string): object {
     let dataset: ChartDataset = {
       data: [],
@@ -95,6 +95,9 @@ export class BarChartComponent extends BaseChartComponent implements CardContent
     return dataset;
   }
 
+  /**
+   * Build all datasets using the specified value key form the CardContentModel
+   */
   public buildDatasets(valueKey: string): Array<any> {
     let i = 0;
     let count = this.chartData.datasets.length;
@@ -107,8 +110,11 @@ export class BarChartComponent extends BaseChartComponent implements CardContent
     return datasets;
   }
   // OVERRIDE
-  public ngAfterViewInit() {
-    console.debug('ngAfterViewInit', this.chartUIData);
+
+  /**
+   * public ngAfterViewInit - Build the dataset
+   */
+  public ngAfterViewInit() : void {
     let ctx = this.getCanvas().getContext('2d');
     let myChart = new this.Chart(ctx, {
       type: 'bar',
@@ -121,4 +127,5 @@ export class BarChartComponent extends BaseChartComponent implements CardContent
 
     this.onChartResize(null);
   }
+
 }

@@ -68,7 +68,7 @@ gulp.task(sass);
  * Cleans the node_modules directory
  */
 function cleanNodeModules() {
-  return del([distDir + 'node_modules/**/*']);
+  return Promise.all(del([distDir + 'node_modules/**/*']));
 }
 gulp.task(cleanNodeModules);
 
@@ -79,30 +79,34 @@ function cleanOurCode() {
     '!' + distDir,
     '!' + distDir + 'node_modules/**/*'
   ];
-  return del(sources);
+  return Promise.all(del(sources));
 }
 /**
  * Cleans only Our code (Skips node_modules)
  */
 gulp.task(cleanOurCode);
 
-function compressAndCopyJSON() {
-  return gulp.src(appSrcDir + '**/*.json')
+function compressAndCopyJSON(cb) {
+  gulp.src(appSrcDir + '**/*.json')
     .pipe(jsonminify())
     .pipe(gulp.dest(distDir));
+
+  cb();
 }
 /**
  * Compress and minify JSON and move to dist folder
  */
 gulp.task(compressAndCopyJSON);
 
-function compressAndCopyCSS() {
-  return gulp.src(appSrcDir + '**/*.css')
+function compressAndCopyCSS(cb) {
+  gulp.src(appSrcDir + '**/*.css')
     .pipe(uglifycss({
       "maxLineLen": 80,
       "uglyComments": true
     }))
     .pipe(gulp.dest(distDir));
+
+  cb();
 }
 /**
  * Compress and uglify CSS and move to dist folder
@@ -157,7 +161,9 @@ gulp.task(copyNodeModules);
  * so we can 'overwrite' them with new ones.
  */
 function cleanServer() {
-  return del([httpRootDir + '**/*'], {force:true});
+  return Promise.all(
+    del([httpRootDir + '**/*'], {force:true})
+  );
 }
 
 function doCopyToServer(cb) {
@@ -167,17 +173,24 @@ function doCopyToServer(cb) {
 
   cb();
 }
-
-function watch() {
-  console.log("devWatch");
+function watchCss(){
   return gulp.watch([
-      appSrcDir + '**/*.scss',
-      appSrcDir + '**/*.ts',
-      appSrcDir + '**/*.{json,png,svg,ico,jpg}'
+      appSrcDir + '**/*.scss'
     ],
-    gulp.series('build'));
+    gulp.series('sass'));
 }
 
+function watchTypeScript(){
+  return gulp.watch(appSrcDir + '**/*.ts', gulp.series('tsCompile'));
+}
+
+function watchJSON() {
+  return gulp.watch(appSrcDir + '**/*.{json}', gulp.series('sass'));
+}
+
+gulp.task(watchCss);
+gulp.task(watchTypeScript);
+gulp.task(watchJSON);
 gulp.task(cleanServer);
 
 /**
@@ -193,11 +206,10 @@ gulp.task('clean', gulp.parallel('cleanOurCode', 'cleanNodeModules'));
 
 gulp.task('build', gulp.parallel('tsCompile', 'sass'));
 
-
-gulp.task(watch);
+gulp.task('watch', gulp.parallel('watchCss', 'watchTypeScript', 'watchJSON'));
 
 /**
- * Compress (js, css, json) and copy all static assets
+ * Compress (js, css, json) and copy all static assets to dist directory.
  */
 gulp.task('copyAssets', gulp.parallel('compressAndCopyCSS', 'compressAndCopyJavascript', 'compressAndCopyJSON', 'copyStaticAssets'));
 
@@ -218,6 +230,7 @@ function copyStartScriptsToServer() {
 }
 
 gulp.task(copyStartScriptsToServer);
+
 // copy all files from the distribution directory
 // to www root. Run this only on the Amazon Server.
 gulp.task('copyToServer', gulp.series('cleanServer', 'doCopyToServer', 'copyStartScriptsToServer'));
