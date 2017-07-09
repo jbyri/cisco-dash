@@ -133,26 +133,35 @@ function copyStaticAssets(cb) {
 
 gulp.task(copyStaticAssets);
 
-function copyBackendJs(cb) {
-  gulp.src('server.js').pipe(gulp.dest(distDir));
+function copyServerFile(cb) {
+  result = gulp.src('server.js').pipe(gulp.dest(distDir));
+  cb();
+  return result;
+}
+gulp.task(copyServerFile);
 
+
+function copyBackend(cb) {
   // backend server code is segregated into the backend dir.
-  gulp.src(serverSrcDir + '**/*.js').pipe(gulp.dest(distDir + backendDir));
+  result = gulp.src(serverSrcDir + '**/*.js').pipe(gulp.dest(distDir + backendDir));
 
   cb();
+  return result;
 }
 
-gulp.task(copyBackendJs);
+gulp.task(copyBackend);
+gulp.task('copyBackendJs', gulp.parallel('copyServerFile', 'copyBackend'));
 
 /**
 * Copy node modules to distribution dir
 */
 function copyNodeModules(cb) {
-  gulp.src([
+  result = gulp.src([
     './node_modules/**/*'
   ]).pipe(gulp.dest(distDir + 'node_modules/'));
 
   cb();
+  return result;
 }
 gulp.task(copyNodeModules);
 
@@ -167,11 +176,12 @@ function cleanServer() {
 }
 
 function doCopyToServer(cb) {
-  gulp.src([
+  result = gulp.src([
     distDir + '**/*',
   ]).pipe(gulp.dest(httpRootDir));
 
   cb();
+  return result;
 }
 function watchCss(){
   return gulp.watch([
@@ -221,7 +231,6 @@ gulp.task('devWatch', gulp.series('build', 'watch'));
 
 // clean, build and redistribute everything (run copyToServer after this to deploy)
 gulp.task('fullDistro', gulp.series('clean', 'build', 'copyAssets', 'copyNodeModules'));
-
 
 gulp.task(doCopyToServer);
 
