@@ -68,7 +68,7 @@ gulp.task(sass);
  * Cleans the node_modules directory
  */
 function cleanNodeModules() {
-  return Promise.all(del([distDir + 'node_modules/**/*']));
+  return Promise.all([del([distDir + 'node_modules/**/*'])]);
 }
 gulp.task(cleanNodeModules);
 
@@ -79,7 +79,7 @@ function cleanOurCode() {
     '!' + distDir,
     '!' + distDir + 'node_modules/**/*'
   ];
-  return Promise.all(del(sources));
+  return Promise.all([del(sources)]);
 }
 /**
  * Cleans only Our code (Skips node_modules)
@@ -161,9 +161,9 @@ gulp.task(copyNodeModules);
  * so we can 'overwrite' them with new ones.
  */
 function cleanServer() {
-  return Promise.all(
+  return Promise.all([
     del([httpRootDir + '**/*'], {force:true})
-  );
+  ]);
 }
 
 function doCopyToServer(cb) {
