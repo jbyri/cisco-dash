@@ -30,7 +30,6 @@ signup = (req, res) => {
   const lastName = req.body.lastName;
   const password = req.body.password;
 
-  console.log(email, firstName, lastName, password);
 
   // Return error if no email provided
   if (!email) {

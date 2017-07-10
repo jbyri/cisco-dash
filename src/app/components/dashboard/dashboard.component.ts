@@ -91,7 +91,6 @@ export class DashboardComponent implements OnInit {
     if (this.tagsCache.has(dataPoint)) {
       return this.tagsCache.get(dataPoint);
     }
-    console.debug('getTagsFromCustomerDatapoint()', dataPoint);
 
     // cache this puppy
     tags = [];
@@ -109,7 +108,7 @@ export class DashboardComponent implements OnInit {
   }
 
   onTagSelectionChange(tags: Tag[]): void {
-    console.log("onTagSelectionChange");
+
   }
   /**
    * When the customer selection is changed, we repopulate the models.
@@ -117,7 +116,6 @@ export class DashboardComponent implements OnInit {
   onCustomerSelectionChanged(customers: Customer[]): void {
     this.clearCache();
 
-    console.debug('Dashboard::onCustomerSelectionChange', customers);
     if (customers.length > 0) {
       let customer: Customer = customers[0];
       let customerDataTask: Observable<CustomerModel> = this.dashboardDataService.loadCustomerData(customer.dataUrl);
@@ -174,7 +172,6 @@ export class DashboardComponent implements OnInit {
    * Refresh the dashboard data source.
    */
   refresh() {
-    console.debug('refresh()');
     this.clearCache();
     // fetch tags and customers
     let tagsTask: Observable<Tag[]> = this.dashboardDataService.loadTags();
@@ -206,13 +203,11 @@ export class DashboardComponent implements OnInit {
       return this.cardModelCache.get(dataPoint);
     }
 
-    console.debug('buildCardModel()', dataPoint);
-    let cardModel: CardModel =
-      {
-        title: dataPoint.title,
-        tags: this.getTagsFromCustomerDatapoint(dataPoint),
-        contentModel: this.buildCardContentModel(dataPoint)
-      }
+    let cardModel: CardModel = {
+      title: dataPoint.title,
+tags: this.getTagsFromCustomerDatapoint(dataPoint),
+  contentModel: this.buildCardContentModel(dataPoint)
+    }
 
     this.cardModelCache.set(dataPoint, cardModel);
 
@@ -227,12 +222,10 @@ export class DashboardComponent implements OnInit {
    * so we cache the result value against the source data point to avoid unneccessary object creation
    */
   buildCardContentModel(datapoint: CustomerDatapoint): CardContentModel {
-
     if (this.cardContentModelCache.has(datapoint)) {
       return <ChartContentModel>this.cardContentModelCache.get(datapoint);
     }
 
-    console.debug('buildCardContentModel()', datapoint);
     // here we simply change wrapper types. We don't do any further 'formatting'
     // of the content data so that we're not tied to something specific.
     // the card content builder mechanism can own that logic.
@@ -247,22 +240,18 @@ export class DashboardComponent implements OnInit {
   }
 
   public getChartOptionsFromCustomerDatapoint(datapoint: CustomerDatapoint): ChartOptions {
-    console.debug('getChartOptionsFromCustomerDatapoint()');
     // let chartOptionId : string = datapoint.
     let chartOptionsId: string = datapoint.content.data.chartOptionsId;
     let matches: ChartOptions[] = this.dashboardModel.chartOptions.filter(options => options.id === chartOptionsId);
-    console.debug('matches for id', chartOptionsId, matches.length);
     return matches.length > 0 ? matches[0] : null;
   }
 
   public clearCache() {
-    console.debug('clearCache()');
     this.cardModelCache.clear();
     this.cardContentModelCache.clear();
   }
 
   ngOnDestroy(): void {
-    console.debug('ngOnDestroy()');
     this.clearCache();
   }
 }

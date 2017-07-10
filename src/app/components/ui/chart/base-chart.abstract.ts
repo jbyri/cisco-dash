@@ -75,7 +75,7 @@ export class BaseChartContentBuilder implements CardContentBuilder {
   protected cardContent: CardContentObject;
 
   constructor(protected componentFactoryResolver: ComponentFactoryResolver) {
-    console.debug(this.constructor.name + '::constructor()');
+    
   }
 
   /**

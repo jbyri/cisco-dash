@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   { }
 
   onSubmit(event: Event) {
-    console.log('onSubmit');
+
     event.preventDefault();
     this.login();
   }
@@ -39,7 +39,6 @@ export class LoginComponent implements OnInit {
   login() {
     this.authenticationService.login(this.model.email, this.model.password)
       .subscribe(success => {
-        console.log("Login Successs!");
         this.router.navigate(['/dashboard']);
       });
 
@@ -47,10 +46,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.authenticationService.logout();
-
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
 
-    console.log('LoginComponent::ngOnInit()');
     // check cookies for previous login
     // login (oauth?)
     // $('.message a').click(function(){

@@ -7,11 +7,11 @@
       <button *ngFor="let tag of cardModel.tags" type="button"  class="card-tag large-margin-right {{getTagClass(tag.id)}} font-white no-border">{{tag.label.substring(0,5).toUpperCase()}}</button>
     </div>
   </div>
-  <div class="card-content">
-    <card-content #content
-        [contentBuilder]="cardContentBuilder"
-        [contentModel]="cardModel.contentModel"></card-content>
-  </div>
+
+  <card-content #content
+      [contentBuilder]="cardContentBuilder"
+      [contentModel]="cardModel.contentModel"></card-content>
+
   <div class="large-margin-top">
     <button type="button"
             class="no-background no-border"

@@ -38,7 +38,7 @@ export class DashboardDataService {
   private customerModel: CustomerModel;
 
   constructor(private http: Http) {
-    console.debug('DashboardDataService Construct');
+
   }
 
   // formats some tag data from Ciscos Secret Server
@@ -108,7 +108,7 @@ export class DashboardDataService {
   }
 
   loadTags(): Observable<Tag[]> {
-    console.debug('loadTags');
+
     // TODO @wnamen - if we ever need to load this data from another service modify
     // the call here. It will likely be a RESTful or basic HTTP GET request.
     let tagsTask: Observable<Tag[]> = this.http.get(this.tagsEndpoint)
@@ -133,7 +133,6 @@ export class DashboardDataService {
    * load the customer data.
    */
   loadCustomers(): Observable<Customer[]> {
-    console.debug('loadCustomers()');
     let customersTask: Observable<Customer[]> = this.http.get(this.customerDataEndpoint)
       .map((response: Response) => {
         let customers: Customer[];
