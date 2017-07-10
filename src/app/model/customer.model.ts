@@ -1,6 +1,7 @@
 // customer
 export interface Customer {
   name: string,
+  enabled: boolean,
   displayName: string,
   dataUrl: string
 }

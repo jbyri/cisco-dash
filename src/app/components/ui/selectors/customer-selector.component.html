@@ -3,6 +3,6 @@
   <select (change)="onSelect($event.target)" #selector class="form-control option-tag-box no-border" size="4">
     <option
         class="display-flex option-tag"
-        *ngFor="let customer of dataProvider.customers" [value]="customer.name">{{customer.displayName}}</option>
+        *ngFor="let customer of dataProvider.customers | customerFilter" [value]="customer.name" [disabled]="!customer.enabled">{{customer.displayName}}</option>
   </select>
 </div>

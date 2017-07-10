@@ -1,21 +1,25 @@
 [
   {
     "name":"Unilever",
+    "enabled":true,
     "displayName":"Unilever, Inc.",
     "dataUrl":"app/assets/data/customers/unilever.json"
   },
   {
     "name":"Maersk",
+    "enabled":false,
     "displayName":"Maersk, Inc.",
     "dataUrl":"app/assets/data/customers/maersk.json"
   },
   {
     "name":"Network Rail",
+    "enabled":false,
     "displayName":"Network Rail",
     "dataUrl":"app/assets/data/customers/networkrail.json"
   },
   {
     "name":"Nationwide",
+    "enabled":false,
     "displayName":"Nationwide",
     "dataUrl":"app/assets/data/customers/nationwide.json"
   }

@@ -1,7 +1,24 @@
-import { Input, Output, Component, EventEmitter } from '@angular/core';
+import { Input, Output, Component, Pipe, PipeTransform, EventEmitter } from '@angular/core';
 import { CustomerSelectorModel } from './customer-selector.model';
 import { Customer } from '../../../model/customer.model'
 import { Utils } from '../../../services/utils/utils.component'
+
+@Pipe({
+    name: 'customerFilter',
+    pure: false
+})
+export class CustomerFilterPipe implements PipeTransform {
+    transform(items: Customer[]): any {
+        if (!items) {
+            return items;
+        }
+        // filter items array, items which match and return true will be kept, false will be filtered out
+        return items.filter(item => {
+          console.log("filter", item);
+          return  item.enabled
+        });
+    }
+}
 
 @Component({
   selector: 'customer-selector',
@@ -10,6 +27,9 @@ import { Utils } from '../../../services/utils/utils.component'
 })
 export class CustomerSelectorComponent {
 
+  filterArgs : any = {
+    enabled : true
+  }
   // can be set from html [dataProvider]=someDataProviderVar
   dataProvider: CustomerSelectorModel = {
     customers: []
