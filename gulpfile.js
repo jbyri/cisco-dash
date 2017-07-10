@@ -16,7 +16,7 @@ const appSrcDir = './src/';
 const serverSrcDir = './' + backendDir;
 const distDir = './dist/';
 
-const httpRootDir = './var/www/html/';
+const httpRootDir = '/var/www/html/';
 
 // TypeScript compilation projects.
 var tsProject = ts.createProject(appSrcDir + "tsconfig.json");
