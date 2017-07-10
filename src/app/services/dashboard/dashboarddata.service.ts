@@ -31,7 +31,7 @@ export class DashboardDataService {
   // TODO @wnamen change this to call the cisco server endpoint for customer data
   private customerDataEndpoint = 'app/assets/data/customers.json';
 
-  
+
   private chartOptionsEndpoint = 'app/assets/data/chart-options.json'
 
   // the currently selected customer
@@ -89,7 +89,8 @@ export class DashboardDataService {
         customers[customers.length] = {
           name: customerObject['otherNameProp'],
           displayName: customerObject['otherDisplayNameProp'],
-          dataUrl: customerObject['otherDataUrl']
+          dataUrl: customerObject['otherDataUrl'],
+          enabled: customerObject['otherEnabled']
         }
       });
     } else {
@@ -98,7 +99,8 @@ export class DashboardDataService {
       customers[0] = {
         name: json['otherNameProp'],
         displayName: json['otherDisplayNameProp'],
-        dataUrl: json['otherDataUrl']
+        dataUrl: json['otherDataUrl'],
+        enabled: json['enabled']
       };
     }
 
