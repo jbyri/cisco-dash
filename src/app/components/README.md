@@ -9,6 +9,9 @@ If you add a component, be sure to enter a heading and a good description of you
 component below. This is not a technical design document, just an easy to understand
 reference as to what the components are.
 
+## Abstract Components
+These are shared abstracts that can be extended (TypeScript inheritance)
+
 ## Routed Components
 These are the top level `pages` that handle a route behavior.
 
@@ -29,7 +32,6 @@ other items that are required to carry out the operations provided when on a spe
 page (or on any page for global interactions)
 
 ### The Search Menu
-
 ![SearchMenuComponents](../../../wiki_src/images/SearchMenuComponents.jpg)
 
 #### `search-menu` Component

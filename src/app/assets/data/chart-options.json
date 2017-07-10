@@ -227,5 +227,11 @@
         }]
       }
     }
+  },
+  {
+    "id":"pieChart1",
+    "data":{
+      "responsive":true
+    }
   }
 ]

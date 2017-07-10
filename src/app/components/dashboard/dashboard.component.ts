@@ -16,6 +16,8 @@ import { DashboardModel } from './dashboard.model';
 import { CardContentBuilder } from '../ui/card/card-content.component';
 import { Customer, CustomerModel, CustomerDatapoint } from '../../model/customer.model';
 import { BarChartContentBuilder } from '../ui/chart/bar-chart.component';
+import { PieChartContentBuilder } from '../ui/chart/pie-chart.component';
+
 import { SearchMenuComponent} from '../ui/search/search-menu.component';
 import { Observable } from 'rxjs/Observable';
 
@@ -71,6 +73,7 @@ export class DashboardComponent implements OnInit {
 
     // Add Chart Type here
     this.chartBuilders['barChart'] = new BarChartContentBuilder(componentFactoryResolver);
+    this.chartBuilders['pieChart'] = new PieChartContentBuilder(componentFactoryResolver);
   }
 
   public getContentBuilder(builderId: string): CardContentBuilder {

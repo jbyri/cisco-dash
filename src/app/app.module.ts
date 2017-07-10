@@ -18,6 +18,7 @@ import { Utils } from './services/utils/utils.component'
 
 // UI Components
 import { BarChartComponent } from './components/ui/chart/bar-chart.component';
+import { PieChartComponent } from './components/ui/chart/pie-chart.component';
 import { CardComponent } from './components/ui/card/card.component';
 import { CardContentComponent } from './components/ui/card/card-content.component';
 import { CustomerSelectorComponent, CustomerFilterPipe } from './components/ui/selectors/customer-selector.component'
@@ -42,6 +43,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
   declarations: [
     AppComponent,
     BarChartComponent,
+    PieChartComponent,
     CardComponent,
     CardContentComponent,
     CustomerSelectorComponent,
@@ -63,7 +65,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     DashboardDataService
   ],
   entryComponents: [
-    BarChartComponent
+    BarChartComponent,
+    PieChartComponent
   ],
   bootstrap:    [ AppComponent ]
 })

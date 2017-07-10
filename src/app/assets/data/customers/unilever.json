@@ -813,17 +813,17 @@
         "title": "Last Day Of Support",
         "tagIds": [4],
         "content": {
-          "type": "barChart",
+          "type": "pieChart",
           "data": {
 
-            "chartOptionsId": "barChart6",
+            "chartOptionsId": "pieChart1",
             "labelKeys": ["LABEL"],
             "valueKeys": ["VALUE"],
             "chartData": {
               "datasets": [{
                 "datasetTransformerId": "",
                 "backgroundColor": "#67AAF9",
-                "type": "bar",
+                "type": "pie",
                 "values": [{
                   "LABEL": "2017",
                   "VALUE": "21"

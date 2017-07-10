@@ -29,11 +29,14 @@ Displays a set of labels and datapoints in Donut Chart Format.
 Follow these steps to add a new chart component.
 
 
-1. Create your chart component within the app/components/ui/chart directory, along with all of its styles, tests, and templates.
+1. Create your chart component within the `app/components/ui/chart` directory, along with all of its styles, tests, and templates.
     1. Insure you add your component to the 'entryComponents' in app.module.ts.
-    2. Add your chart options to chart-options.json
+    2. Add your chart options to `chart-options.json`
     3. Add your chart data sets to the customer data file (insure all customers have entries for this new data set.)
-    4. **Dont forget to add your component to app.module.ts**
+    4. Add your chart as a declaration to `app.module.ts`
+    5. Add a registry for your chart builder in the dashboard component constructor.
+    6. Add the Chart Component as an Entry Component in `app.module.ts`.
+    7. See [Chart JS Examples](http://www.chartjs.org/samples/latest/) for more details.
 2. While in development, add your chart and a brief description to the "In Development" Heading.
 3. Once complete, move your heading and description under the "Currently Supported Chart Components" heading, and fill out a more detailed description of the component.
 4. If a new chart is to be created and not yet in progress, add a heading and a single sentence description to the "Future" heading.
