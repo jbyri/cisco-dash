@@ -216,7 +216,7 @@ function copyBackend(cb) {
 }
 
 gulp.task(copyBackend);
-gulp.task('copyBackendJs', gulp.parallel('copyServerFile', 'copyBackend'));
+gulp.task('copyBackendJs', gulp.series('copyServerFile', 'copyBackend'));
 
 /**
 * Copy node modules to distribution dir
@@ -290,7 +290,7 @@ gulp.task(cleanServer);
 /**
  * Compress and uglify Javascripts and move to dist folder
  */
-gulp.task('compressAndCopyJavascript', gulp.parallel('compressAndCopyFrontendJS', 'copyBackendJs'));
+gulp.task('compressAndCopyJavascript', gulp.series('compressAndCopyFrontendJS', 'copyBackendJs'));
 
 
 
@@ -303,7 +303,7 @@ gulp.task('copyStaticAssets', gulp.series('doCopyStaticAssets', 'copyStaticJavas
 /**
  * Compress (js, css, json) and copy all static assets to dist directory.
  */
-gulp.task('copyAssets', gulp.parallel('compressAndCopyCSS', 'compressAndCopyJavascript', 'compressAndCopyJSON', 'copyStaticAssets'));
+gulp.task('copyAssets', gulp.series('compressAndCopyCSS', 'compressAndCopyJavascript', 'compressAndCopyJSON', 'copyStaticAssets'));
 
 
 /**
@@ -312,7 +312,7 @@ gulp.task('copyAssets', gulp.parallel('compressAndCopyCSS', 'compressAndCopyJava
 gulp.task('devWatch', gulp.series('build', 'watch'));
 
 // clean, build and redistribute everything (run copyToServer after this to deploy)
-gulp.task('fullDistro', gulp.series('build',gulp.parallel('copyAssets', 'copyNodeModules')));
+gulp.task('fullDistro', gulp.series('build',gulp.series('copyAssets', 'copyNodeModules')));
 
 gulp.task(doCopyToServer);
 
