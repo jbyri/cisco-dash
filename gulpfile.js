@@ -74,6 +74,8 @@ function cleanNodeModules(cb) {
   promise.then(function() {
     console.log("Cleaned node_modules from " + distDir);
     cb();
+  }, function(err) {
+    console.log("Error", err);
   });
 
   return promise;
@@ -104,6 +106,8 @@ function compressAndCopyJSON(cb) {
       console.log("Finished minify + compression of JSON documents in " + appSrcDir);
       cb();
     });
+  }, function(err) {
+    console.log("Error", err);
   });
 
   return promise;
@@ -126,6 +130,8 @@ function compressAndCopyCSS(cb) {
             console.log("Completed moving and compressing all css files in :" + distDir);
             cb();
           });
+  }, function(err) {
+    console.log("Error", err);
   });
 
   return promise;
@@ -137,7 +143,7 @@ function compressAndCopyCSS(cb) {
 gulp.task(compressAndCopyCSS);
 
 function compressAndCopyFrontendJS(cb) {
-  var promise = Promise.resolve(del(distDir + "app/**/*.js"));
+  var promise = Promise.resolve(del(distDir + "**/*.js"));
   promise.then(function(){
     console.log("cleaned old js files in ", distDir + 'app/');
     // all app js and main server.js go in root of distro folder
@@ -148,6 +154,8 @@ function compressAndCopyFrontendJS(cb) {
       console.log("Finsihed compressing and moving all JS files in " + appSrcDir + " to :" + distDir);
       cb();
     });
+  }, function(err) {
+    console.log("Error", err);
   });
 
   return promise;
@@ -168,6 +176,8 @@ function copyStaticJavascript(cb) {
       console.log("Finished compressing and moving frontend static scripts in " + appSrcDir + "/app/assets/javascripts/ to " + distDir + "app/assets/javascripts/");
       cb();
     });
+  }, function(err) {
+    console.log("Error", err);
   });
 
   return promise;
@@ -199,6 +209,8 @@ function copyServerFile(cb) {
       console.log("copying server files");
       cb();
     });
+  }, function(err) {
+    console.log("Error", err);
   });
 
   return promise;
@@ -232,6 +244,8 @@ function copyNodeModules(cb) {
           console.log("Copied all node_modules js files to ", distDir + 'node_modules/');
           cb();
          });
+  }, function(err) {
+    console.log("Error", err);
   });
 
   return promise;
@@ -262,6 +276,8 @@ function doCopyToServer(cb) {
       console.log("Copied all files from the distribution at: " + distDir + " to the server directory at: " + httpRootDir);
       cb();
     });
+  }, function(err) {
+    console.log("Error", err);
   });
 
   return promise;
