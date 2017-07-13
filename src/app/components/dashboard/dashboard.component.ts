@@ -1,15 +1,25 @@
 import {
-  Component, ComponentFactory, ComponentFactoryResolver,
+  Component,
+  ComponentFactory,
+  ComponentFactoryResolver,
   OnInit,
   ViewChild,
-  TemplateRef } from '@angular/core';
+  TemplateRef
+} from '@angular/core';
 
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../../services/authentication.service';
 import { DashboardDataService } from '../../services/dashboard/dashboarddata.service'
 import { SearchMenuModel } from '../ui/search/search-menu.model'
 import { Tag } from '../../model/tag.model'
-import { CardContentModel, ChartContentModel } from '../ui/card/card-content.model';
+import {
+  CardContentModel,
+  ChartContentModel,
+  CardMetadataModel,
+  MetricEffect,
+  MetricInfo
+} from '../ui/card/card-content.model';
+
 import { ChartOptions } from '../../model/chart-options.model'
 import { CardModel } from '../ui/card/card.model';
 import { DashboardModel } from './dashboard.model';
@@ -17,7 +27,6 @@ import { CardContentBuilder } from '../ui/card/card-content.component';
 import { Customer, CustomerModel, CustomerDatapoint } from '../../model/customer.model';
 import { BarChartContentBuilder } from '../ui/chart/bar-chart.component';
 import { PieChartContentBuilder } from '../ui/chart/pie-chart.component';
-
 import { SearchMenuComponent} from '../ui/search/search-menu.component';
 import { Observable } from 'rxjs/Observable';
 
@@ -110,7 +119,19 @@ export class DashboardComponent implements OnInit {
     return tags;
   }
 
-  onTagSelectionChange(tags: Tag[]): void {
+  /**
+   * Handles the tag selection of a card Item
+   */
+  onCardTagSelected(tagId : number) : void {
+    // reset to this tag
+    console.log("Tag Id is " , tagId);
+    this.searchMenuComponent.onTagSelectionChange([tagId]);
+  }
+
+  /**
+   * Handles the tag selection change of the stationery tag bar.
+   */
+  onTagBarSelectionChange(tags: Tag[]): void {
 
   }
   /**
@@ -149,10 +170,9 @@ export class DashboardComponent implements OnInit {
    * Filter the datapoints based on the tags selection.
    */
   filterCustomerDatapoints(datapoints: CustomerDatapoint[]) {
-
     return datapoints.filter(dataPoint => {
       let isMatch = false;
-      let selectedTags : Tag[] = this.searchMenuComponent.model.selectedTags;
+      let selectedTags: Tag[] = this.searchMenuComponent.model.selectedTags;
 
       if (selectedTags.length > 0) {
         isMatch = false;
@@ -208,8 +228,8 @@ export class DashboardComponent implements OnInit {
 
     let cardModel: CardModel = {
       title: dataPoint.title,
-tags: this.getTagsFromCustomerDatapoint(dataPoint),
-  contentModel: this.buildCardContentModel(dataPoint)
+      tags: this.getTagsFromCustomerDatapoint(dataPoint),
+      contentModel: this.buildCardContentModel(dataPoint)
     }
 
     this.cardModelCache.set(dataPoint, cardModel);
@@ -217,6 +237,25 @@ tags: this.getTagsFromCustomerDatapoint(dataPoint),
     return cardModel;
   }
 
+  /**
+   * Builds the Card Content Metadata the will power the widgets outside the perview
+   * of the Chart Rendering. (I.e. Metric Effect)
+   */
+  buildCardMetadataModel(datapoint: CustomerDatapoint): CardMetadataModel {
+    let cardMetadataModel: CardMetadataModel = {
+      metricInfo: {
+        title: datapoint.content.metadata.title,
+        text: datapoint.content.metadata.text,
+      },
+      metricEffect: {
+        effect: datapoint.content.metadata.metricEffect.effect,
+        effectValue: datapoint.content.metadata.metricEffect.effectValue
+      }
+    };
+
+
+    return cardMetadataModel;
+  }
 
   /**
    * Builds the card content model which will also include its source view template.
@@ -233,6 +272,7 @@ tags: this.getTagsFromCustomerDatapoint(dataPoint),
     // of the content data so that we're not tied to something specific.
     // the card content builder mechanism can own that logic.
     let cardContentModel: ChartContentModel = {
+      cardContentMetadata: this.buildCardMetadataModel(datapoint),
       cardContentData: datapoint.content.data,
       chartType: datapoint.content.type,
       chartOptions: this.getChartOptionsFromCustomerDatapoint(datapoint)

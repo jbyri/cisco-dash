@@ -129,6 +129,8 @@ export class SearchMenuComponent extends LifecycleHooks {
   }
 
   onTagSelectionChange(tagIds: number[]) {
+    console.log("onTagSelectionChange");
+
     if (this.model.selectedTags.length > 0) {
       this.model.selectedTags.map(selectedTag => {
         this.filterTagBar.tryRemovingTag(selectedTag.name.toLowerCase(), false);

@@ -1,24 +1,23 @@
 <!-- TODO @wnamen  Style this puppy -->
 <div class="dash-card card-radius medium-padding background-white">
-  <div class= "display-flex flex-row-spread large-margin-bottom">
-    <i class="card-indicator fa fa-arrow-circle-o-up font-green" aria-hidden="true"></i>
+  <div class="display-flex flex-row-spread large-margin-bottom">
+    <!-- based on the 'effect' value (1, 0, -1) we show an effect indicator using the ngSwitch directive (Left Justified)-->
+    <div [ngSwitch]="cardModel.contentModel.cardContentMetadata.metricEffect.effect">
+      <i *ngSwitchCase="1" class="card-indicator fa fa-arrow-circle-o-up font-green" aria-hidden="true"></i>
+      <i *ngSwitchCase="0" class="card-indicator fa fa-circle-o font-orange" aria-hidden="true"></i>
+      <i *ngSwitchCase="-1" class="card-indicator fa fa-arrow-circle-o-down font-red" aria-hidden="true"></i>
+    </div>
+
+    <!-- Title (Centered) -->
     <p class="card-title">{{cardModel === undefined ? '' : cardModel.title}}</p>
+
+    <!-- tags (Right Justified)-->
     <div class="row card-tag-container">
-      <button *ngFor="let tag of cardModel.tags" type="button"  class="card-tag large-margin-right {{getTagClass(tag.id)}} font-white no-border">{{tag.label.substring(0,5).toUpperCase()}}</button>
+      <button *ngFor="let tag of cardModel.tags" data-id="{{tag.id}}" type="button" (click)="emitTagSelected(tag.id)" class="card-tag large-margin-right {{getTagClass(tag.id)}} font-white no-border">
+          {{tag.label.substring(0,5).toUpperCase()}}
+      </button>
     </div>
   </div>
 
-  <card-content #content
-      [contentBuilder]="cardContentBuilder"
-      [contentModel]="cardModel.contentModel"></card-content>
-
-  <div class="large-margin-top">
-    <button type="button"
-            class="no-background no-border"
-            ngbPopover="You see, I show up on hover!"
-            triggers="mouseenter:mouseleave"
-            popoverTitle="Pop title" container="body">
-      <i class="fa fa-info-circle" aria-hidden="true"></i>
-    </button>
-  </div>
+  <card-content #content [contentBuilder]="cardContentBuilder" [contentModel]="cardModel.contentModel"></card-content>
 </div>

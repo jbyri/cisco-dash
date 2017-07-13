@@ -32,7 +32,8 @@ export interface CustomerDatapoint {
 // on these fields and the data content.
 export interface CustomerDatapointContent {
   type: string,
-  data: any
+  data: any,
+  metadata: any
 }
 
 // customer data model

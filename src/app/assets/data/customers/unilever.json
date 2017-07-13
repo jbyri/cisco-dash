@@ -21,6 +21,16 @@
         "tagIds": [1],
         "content": {
           "type": "barChart",
+          "metadata": {
+        		"metricInfo": {
+        			"title":"The Metric Title",
+        			"text":"This metric is..."
+        		},
+        		"metricEffect": {
+        			"effect":0,
+        			"effectValue":"50.0%"
+        		}
+        	},
           "data": {
             "chartOptionsId": "barChart1",
             "labelKeys": ["QTRID"],
@@ -67,6 +77,16 @@
         "tagIds": [5],
         "content": {
           "type": "barChart",
+          "metadata": {
+        		"metricInfo": {
+        			"title":"The Metric Title",
+        			"text":"This metric is..."
+        		},
+        		"metricEffect": {
+        			"effect":1,
+        			"effectValue":"50.0%"
+        		}
+        	},
           "data": {
             "chartOptionsId": "barChart1",
             "labelKeys": ["QTRID"],
@@ -98,6 +118,16 @@
         "tagIds": [5],
         "content": {
           "type": "barChart",
+          "metadata": {
+        		"metricInfo": {
+        			"title":"The Metric Title",
+        			"text":"This metric is..."
+        		},
+        		"metricEffect": {
+        			"effect":-1,
+        			"effectValue":"50.0%"
+        		}
+        	},
           "data": {
             "chartOptionsId": "barChart1",
             "labelKeys": ["QTRID"],
@@ -129,6 +159,16 @@
         "tagIds": [3],
         "content": {
           "type": "barChart",
+          "metadata": {
+        		"metricInfo": {
+        			"title":"The Metric Title",
+        			"text":"This metric is..."
+        		},
+        		"metricEffect": {
+        			"effect":0,
+        			"effectValue":"50.0%"
+        		}
+        	},
           "data": {
             "chartOptionsId": "barChart4",
             "labelKeys": ["QTRID"],
@@ -161,6 +201,16 @@
         "tagIds": [3],
         "content": {
           "type": "barChart",
+          "metadata": {
+        		"metricInfo": {
+        			"title":"The Metric Title",
+        			"text":"This metric is..."
+        		},
+        		"metricEffect": {
+        			"effect":-1,
+        			"effectValue":"50.0%"
+        		}
+        	},
           "data": {
             "chartOptionsId": "barChart1",
             "labelKeys": ["LABEL"],
@@ -271,6 +321,16 @@
         "tagIds": [3],
         "content": {
           "type": "barChart",
+          "metadata": {
+        		"metricInfo": {
+        			"title":"The Metric Title",
+        			"text":"This metric is..."
+        		},
+        		"metricEffect": {
+        			"effect":1,
+        			"effectValue":"50.0%"
+        		}
+        	},
           "data": {
             "chartOptionsId": "barChart4",
             "labelKeys": ["LABEL"],
@@ -304,6 +364,16 @@
         "tagIds": [3],
         "content": {
           "type": "barChart",
+          "metadata": {
+        		"metricInfo": {
+        			"title":"The Metric Title",
+        			"text":"This metric is..."
+        		},
+        		"metricEffect": {
+        			"effect":0,
+        			"effectValue":"50.0%"
+        		}
+        	},
           "data": {
             "chartOptionsId": "barChart4",
             "labelKeys": ["LABEL"],
@@ -336,6 +406,16 @@
         "tagIds": [3],
         "content": {
           "type": "barChart",
+          "metadata": {
+        		"metricInfo": {
+        			"title":"The Metric Title",
+        			"text":"This metric is..."
+        		},
+        		"metricEffect": {
+        			"effect":-1,
+        			"effectValue":"50.0%"
+        		}
+        	},
           "data": {
             "chartOptionsId": "barChart5",
             "labelKeys": ["LABEL"],
@@ -446,6 +526,16 @@
         "tagIds": [3],
         "content": {
           "type": "barChart",
+          "metadata": {
+        		"metricInfo": {
+        			"title":"The Metric Title",
+        			"text":"This metric is..."
+        		},
+        		"metricEffect": {
+        			"effect":0,
+        			"effectValue":"50.0%"
+        		}
+        	},
           "data": {
             "chartOptionsId": "barChart5",
             "labelKeys": ["LABEL"],
@@ -478,6 +568,16 @@
         "tagIds": [3],
         "content": {
           "type": "barChart",
+          "metadata": {
+        		"metricInfo": {
+        			"title":"The Metric Title",
+        			"text":"This metric is..."
+        		},
+        		"metricEffect": {
+        			"effect":1,
+        			"effectValue":"50.0%"
+        		}
+        	},
           "data": {
             "chartOptionsId": "barChart4",
             "labelKeys": ["LABEL"],
@@ -510,6 +610,16 @@
         "tagIds": [3],
         "content": {
           "type": "barChart",
+          "metadata": {
+        		"metricInfo": {
+        			"title":"The Metric Title",
+        			"text":"This metric is..."
+        		},
+        		"metricEffect": {
+        			"effect":1,
+        			"effectValue":"50.0%"
+        		}
+        	},
           "data": {
             "chartOptionsId": "stackedBarChart1",
             "labelKeys": ["LABEL"],
@@ -561,6 +671,16 @@
         "tagIds": [3],
         "content": {
           "type": "barChart",
+          "metadata": {
+        		"metricInfo": {
+        			"title":"The Metric Title",
+        			"text":"This metric is..."
+        		},
+        		"metricEffect": {
+        			"effect":-1,
+        			"effectValue":"50.0%"
+        		}
+        	},
           "data": {
 
             "chartOptionsId": "barChart5",
@@ -594,6 +714,16 @@
         "tagIds": [3],
         "content": {
           "type": "barChart",
+          "metadata": {
+        		"metricInfo": {
+        			"title":"The Metric Title",
+        			"text":"This metric is..."
+        		},
+        		"metricEffect": {
+        			"effect":0,
+        			"effectValue":"50.0%"
+        		}
+        	},
           "data": {
 
             "chartOptionsId": "barChart5",
@@ -627,6 +757,16 @@
         "tagIds": [3],
         "content": {
           "type": "barChart",
+          "metadata": {
+        		"metricInfo": {
+        			"title":"The Metric Title",
+        			"text":"This metric is..."
+        		},
+        		"metricEffect": {
+        			"effect":1,
+        			"effectValue":"50.0%"
+        		}
+        	},
           "data": {
 
             "chartOptionsId": "barChart5",
@@ -661,6 +801,16 @@
         "tagIds": [4],
         "content": {
           "type": "barChart",
+          "metadata": {
+        		"metricInfo": {
+        			"title":"The Metric Title",
+        			"text":"This metric is..."
+        		},
+        		"metricEffect": {
+        			"effect":-1,
+        			"effectValue":"50.0%"
+        		}
+        	},
           "data": {
 
             "chartOptionsId": "barChart6",
@@ -715,6 +865,16 @@
         "tagIds": [4],
         "content": {
           "type": "barChart",
+          "metadata": {
+        		"metricInfo": {
+        			"title":"The Metric Title",
+        			"text":"This metric is..."
+        		},
+        		"metricEffect": {
+        			"effect":0,
+        			"effectValue":"50.0%"
+        		}
+        	},
           "data": {
 
             "chartOptionsId": "barChart7",
@@ -748,6 +908,16 @@
         "tagIds": [4],
         "content": {
           "type": "barChart",
+          "metadata": {
+        		"metricInfo": {
+        			"title":"The Metric Title",
+        			"text":"This metric is..."
+        		},
+        		"metricEffect": {
+        			"effect":0,
+        			"effectValue":"50.0%"
+        		}
+        	},
           "data": {
 
             "chartOptionsId": "barChart7",
@@ -781,6 +951,16 @@
         "tagIds": [4],
         "content": {
           "type": "barChart",
+          "metadata": {
+        		"metricInfo": {
+        			"title":"The Metric Title",
+        			"text":"This metric is..."
+        		},
+        		"metricEffect": {
+        			"effect":0,
+        			"effectValue":"50.0%"
+        		}
+        	},
           "data": {
 
             "chartOptionsId": "barChart7",
@@ -814,6 +994,16 @@
         "tagIds": [4],
         "content": {
           "type": "pieChart",
+          "metadata": {
+        		"metricInfo": {
+        			"title":"The Metric Title",
+        			"text":"This metric is..."
+        		},
+        		"metricEffect": {
+        			"effect":0,
+        			"effectValue":"50.0%"
+        		}
+        	},
           "data": {
 
             "chartOptionsId": "pieChart1",

@@ -26,7 +26,7 @@
     <!-- Dashboard SearchBar -->
     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 display-none">
       <!-- TODO @barcher, @wnamen eventually will display the tag items based on search selection -->
-      <tagbar #dashboardTagBar></tagbar>
+      <tagbar #dashboardTagBar (tagsChanged)='onTagBarSelectionChange($event)'></tagbar>
     </div>
 
     <!--  -->
@@ -49,10 +49,10 @@
           </div>
 
           <!-- Draw the cards -->
-          <!-- TODO @wnamen - fix card layout -->
           <div #cards class="card-columns large-margin-top">
             <card data-packed class="card no-background no-border"
             *ngFor="let dataPoint of filterCustomerDatapoints(selectedCustomerModel.data.datapoints)"
+            (tagSelected)="onCardTagSelected($event)"
             [cardContentBuilder]="getContentBuilder(dataPoint.content.type)"
             [cardModel] ='buildCardModel(dataPoint)'></card>
           </div>

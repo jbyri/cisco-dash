@@ -1,4 +1,14 @@
 <!-- TODO @wnamen  Style this puppy -->
 <div class="card-content">
   <div #viewContainerRef></div>
+
+  <div class="large-margin-top">
+    <button type="button"
+            class="no-background no-border"
+            ngbPopover="You see, I show up on hover!"
+            triggers="mouseenter:mouseleave"
+            popoverTitle="Pop title" container="body">
+      <i class="fa fa-info-circle" aria-hidden="true"></i>
+    </button>
+  </div>
 </div>
