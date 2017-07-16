@@ -16,7 +16,6 @@ html {
     background-size: cover;
     min-height: 100%;
     font-family: 'Open Sans', sans-serif;
-
 }
 html body {
     min-height: 100%
@@ -25,4 +24,16 @@ html body {
 
 .no-interaction {
   pointer-events: none;
+}
+
+.no-bg {
+  background-color:rgba(0, 0, 0, 0);
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.no-padding {
+  padding: 0;
 }

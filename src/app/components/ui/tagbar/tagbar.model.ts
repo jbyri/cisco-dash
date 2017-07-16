@@ -8,5 +8,6 @@ export interface TagBarItemModel {
 export interface TagBarModel {
   nextTagInput: string,
   sourceData: TagBarItemModel[],
+  placholderText : string,
   dataProvider: TagBarItemModel[]
 }

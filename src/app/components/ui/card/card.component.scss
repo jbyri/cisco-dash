@@ -1,11 +1,12 @@
 // TODO @wnamen -- style this.
 .dash-card {
   z-index: 98;
-  width: 100%;
+  max-width: 500px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   text-transform: uppercase;
   font-size: small;
   font-weight: 600;
+
 }
 
 .card-indicator {

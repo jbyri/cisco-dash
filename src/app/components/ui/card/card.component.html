@@ -1,6 +1,6 @@
 <!-- TODO @wnamen  Style this puppy -->
-<div class="dash-card card-radius medium-padding background-white">
-  <div class="display-flex flex-row-spread large-margin-bottom">
+<div class="card-block dash-card card-radius medium-padding background-white">
+  <div class="card-block display-flex flex-row-spread large-margin-bottom">
     <!-- based on the 'effect' value (1, 0, -1) we show an effect indicator using the ngSwitch directive (Left Justified)-->
     <div [ngSwitch]="cardModel.contentModel.cardContentMetadata.metricEffect.effect">
       <i *ngSwitchCase="1" class="card-indicator fa fa-arrow-circle-o-up font-green" aria-hidden="true"></i>
@@ -20,4 +20,14 @@
   </div>
 
   <card-content #content [contentBuilder]="cardContentBuilder" [contentModel]="cardModel.contentModel"></card-content>
+
+  <div class="large-margin-top">
+    <button type="button"
+            class="no-background no-border"
+            ngbPopover="You see, I show up on hover!"
+            triggers="mouseenter:mouseleave"
+            popoverTitle="Pop title" container="body">
+      <i class="fa fa-info-circle" aria-hidden="true"></i>
+    </button>
+  </div>
 </div>

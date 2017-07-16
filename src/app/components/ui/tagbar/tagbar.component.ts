@@ -15,6 +15,7 @@ export class TagBarComponent implements OnInit {
   model: TagBarModel = {
     nextTagInput: '',
     sourceData: [],
+    placholderText: "",
     dataProvider: []
   };
 
