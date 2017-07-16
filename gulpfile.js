@@ -66,21 +66,6 @@ function sass(cb) {
  */
 gulp.task(sass);
 
-/**
- * Cleans the node_modules directory
- */
-function cleanNodeModules(cb) {
-  var promise = Promise.resolve(del(distDir + 'node_modules/**/*.js'));
-  promise.then(function() {
-    console.log("Cleaned node_modules from " + distDir);
-    cb();
-  }, function(err) {
-    console.log("Error", err);
-  });
-
-  return promise;
-}
-gulp.task(cleanNodeModules);
 
 function cleanOurCode() {
   let sources = [
@@ -230,27 +215,6 @@ function copyBackend(cb) {
 gulp.task(copyBackend);
 gulp.task('copyBackendJs', gulp.series('copyServerFile', 'copyBackend'));
 
-/**
-* Copy node modules to distribution dir
-*/
-function copyNodeModules(cb) {
-  var promise = Promise.resolve(cleanNodeModules(cb));
-
-  promise.then(function(){
-    console.log("Finished removing old node modules, js from " + distDir + 'node_modules/');
-    gulp.src('./node_modules/**/*.js')
-         .pipe(gulp.dest(distDir + 'node_modules/'))
-         .on('end', function() {
-          console.log("Copied all node_modules js files to ", distDir + 'node_modules/');
-          cb();
-         });
-  }, function(err) {
-    console.log("Error", err);
-  });
-
-  return promise;
-}
-gulp.task(copyNodeModules);
 
 /**
  * clean all files currently in http root
@@ -273,7 +237,7 @@ function doCopyToServer(cb) {
     ])
     .pipe(gulp.dest(httpRootDir))
     .on('end', function() {
-      console.log("Copied all files from the distribution at: " + distDir + " to the server directory at: " + httpRootDir);
+      console.log("doCopyToServer: Copied all files from the distribution at: " + distDir + " to the server directory at: " + httpRootDir);
       cb();
     });
   }, function(err) {
@@ -328,7 +292,7 @@ gulp.task('copyAssets', gulp.series('compressAndCopyCSS', 'compressAndCopyJavasc
 gulp.task('devWatch', gulp.series('build', 'watch'));
 
 // clean, build and redistribute everything (run copyToServer after this to deploy)
-gulp.task('fullDistro', gulp.series('build',gulp.series('copyAssets', 'copyNodeModules')));
+gulp.task('fullDistro', gulp.series('build','copyAssets'));
 
 gulp.task(doCopyToServer);
 
@@ -336,7 +300,7 @@ function copyStartScriptsToServer(cb) {
   var promise = Promise.resolve(del(httpRootDir + '*.sh')).then(function(){
     console.log("Finished clearing old start scripts from " + httpRootDir);
     gulp.src('*.sh').pipe(gulp.dest(httpRootDir)).on('end', function(){
-      console.log("Finsihed copying start scripts to " + httpRootDir);
+      console.log("copyStartScriptsToServer: Finsihed copying start scripts to " + httpRootDir);
       cb();
     });
   });
