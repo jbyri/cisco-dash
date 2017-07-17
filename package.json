@@ -21,7 +21,7 @@
     "stop:nix": "stop-mongod.sh & stop-server.sh",
     "dev:nix": "concurrently \"npm run build:watch\" \"npm run serve\"",
     "deploy:nix": "./deploy.sh",
-
+    "clean:nix":"./clean.sh",
     "pree2e": "npm run build:e2e",
     "e2e": "concurrently \"npm run serve:e2e\" \"npm run protractor\" --kill-others --success first",
 
