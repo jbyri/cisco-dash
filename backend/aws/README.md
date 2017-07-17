@@ -88,24 +88,28 @@ $ sudo service apache2 start
 
 1. Connect to your AWS EC2 instance (see instructions above)
 2. Update the prod repo
-   ```
-   cd ~/git/cisco-dash && git pull origin master
-   ```
+
+    ```
+    cd ~/git/cisco-dash && git pull origin master
+    ```
 3. Stop the Passport service and MongoD
-   ```
-   ./stop-server.sh
-   ./stop-mongod.sh
-   ```
+    ```
+    npm run stop:nix
+    ```
+
+    or
+
+    ```
+    ./stop-server.sh
+    ./stop-mongod.sh
+    ```
 
 3. Build, distribute, and copy to prod
    ```
-   gulp deployRelease
+   npm run deploy:nix
    ```
-4. Start MongoDB
+4. Start the Passport Service and Mongo DB
    ```
-   ./start-mongod.sh
-   ```
-5. Start Passport
-   ```
-   cd /var/www/html && ./start-server.sh &
+   cd /var/www/html
+   npm run start:nix
    ```

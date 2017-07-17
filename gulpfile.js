@@ -191,30 +191,6 @@ gulp.task(copyBackend);
 gulp.task('copyBackendJs', gulp.series('copyServerFile', 'copyBackend'));
 
 
-/**
- * clean all files currently in http root
- * so we can 'overwrite' them with new ones.
- */
-function cleanServer() {
-  return Promise.all([
-    del([httpRootDir + '**/*'], { force: true })
-  ]);
-}
-
-function doCopyToServer(cb) {
-  return Promise.resolve(cleanServer(cb)).then(function() {
-    console.log("Finished cleaning old server files in: " + httpRootDir);
-
-    gulp.src([
-      distDir + '**/*',
-    ])
-    .pipe(gulp.dest(httpRootDir))
-    .on('end', function() {
-      console.log("doCopyToServer: Copied all files from the distribution at: " + distDir + " to the server directory at: " + httpRootDir);
-      cb();
-    });
-  });
-}
 
 function watchCss(){
   return gulp.watch([
@@ -234,7 +210,6 @@ function watchJSON() {
 gulp.task(watchCss);
 gulp.task(watchTypeScript);
 gulp.task(watchJSON);
-gulp.task(cleanServer);
 
 /**
  * Compress and uglify Javascripts and move to dist folder
@@ -257,15 +232,12 @@ gulp.task('copyAssets', gulp.series('compressAndCopyCSS', 'compressAndCopyJavasc
 gulp.task('devWatch', gulp.series('build', 'watch'));
 
 // clean, build and redistribute everything (run copyToServer after this to deploy)
-gulp.task('fullDistro', gulp.series('build','copyAssets'));
 
-gulp.task(doCopyToServer);
-
-function copyStartScriptsToServer(cb) {
-  var promise = Promise.resolve(del(httpRootDir + '*.sh')).then(function(){
+function copyScripts(cb) {
+  var promise = Promise.resolve(del(distDir + '*.{json,bat,sh}')).then(function(){
     console.log("Finished clearing old start scripts from " + httpRootDir);
-    gulp.src('*.sh').pipe(gulp.dest(httpRootDir)).on('end', function(){
-      console.log("copyStartScriptsToServer: Finsihed copying start scripts to " + httpRootDir);
+    gulp.src('*.{json,bat,sh}').pipe(gulp.dest(distDir)).on('end', function(){
+      console.log("copyScripts: Finsihed copying start scripts to " + httpRootDir);
       cb();
     });
   });
@@ -273,14 +245,7 @@ function copyStartScriptsToServer(cb) {
   return promise;
 }
 
-gulp.task(copyStartScriptsToServer);
-
-// copy all files from the distribution directory
-// to www root. Run this only on the Amazon Server.
-gulp.task('copyToServer', gulp.series('doCopyToServer', 'copyStartScriptsToServer'));
-
-// cleans only OUR code and assets (not node_modules)
-gulp.task('quickDistro', gulp.series('build', 'copyAssets'));
+gulp.task(copyScripts);
 
 // This cleans and copies EVERYTHING to Http Root
-gulp.task('deployRelease', gulp.series('fullDistro', 'copyToServer'));
+gulp.task('deployRelease', gulp.series('build','copyAssets', 'copyScripts'));

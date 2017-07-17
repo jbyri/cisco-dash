@@ -6,18 +6,25 @@
     "build": "gulp build",
     "build:watch": "gulp devWatch",
     "build:e2e": "gulp e2e",
+
     "serve": "lite-server -c=bs-config.json",
     "serve:e2e": "lite-server -c=bs-config.e2e.json",
+
     "prestart": "npm run build",
+
     "start:win": "start-mongod.bat && start-server.bat && npm run dev:win",
-    "start:nix": "start-mongod.sh & start-server.sh & npm run dev:nix",
+    "stop:win": "stop-mongod.bat && stop-server.bat",
     "dev:win": "concurrently \"npm run build:watch\" \"npm run serve\"",
+    "deploy:win": "deploy.bat",
+
+    "start:nix": "start-mongod.sh & start-server.sh & npm run dev:nix",
+    "stop:nix": "stop-mongod.sh & stop-server.sh",
     "dev:nix": "concurrently \"npm run build:watch\" \"npm run serve\"",
-    "dist:full": "gulp fullDistro",
-    "dist:quick": "gulp quickDistro",
-    "deploy:release": "gulp deployRelease",
+    "deploy:nix": "./deploy.sh",
+
     "pree2e": "npm run build:e2e",
     "e2e": "concurrently \"npm run serve:e2e\" \"npm run protractor\" --kill-others --success first",
+
     "preprotractor": "webdriver-manager update",
     "protractor": "protractor protractor.config.js",
     "pretest": "npm run build",
@@ -27,7 +34,7 @@
     "lint": "tslint ./src/**/*.ts -t verbose --fix"
   },
   "keywords": [],
-  "author": "",
+  "author": "Bow Archer [Decoded4620] and William Namen",
   "license": "MIT",
   "dependencies": {
     "@angular/common": "~4.0.0",
