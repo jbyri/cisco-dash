@@ -64,27 +64,24 @@
 // 					   color-stop(.5, transparent), to(transparent));
 // }
 
-::-webkit-scrollbar {
+::-webkit-scrollbar, ::-moz-scrollbar {
   background: transparent;
   width: 0;
 }
 
 #card-container-scroll {
   max-width: 100vw;
-  max-height: 88vh;
+  max-height: 80vh;
   overflow-y: auto;
   overflow-x: auto;
-  padding: 0 5em;
-}
-#card-container {
-
+  padding: 0 6em;
 }
 
 .grid-item {
   max-width: 250px;
 }
 #top-dash {
-  height: 40vh;
+  height: 50vh;
 }
 
 .menu-active {
@@ -93,9 +90,16 @@
   background-color: white;
 }
 
-#side-nav-dropdown img,
-#top-dash img {
+#side-nav-dropdown img {
   padding: 1em 1em 1em 0;
+}
+
+#dash-img img {
+  padding: 1em 2em 1em 0;
+}
+
+#dash-img {
+  margin-right: 2em;
 }
 
 #toggle {
@@ -133,24 +137,19 @@
   border: none;
 }
 
-.scroll-box-v {
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-
-.cards {
-  display: -webkit-flex;
-  display: flex;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-top: 15px;
-  padding: 1.5%;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
+// .cards {
+//   display: -webkit-flex;
+//   display: flex;
+//   -webkit-justify-content: center;
+//   justify-content: center;
+//   -webkit-flex-wrap: wrap;
+//   flex-wrap: wrap;
+//   margin-top: 15px;
+//   padding: 1%;
+//   -webkit-box-sizing: border-box;
+//   -moz-box-sizing: border-box;
+//   box-sizing: border-box;
+// }
 
 .card-container {
   width:100%;
@@ -162,30 +161,43 @@
 @media (min-width: 1600px) and (max-width: 4096px) {
   .card-columns {
     column-count: 5;
+    -webkit-column-count: 5;
+    -moz-column-count: 5;
   }
 }
 @media (min-width: 1600px) and (max-width: 2400px) {
   .card-columns {
     column-count: 4;
+    -webkit-column-count: 4;
+    -moz-column-count: 4;
   }
 }
 @media (min-width: 1280px) and (max-width: 1599px) {
   .card-columns {
     column-count: 3;
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
   }
 }
 @media (min-width: 577px) and (max-width: 1000px) {
   .card-columns {
     column-count: 2;
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
   }
 }
 @media (min-width: 100px) and (max-width: 576px) {
   .card-columns {
     column-count: 1;
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
   }
 }
 @media only screen and (max-width : 767px) {
   #nav-dropdown-menu {
+    padding: 0;
+  }
+  #card-container-scroll {
     padding: 0;
   }
 }
