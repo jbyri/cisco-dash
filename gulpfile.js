@@ -9,13 +9,12 @@ const uglifycss = require('gulp-uglifycss');
 const jsonminify = require('gulp-jsonminify');
 const pump = require('pump');
 const del = require("del");
-
+const notify = require('gulp-notify');
 // locations
 const backendDir = 'backend/';
 const appSrcDir = './src/';
 const serverSrcDir = './' + backendDir;
 const distDir = './dist/';
-
 const httpRootDir = '/var/www/html/';
 
 // TypeScript compilation projects.
@@ -53,19 +52,19 @@ function doE2eTsCompile() {
 }
 gulp.task(doE2eTsCompile);
 
-
 function sass(cb) {
   return gulp.src(appSrcDir + '**/*.scss')
     .pipe(gulpSass.sync().on('error', gulpSass.logError))
-    .pipe(gulp.dest('src')).on('end', function() {
+    .pipe(gulp.dest(appSrcDir))
+    .on('end', function() {
       cb();
     });
 }
+
 /**
  * Compile SCSS Files to css
  */
 gulp.task(sass);
-
 
 function cleanOurCode() {
   let sources = [
@@ -76,13 +75,14 @@ function cleanOurCode() {
   ];
   return Promise.resolve(del(sources));
 }
+
 /**
  * Cleans only Our code (Skips node_modules)
  */
 gulp.task(cleanOurCode);
 
 function compressAndCopyJSON(cb) {
-  var promise = Promise.resolve(del(distDir + 'app/**/*.json'));
+  return Promise.resolve(del(distDir + 'app/**/*.json'));
   promise.then(function() {
     return gulp.src(appSrcDir + '**/*.json')
     .pipe(jsonminify())
@@ -94,8 +94,6 @@ function compressAndCopyJSON(cb) {
   }, function(err) {
     console.log("Error", err);
   });
-
-  return promise;
 }
 /**
  * Compress and minify JSON and move to dist folder
@@ -103,8 +101,7 @@ function compressAndCopyJSON(cb) {
 gulp.task(compressAndCopyJSON);
 
 function compressAndCopyCSS(cb) {
-  var promise = Promise.resolve(del(distDir + "app/**/*.css"));
-  promise.then(function(){
+   return Promise.resolve(del(distDir + "app/**/*.css")).then(function(){
       gulp.src(appSrcDir + '**/*.css')
           .pipe(uglifycss({
             "maxLineLen": 80,
@@ -115,11 +112,7 @@ function compressAndCopyCSS(cb) {
             console.log("Completed moving and compressing all css files in :" + distDir);
             cb();
           });
-  }, function(err) {
-    console.log("Error", err);
   });
-
-  return promise;
 }
 
 /**
@@ -128,8 +121,7 @@ function compressAndCopyCSS(cb) {
 gulp.task(compressAndCopyCSS);
 
 function compressAndCopyFrontendJS(cb) {
-  var promise = Promise.resolve(del(distDir + "**/*.js"));
-  promise.then(function(){
+  return Promise.resolve(del(distDir + "**/*.js")).then(function(){
     console.log("cleaned old js files in ", distDir + 'app/');
     // all app js and main server.js go in root of distro folder
     gulp.src([appSrcDir + '**/*.js'])
@@ -139,33 +131,25 @@ function compressAndCopyFrontendJS(cb) {
       console.log("Finsihed compressing and moving all JS files in " + appSrcDir + " to :" + distDir);
       cb();
     });
-  }, function(err) {
-    console.log("Error", err);
   });
-
-  return promise;
-
 }
 
 gulp.task(compressAndCopyFrontendJS);
 
 function copyStaticJavascript(cb) {
-  var promise = Promise.resolve(del(distDir + '/app/assets/javascripts'));
-  promise.then(function(){
+  var subDir = 'app/assets/javascripts/';
+
+  return  Promise.resolve(del(distDir + subDir)).then(function(){
     console.log("Finished cleaning old static javascripts in " + distDir);
 
-    gulp.src([appSrcDir + 'app/assets/javascripts/**/*.js'])
+    gulp.src([appSrcDir + subDir + '**/*.js'])
     .pipe(uglify())
-    .pipe(gulp.dest(distDir + '/app/assets/javascripts/'))
+    .pipe(gulp.dest(distDir + subDir))
     .on('end', function() {
-      console.log("Finished compressing and moving frontend static scripts in " + appSrcDir + "/app/assets/javascripts/ to " + distDir + "app/assets/javascripts/");
+      console.log("Finished compressing and moving frontend static scripts in " + appSrcDir + subDir + " to " + distDir + subDir);
       cb();
     });
-  }, function(err) {
-    console.log("Error", err);
   });
-
-  return promise;
 }
 gulp.task(copyStaticJavascript);
 
@@ -184,32 +168,23 @@ function doCopyStaticAssets(cb) {
 
 gulp.task(doCopyStaticAssets);
 
-
-
 function copyServerFile(cb) {
-  var promise = Promise.resolve(del(distDir + 'server.js'));
-  promise.then(function() {
+  return Promise.resolve(del(distDir + 'server.js')).then(function() {
     gulp.src('server.js')
-    .pipe(gulp.dest(distDir)).on('end', function() {
+    .pipe(gulp.dest(distDir))
+    .on('end', function() {
       console.log("copying server files");
       cb();
     });
-  }, function(err) {
-    console.log("Error", err);
   });
-
-  return promise;
 }
 gulp.task(copyServerFile);
 
-
 function copyBackend(cb) {
   // backend server code is segregated into the backend dir.
-  result = gulp.src(serverSrcDir + '**/*.js')
+  return gulp.src(serverSrcDir + '**/*.js')
                .pipe(gulp.dest(distDir + backendDir))
                .on('end', function() { cb(); });
-
-  return result;
 }
 
 gulp.task(copyBackend);
@@ -227,9 +202,7 @@ function cleanServer() {
 }
 
 function doCopyToServer(cb) {
-  var promise = Promise.resolve(cleanServer(cb));
-
-  promise.then(function() {
+  return Promise.resolve(cleanServer(cb)).then(function() {
     console.log("Finished cleaning old server files in: " + httpRootDir);
 
     gulp.src([
@@ -240,11 +213,7 @@ function doCopyToServer(cb) {
       console.log("doCopyToServer: Copied all files from the distribution at: " + distDir + " to the server directory at: " + httpRootDir);
       cb();
     });
-  }, function(err) {
-    console.log("Error", err);
   });
-
-  return promise;
 }
 
 function watchCss(){
@@ -271,13 +240,9 @@ gulp.task(cleanServer);
  * Compress and uglify Javascripts and move to dist folder
  */
 gulp.task('compressAndCopyJavascript', gulp.series('compressAndCopyFrontendJS', 'copyBackendJs'));
-
-
-
-gulp.task('build', gulp.parallel('tsCompile', 'sass'));
-gulp.task('e2eTsCompile', gulp.parallel('sass', 'tsCompile'));
+gulp.task('build', gulp.series('tsCompile', 'sass'));
+gulp.task('e2eTsCompile', gulp.series('sass', 'tsCompile'));
 gulp.task('watch', gulp.parallel('watchCss', 'watchTypeScript', 'watchJSON'));
-
 gulp.task('copyStaticAssets', gulp.series('doCopyStaticAssets', 'copyStaticJavascript'));
 
 /**
@@ -304,6 +269,8 @@ function copyStartScriptsToServer(cb) {
       cb();
     });
   });
+
+  return promise;
 }
 
 gulp.task(copyStartScriptsToServer);
