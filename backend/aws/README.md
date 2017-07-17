@@ -92,20 +92,21 @@ $ sudo service apache2 start
     ```
     cd ~/git/cisco-dash && git pull origin master
     ```
-3. Stop the Passport service and MongoD
+3. First Run:
     ```
-    npm run stop:nix
+    npm run deploy:nix
     ```
-
-    or
-
+  
+4. Subsequent Runs:
+    Stop the Passport service and MongoD and re-deploy assets, and restart services.
     ```
-    ./stop-server.sh
-    ./stop-mongod.sh
+    npm run clean:nix
+    npm run deploy:nix
     ```
-
-3. Build, distribute, and copy to prod
+   
+5. Build, distribute, and copy to prod
    ```
+   npm run clean:nix
    npm run deploy:nix
    ```
 4. Start the Passport Service and Mongo DB
