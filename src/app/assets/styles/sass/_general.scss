@@ -10,6 +10,10 @@
   display: block !important;
 }
 
+.display-inline-block {
+  display: inline-block !important;
+}
+
 .display-flex {
   display: flex !important;
 }
@@ -17,6 +21,7 @@
 .display-inline-flex {
   display: inline-flex !important;
 }
+
 
 .flex-row-center{
   flex-direction: row;

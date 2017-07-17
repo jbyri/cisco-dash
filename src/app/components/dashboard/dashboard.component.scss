@@ -15,7 +15,7 @@
 
 #dash-body {
   width: 100vw;
-  height:100vh;
+  height: 100vh;
   position:relative;
   transition: margin 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
 }
@@ -26,43 +26,6 @@
   height:100%;
 }
 
-#dash-content {
-  position: absolute;
-  width:100%;
-  height:100%;
-}
-
-// .scrollbar
-// {
-// 	margin-left: 30px;
-// 	float: left;
-// 	height: 300px;
-// 	width: 65px;
-// 	background: #f4f1ea;
-// 	overflow-y: scroll;
-// 	margin-bottom: 25px;
-// }
-
-// .sbstyle-5::-webkit-scrollbar-track
-// {
-// 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-// 	background-color: #f4f1ea;
-// }
-//
-// .sbstyle-5::-webkit-scrollbar
-// {
-// 	width: 10px;
-// 	background-color: #f4f1ea;
-// }
-//
-// .sbstyle-5::-webkit-scrollbar-thumb
-// {
-// 	background-color: #0ae;
-//
-// 	background-image: -webkit-gradient(linear, 0 0, 0 100%,
-// 	                   color-stop(.5, rgba(255, 255, 255, .2)),
-// 					   color-stop(.5, transparent), to(transparent));
-// }
 
 ::-webkit-scrollbar{
   background: transparent;
@@ -77,11 +40,26 @@
   padding: 0 6em;
 }
 
+.cards {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: inline-block;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
 .grid-item {
   max-width: 250px;
 }
 #top-dash {
   height: 50vh;
+  z-index: 50;
 }
 
 .menu-active {
@@ -137,26 +115,6 @@
   border: none;
 }
 
-// .cards {
-//   display: -webkit-flex;
-//   display: flex;
-//   -webkit-justify-content: center;
-//   justify-content: center;
-//   -webkit-flex-wrap: wrap;
-//   flex-wrap: wrap;
-//   margin-top: 15px;
-//   padding: 1%;
-//   -webkit-box-sizing: border-box;
-//   -moz-box-sizing: border-box;
-//   box-sizing: border-box;
-// }
-
-.card-container {
-  width:100%;
-  height:100%;
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
 
 @media (min-width: 1600px) and (max-width: 4096px) {
   .card-columns {

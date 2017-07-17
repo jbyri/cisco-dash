@@ -1,6 +1,6 @@
 <!-- TODO @wnamen  Style this puppy -->
-<div class="card-block dash-card card-radius medium-padding background-white">
-  <div class="card-block display-flex flex-row-spread large-margin-bottom">
+<div class="card-block dash-card card-radius background-white">
+  <div class="card-block display-flex flex-row-spread large-margin-bottom no-padding-top">
     <!-- based on the 'effect' value (1, 0, -1) we show an effect indicator using the ngSwitch directive (Left Justified)-->
     <div [ngSwitch]="cardModel.contentModel.cardContentMetadata.metricEffect.effect">
       <i *ngSwitchCase="1" class="card-indicator fa fa-arrow-circle-o-up font-green" aria-hidden="true"></i>
