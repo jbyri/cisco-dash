@@ -22,13 +22,17 @@
   <card-content #content [contentBuilder]="cardContentBuilder" [contentModel]="cardModel.contentModel"></card-content>
 
  
-  <div class="large-margin-top">
+  <div class="display-flex flex-spread large-margin-top">
     <button type="button"
-            class="no-background no-border"
+            class="card-popover font-light-gray no-background no-border"
             ngbPopover="{{cardModel.contentModel.cardContentMetadata.metricInfo.text}}"
             triggers="mouseenter:mouseleave"
             popoverTitle="{{cardModel.contentModel.cardContentMetadata.metricInfo.title}}" container="body">
       <i class="fa fa-info-circle" aria-hidden="true"></i>
+    </button>
+    <button type="button"
+            class="card-download font-light-gray no-background no-border">
+      <i class="fa fa-download" aria-hidden="true"></i>
     </button>
   </div>
 </div>

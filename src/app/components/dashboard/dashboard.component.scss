@@ -59,9 +59,22 @@
   z-index: 50;
 }
 
+#mobile-dash-bar {
+  display: flex;
+  width: 100%;
+}
+
+#mobile-dash-bar img {
+  height: 2em;
+}
+
+#mobile-dash-bar i {
+  font-size: 1.3em;
+}
+
 .menu-active {
   top: 0 !important;
-  height: 360px !important;
+  height: 383px !important;
   background-color: white;
 }
 
@@ -159,6 +172,9 @@
 @media only screen and (max-width : 767px) {
   #nav-dropdown-menu {
     padding: 0;
+  }
+  #dash-bar {
+    width: 100%;
   }
 }
 @media only screen and (min-width: 768px) {

@@ -27,15 +27,17 @@
       </div>
       <div id="dash-content">
         <div class="col-xs-10 col-sm-12 col-md-12 col-lg-12 large-padding-top">
-          <div class="display-inline-flex flex-center large-padding-bottom large-margin-bottom">
+          <div id="dash-bar" class="display-inline-flex flex-center large-padding-bottom large-margin-bottom">
+            <div id="mobile-dash-bar" class="hidden-md-up flex-row-spread">
+              <i (click)="handleMenuToggle()" class="fa fa-search font-whitesmoke" aria-hidden="true"></i>
+              <img class="border-whitesmoke" src="/app/assets/images/cisco-logo-white.svg" />
+              <i (click)="logout()" class="fa fa-sign-out font-whitesmoke" aria-hidden="true"></i>
+            </div>
             <div id="dash-img" class="hidden-sm-down col-md-2 col-lg-2">
               <img class="medium-border-right border-whitesmoke" src="/app/assets/images/cisco-logo-white.svg" />
             </div>
-            <div class="hidden-md-up">
-              <img class="border-whitesmoke" src="/app/assets/images/cisco-logo-white.svg" />
-            </div>
             <div class="large-padding-left">
-              <button id="toggle" (click)="handleMenuToggle()">
+              <button id="toggle" class="hidden-sm-down" (click)="handleMenuToggle()">
                 <i class="fa fa-search large-margin-right font-whitesmoke" aria-hidden="true"></i>
                 <span class="font-whitesmoke">Search for customers, metrics, or categories</span>
               </button>
