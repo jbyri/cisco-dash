@@ -48,8 +48,7 @@ export class DashboardComponent implements OnInit {
 
   selectedCustomerModel: CustomerModel = {
     data: {
-      datapoints: [],
-      feedbacks: []
+      datapoints: []
     }
   };
 

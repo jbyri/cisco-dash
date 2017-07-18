@@ -1,6 +1,7 @@
 {
   "data": {
-    "feedbacks": [{
+    "feedbacks": [
+      {
         "title": "Action Item 1",
         "text": "lorem ipsum dolor sit amet consectetur adipiscing elit.",
         "performance": 0.8
@@ -16,505 +17,252 @@
         "performance": 0.25
       }
     ],
-    "datapoints": [{
-        "title": "Bookings",
-        "tagIds": [1],
+    "datapoints": [
+      {
+        "title": "Product and Service Bookings",
+        "tagIds": [
+          3
+        ],
         "content": {
           "type": "barChart",
           "metadata": {
-        		"metricInfo": {
-        			"title":"The Metric Title",
-        			"text":"This metric is..."
-        		},
-        		"metricEffect": {
-        			"effect":0,
-        			"effectValue":"50.0%"
-        		}
-        	},
+            "metricInfo": {
+              "title": "The Metric Title",
+              "text": "This metric is..."
+            },
+            "metricEffect": {
+              "effect": 0,
+              "effectValue": "50.0%"
+            }
+          },
           "data": {
-            "chartOptionsId": "barChart1",
-            "labelKeys": ["QTRID"],
-            "valueKeys": ["BOOK_NET"],
+            "chartOptionsId": "barChart8",
+            "labelKeys": [
+              "LABEL"
+            ],
+            "valueKeys": [
+              "VALUE"
+            ],
             "chartData": {
-              "datasets": [{
-                "datasetTransformerId": "",
-                "backgroundColor": "#67AAF9",
-                "values": [{
-                  "QTRID": "2015Q1",
-                  "BOOK_NET": "5515889.59"
-                }, {
-                  "QTRID": "2015Q2",
-                  "BOOK_NET": "14556308.41"
-                }, {
-                  "QTRID": "2015Q3",
-                  "BOOK_NET": "5160012.52"
-                }, {
-                  "QTRID": "2015Q4",
-                  "BOOK_NET": "13008010.35"
-                }, {
-                  "QTRID": "2016Q1",
-                  "BOOK_NET": "5555839.59"
-                }, {
-                  "QTRID": "2016Q2",
-                  "BOOK_NET": "15198515.34"
-                }, {
-                  "QTRID": "2016Q3",
-                  "BOOK_NET": "12735451.16"
-                }, {
-                  "QTRID": "2016Q4",
-                  "BOOK_NET": "11310894.38"
-                }, {
-                  "QTRID": "2017Q1",
-                  "BOOK_NET": "8986517.02"
-                }]
-              }]
+              "datasets": [
+                {
+                  "backgroundColor": "#67AAF9",
+                  "label": "Product",
+                  "type": "bar",
+                  "values": [
+                    {
+                      "LABEL": "2016Q4",
+                      "VALUE": "1615004.78"
+                    },
+                    {
+                      "LABEL": "2017Q1",
+                      "VALUE": "-743316.11"
+                    },
+                    {
+                      "LABEL": "2017Q2",
+                      "VALUE": "278342.74"
+                    },
+                    {
+                      "LABEL": "2017Q3",
+                      "VALUE": "-94829.82"
+                    }
+                  ]
+                },
+                {
+
+                  "backgroundColor": "#67AAF9",
+                  "label": "Service",
+                  "type": "bar",
+                  "values": [
+                    {
+                      "LABEL": "2016Q4",
+                      "VALUE": "50773.02"
+                    },
+                    {
+                      "LABEL": "2017Q1",
+                      "VALUE": "-24938.31"
+                    },
+                    {
+                      "LABEL": "2017Q2",
+                      "VALUE": "775260.51"
+                    },
+                    {
+                      "LABEL": "2017Q3",
+                      "VALUE": "10717.22"
+                    }
+                  ]
+                }
+              ]
             }
           }
         }
       },
       {
-        "title": "RMA Exceptions (Uplift)",
-        "tagIds": [5],
+        "title": "Bookings By Architecture",
+        "tagIds": [
+          3
+        ],
         "content": {
           "type": "barChart",
           "metadata": {
-        		"metricInfo": {
-        			"title":"The Metric Title",
-        			"text":"This metric is..."
-        		},
-        		"metricEffect": {
-        			"effect":1,
-        			"effectValue":"50.0%"
-        		}
-        	},
+            "metricInfo": {
+              "title": "The Metric Title",
+              "text": "This metric is..."
+            },
+            "metricEffect": {
+              "effect": 0,
+              "effectValue": "50.0%"
+            }
+          },
           "data": {
             "chartOptionsId": "barChart1",
-            "labelKeys": ["QTRID"],
-            "valueKeys": ["VALUE"],
+            "labelKeys": [
+              "LABEL"
+            ],
+            "valueKeys": [
+              "VALUE"
+            ],
             "chartData": {
-              "datasets": [{
-                "datasetTransformerId": "",
-                "backgroundColor": "#67AAF9",
-                "values": [{
-                  "QTRID": "Q1",
-                  "VALUE": "10"
-                }, {
-                  "QTRID": "Q2",
-                  "VALUE": "8"
-                }, {
-                  "QTRID": "5Q3",
-                  "VALUE": "4"
-                }, {
-                  "QTRID": "Q4",
-                  "VALUE": "14"
-                }]
-              }]
-            }
-          }
-        }
-      },
-      {
-        "title": "RMA Exceptions (Other)",
-        "tagIds": [5],
-        "content": {
-          "type": "barChart",
-          "metadata": {
-        		"metricInfo": {
-        			"title":"The Metric Title",
-        			"text":"This metric is..."
-        		},
-        		"metricEffect": {
-        			"effect":-1,
-        			"effectValue":"50.0%"
-        		}
-        	},
-          "data": {
-            "chartOptionsId": "barChart1",
-            "labelKeys": ["QTRID"],
-            "valueKeys": ["VALUE"],
-            "chartData": {
-              "datasets": [{
-                "datasetTransformerId": "",
-                "backgroundColor": "#67AAF9",
-                "values": [{
-                  "QTRID": "Q1",
-                  "VALUE": "8"
-                }, {
-                  "QTRID": "Q2",
-                  "VALUE": "0"
-                }, {
-                  "QTRID": "Q3",
-                  "VALUE": "13"
-                }, {
-                  "QTRID": "Q4",
-                  "VALUE": "1"
-                }]
-              }]
-            }
-          }
-        }
-      },
-      {
-        "title": "Bookings - Products (Total)",
-        "tagIds": [3],
-        "content": {
-          "type": "barChart",
-          "metadata": {
-        		"metricInfo": {
-        			"title":"The Metric Title",
-        			"text":"This metric is..."
-        		},
-        		"metricEffect": {
-        			"effect":0,
-        			"effectValue":"50.0%"
-        		}
-        	},
-          "data": {
-            "chartOptionsId": "barChart4",
-            "labelKeys": ["QTRID"],
-            "valueKeys": ["VALUE"],
-            "chartData": {
-              "datasets": [{
-                "datasetTransformerId": "",
-                "backgroundColor": "#67AAF9",
-                "type": "bar",
-                "values": [{
-                  "QTRID": "Q1",
-                  "VALUE": "8"
-                }, {
-                  "QTRID": "Q2",
-                  "VALUE": "0"
-                }, {
-                  "QTRID": "Q3",
-                  "VALUE": "13"
-                }, {
-                  "QTRID": "Q4",
-                  "VALUE": "1"
-                }]
-              }]
-            }
-          }
-        }
-      },
-      {
-        "title": "Bookings - By Architecture",
-        "tagIds": [3],
-        "content": {
-          "type": "barChart",
-          "metadata": {
-        		"metricInfo": {
-        			"title":"The Metric Title",
-        			"text":"This metric is..."
-        		},
-        		"metricEffect": {
-        			"effect":-1,
-        			"effectValue":"50.0%"
-        		}
-        	},
-          "data": {
-            "chartOptionsId": "barChart1",
-            "labelKeys": ["LABEL"],
-            "valueKeys": ["VALUE"],
-            "chartData": {
-              "datasets": [{
-                  "datasetTransformerId": "",
+              "datasets": [
+                {
+
                   "backgroundColor": "#67AAF9",
                   "label": "Collaboration",
                   "type": "bar",
-                  "values": [{
-                    "LABEL": "Q1",
-                    "VALUE": "8"
-                  }, {
-                    "LABEL": "Q2",
-                    "VALUE": "11"
-                  }, {
-                    "LABEL": "Q3",
-                    "VALUE": "9"
-                  }, {
-                    "LABEL": "Q4",
-                    "VALUE": "3"
-                  }]
+                  "values": [
+                    {
+                      "LABEL": "2016Q4",
+                      "VALUE": "-4727.23"
+                    },
+                    {
+                      "LABEL": "2017Q1",
+                      "VALUE": "-224811.32"
+                    },
+                    {
+                      "LABEL": "2017Q2",
+                      "VALUE": "-102475.30"
+                    },
+                    {
+                      "LABEL": "2017Q3",
+                      "VALUE": "43198.17"
+                    }
+                  ]
                 },
                 {
-                  "datasetTransformerId": "",
+
                   "backgroundColor": "#FFBB41",
-                  "label": "Data Center",
+                  "label": "Data Center Switching",
                   "type": "bar",
-                  "values": [{
-                    "LABEL": "Q1",
-                    "VALUE": "9"
-                  }, {
-                    "LABEL": "Q2",
-                    "VALUE": "10"
-                  }, {
-                    "LABEL": "Q3",
-                    "VALUE": "7"
-                  }, {
-                    "LABEL": "Q4",
-                    "VALUE": "11"
-                  }]
+                  "values": [
+                    {
+                      "LABEL": "2016Q4",
+                      "VALUE": "210352.90"
+                    },
+                    {
+                      "LABEL": "2017Q1",
+                      "VALUE": "54614.95"
+                    },
+                    {
+                      "LABEL": "2017Q2",
+                      "VALUE": "300643.43"
+                    },
+                    {
+                      "LABEL": "2017Q3",
+                      "VALUE": "-821.98"
+                    }
+                  ]
                 },
                 {
-                  "datasetTransformerId": "",
+
                   "backgroundColor": "#37394C",
                   "label": "Enterprise Networking",
                   "type": "bar",
-                  "values": [{
-                    "LABEL": "Q1",
-                    "VALUE": "11"
-                  }, {
-                    "LABEL": "Q2",
-                    "VALUE": "10"
-                  }, {
-                    "LABEL": "Q3",
-                    "VALUE": "21"
-                  }, {
-                    "LABEL": "Q4",
-                    "VALUE": "15"
-                  }]
+                  "values": [
+                    {
+                      "LABEL": "2016Q4",
+                      "VALUE": "571550.61"
+                    },
+                    {
+                      "LABEL": "2017Q1",
+                      "VALUE": "-564265.71"
+                    },
+                    {
+                      "LABEL": "2017Q2",
+                      "VALUE": "67083.83"
+                    },
+                    {
+                      "LABEL": "2017Q3",
+                      "VALUE": "-135856.39"
+                    }
+                  ]
                 },
                 {
-                  "datasetTransformerId": "",
+
                   "backgroundColor": "#D1E5FD",
                   "label": "Security",
                   "type": "bar",
-                  "values": [{
-                    "LABEL": "Q1",
-                    "VALUE": "14"
-                  }, {
-                    "LABEL": "Q2",
-                    "VALUE": "15"
-                  }, {
-                    "LABEL": "Q3",
-                    "VALUE": "10"
-                  }, {
-                    "LABEL": "Q4",
-                    "VALUE": "18"
-                  }]
+                  "values": [
+                    {
+                      "LABEL": "2017Q2",
+                      "VALUE": "-991.27"
+                    },
+                    {
+                      "LABEL": "2017Q3",
+                      "VALUE": "-23499.09"
+                    },
+                    {
+                      "LABEL": "2017Q4",
+                      "VALUE": "0.00"
+                    }
+                  ]
                 },
                 {
-                  "datasetTransformerId": "",
-                  "backgroundColor": "#D1E5FD",
-                  "label": "Other",
-                  "type": "bar",
-                  "values": [{
-                    "LABEL": "Q1",
-                    "VALUE": "17"
-                  }, {
-                    "LABEL": "Q2",
-                    "VALUE": "13"
-                  }, {
-                    "LABEL": "Q3",
-                    "VALUE": "18"
-                  }, {
-                    "LABEL": "Q4",
-                    "VALUE": "19"
-                  }]
-                }
-              ]
-            }
-          }
-        }
-      },
-      {
-        "title": "Bookings - Services (Total)",
-        "tagIds": [3],
-        "content": {
-          "type": "barChart",
-          "metadata": {
-        		"metricInfo": {
-        			"title":"The Metric Title",
-        			"text":"This metric is..."
-        		},
-        		"metricEffect": {
-        			"effect":1,
-        			"effectValue":"50.0%"
-        		}
-        	},
-          "data": {
-            "chartOptionsId": "barChart4",
-            "labelKeys": ["LABEL"],
-            "valueKeys": ["VALUE"],
-            "chartData": {
-              "datasets": [{
-                "datasetTransformerId": "",
-                "backgroundColor": "#67AAF9",
-                "type": "bar",
-                "values": [{
-                  "LABEL": "Q1",
-                  "VALUE": "8"
-                }, {
-                  "LABEL": "Q2",
-                  "VALUE": "11"
-                }, {
-                  "LABEL": "Q3",
-                  "VALUE": "9"
-                }, {
-                  "LABEL": "Q4",
-                  "VALUE": "3"
-                }]
-              }]
-            }
-          }
-        }
-      },
 
-      {
-        "title": "Bookings - Services (TS)",
-        "tagIds": [3],
-        "content": {
-          "type": "barChart",
-          "metadata": {
-        		"metricInfo": {
-        			"title":"The Metric Title",
-        			"text":"This metric is..."
-        		},
-        		"metricEffect": {
-        			"effect":0,
-        			"effectValue":"50.0%"
-        		}
-        	},
-          "data": {
-            "chartOptionsId": "barChart4",
-            "labelKeys": ["LABEL"],
-            "valueKeys": ["VALUE"],
-            "chartData": {
-              "datasets": [{
-                "datasetTransformerId": "",
-                "backgroundColor": "#67AAF9",
-                "type": "bar",
-                "values": [{
-                  "LABEL": "Q1",
-                  "VALUE": "8"
-                }, {
-                  "LABEL": "Q2",
-                  "VALUE": "11"
-                }, {
-                  "LABEL": "Q3",
-                  "VALUE": "9"
-                }, {
-                  "LABEL": "Q4",
-                  "VALUE": "3"
-                }]
-              }]
-            }
-          }
-        }
-      },
-      {
-        "title": "Bookings by TS Offers",
-        "tagIds": [3],
-        "content": {
-          "type": "barChart",
-          "metadata": {
-        		"metricInfo": {
-        			"title":"The Metric Title",
-        			"text":"This metric is..."
-        		},
-        		"metricEffect": {
-        			"effect":-1,
-        			"effectValue":"50.0%"
-        		}
-        	},
-          "data": {
-            "chartOptionsId": "barChart5",
-            "labelKeys": ["LABEL"],
-            "valueKeys": ["VALUE"],
-            "chartData": {
-              "datasets": [{
-                  "datasetTransformerId": "",
-                  "backgroundColor": "#67AAF9",
-                  "type": "bar",
-                  "label": "Cloud Managed Services",
-                  "values": [{
-                    "LABEL": "Q1",
-                    "VALUE": "4"
-                  }, {
-                    "LABEL": "Q2",
-                    "VALUE": "10"
-                  }, {
-                    "LABEL": "Q3",
-                    "VALUE": "8"
-                  }, {
-                    "LABEL": "Q4",
-                    "VALUE": "11"
-                  }]
-                },
-                {
-                  "datasetTransformerId": "",
-                  "backgroundColor": "#FFBB41",
-                  "type": "bar",
-                  "label": "Network Support",
-                  "values": [{
-                    "LABEL": "Q1",
-                    "VALUE": "9"
-                  }, {
-                    "LABEL": "Q2",
-                    "VALUE": "10"
-                  }, {
-                    "LABEL": "Q3",
-                    "VALUE": "7"
-                  }, {
-                    "LABEL": "Q4",
-                    "VALUE": "11"
-                  }]
-                },
-                {
-                  "datasetTransformerId": "",
-                  "backgroundColor": "#37394C",
-                  "type": "bar",
-                  "label": "Product Offer Support",
-                  "values": [{
-                    "LABEL": "Q1",
-                    "VALUE": "9"
-                  }, {
-                    "LABEL": "Q2",
-                    "VALUE": "10"
-                  }, {
-                    "LABEL": "Q3",
-                    "VALUE": "7"
-                  }, {
-                    "LABEL": "Q4",
-                    "VALUE": "11"
-                  }]
-                },
-                {
-                  "datasetTransformerId": "",
-                  "backgroundColor": "#D1E5FD",
-                  "type": "bar",
-                  "label": "SCV Offer Support",
-                  "values": [{
-                    "LABEL": "Q1",
-                    "VALUE": "14"
-                  }, {
-                    "LABEL": "Q2",
-                    "VALUE": "15"
-                  }, {
-                    "LABEL": "Q3",
-                    "VALUE": "10"
-                  }, {
-                    "LABEL": "Q4",
-                    "VALUE": "18"
-                  }]
-                },
-                {
-                  "datasetTransformerId": "",
                   "backgroundColor": "#F4F1EA",
+                  "label": "Service Provider",
                   "type": "bar",
-                  "label": "Solution Support",
-                  "values": [{
-                    "LABEL": "Q1",
-                    "VALUE": "17"
-                  }, {
-                    "LABEL": "Q2",
-                    "VALUE": "13"
-                  }, {
-                    "LABEL": "Q3",
-                    "VALUE": "18"
-                  }, {
-                    "LABEL": "Q4",
-                    "VALUE": "19"
-                  }]
+                  "values": [
+                    {
+                      "LABEL": "",
+                      "VALUE": "68471.09"
+                    },
+                    {
+                      "LABEL": "",
+                      "VALUE": "-6783.78"
+                    },
+                    {
+                      "LABEL": "",
+                      "VALUE": "6829.00"
+                    },
+                    {
+                      "LABEL": "",
+                      "VALUE": "-4975.68"
+                    }
+                  ]
+                },
+                {
+
+                  "backgroundColor": "#F9E767",
+                  "label": "Unmapped",
+                  "type": "bar",
+                  "values": [
+                    {
+                      "LABEL": "2017Q1",
+                      "VALUE": "-239.00"
+                    },
+                    {
+                      "LABEL": "2017Q2",
+                      "VALUE": "30446.80"
+                    },
+                    {
+                      "LABEL": "2017Q3",
+                      "VALUE": "4459.57"
+                    },
+                    {
+                      "LABEL": "2017Q4",
+                      "VALUE": "-740626.45"
+                    }
+                  ]
                 }
               ]
             }
@@ -522,144 +270,313 @@
         }
       },
       {
-        "title": "Bookings - Services (AS)",
-        "tagIds": [3],
+        "title": "Advanced Services (AS)",
+        "tagIds": [
+          3
+        ],
         "content": {
           "type": "barChart",
           "metadata": {
-        		"metricInfo": {
-        			"title":"The Metric Title",
-        			"text":"This metric is..."
-        		},
-        		"metricEffect": {
-        			"effect":0,
-        			"effectValue":"50.0%"
-        		}
-        	},
+            "metricInfo": {
+              "title": "The Metric Title",
+              "text": "This metric is..."
+            },
+            "metricEffect": {
+              "effect": 0,
+              "effectValue": "50.0%"
+            }
+          },
           "data": {
-            "chartOptionsId": "barChart5",
-            "labelKeys": ["LABEL"],
-            "valueKeys": ["VALUE"],
+            "chartOptionsId": "barChart1",
+            "labelKeys": [
+              "LABEL"
+            ],
+            "valueKeys": [
+              "VALUE"
+            ],
             "chartData": {
-              "datasets": [{
-                "datasetTransformerId": "",
-                "backgroundColor": "#67AAF9",
-                "type": "bar",
-                "values": [{
-                  "LABEL": "Q1",
-                  "VALUE": "4"
-                }, {
-                  "LABEL": "Q2",
-                  "VALUE": "10"
-                }, {
-                  "LABEL": "Q3",
-                  "VALUE": "8"
-                }, {
-                  "LABEL": "Q4",
-                  "VALUE": "12"
-                }]
-              }]
+              "datasets": [
+                {
+
+                  "backgroundColor": "#67AAF9",
+                  "label": "Total Bookings",
+                  "type": "bar",
+                  "values": [
+                    {
+                      "LABEL": "2016Q4",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q1",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q2",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q3",
+                      "VALUE": "-384.11"
+                    }
+                  ]
+                },
+                {
+
+                  "backgroundColor": "#67AAF9",
+                  "label": "Annual Bookings",
+                  "type": "bar",
+                  "values": [
+                    {
+                      "LABEL": "2016Q4",
+                      "VALUES": "0.00",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q1",
+                      "VALUES": "0.00",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q2",
+                      "VALUES": "0.00",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q3",
+                      "VALUES": "-384.11",
+                      "VALUE": "-384.11"
+                    }
+                  ]
+                },
+                {
+
+                  "backgroundColor": "#67AAF9",
+                  "label": "Multi year Bookings",
+                  "type": "bar",
+                  "values": [
+                    {
+                      "LABEL": "2016Q4",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q1",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q2",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q3",
+                      "VALUE": "0.00"
+                    }
+                  ]
+                }
+              ]
             }
           }
         }
       },
       {
-        "title": "Bookings - Services (CMS)",
-        "tagIds": [3],
+        "title": "Technical Support Services(TSS)",
+        "tagIds": [
+          3
+        ],
         "content": {
           "type": "barChart",
           "metadata": {
-        		"metricInfo": {
-        			"title":"The Metric Title",
-        			"text":"This metric is..."
-        		},
-        		"metricEffect": {
-        			"effect":1,
-        			"effectValue":"50.0%"
-        		}
-        	},
+            "metricInfo": {
+              "title": "The Metric Title",
+              "text": "This metric is..."
+            },
+            "metricEffect": {
+              "effect": 0,
+              "effectValue": "50.0%"
+            }
+          },
           "data": {
-            "chartOptionsId": "barChart4",
-            "labelKeys": ["LABEL"],
-            "valueKeys": ["VALUE"],
+            "chartOptionsId": "stackedBarChart2",
+            "labelKeys": [
+              "LABEL"
+            ],
+            "valueKeys": [
+              "VALUE"
+            ],
             "chartData": {
-              "datasets": [{
-                "datasetTransformerId": "",
-                "backgroundColor": "#67AAF9",
-                "type": "bar",
-                "values": [{
-                  "LABEL": "Q1",
-                  "VALUE": "4"
-                }, {
-                  "LABEL": "Q2",
-                  "VALUE": "10"
-                }, {
-                  "LABEL": "Q3",
-                  "VALUE": "8"
-                }, {
-                  "LABEL": "Q4",
-                  "VALUE": "12"
-                }]
-              }]
+              "datasets": [
+                {
+
+                  "backgroundColor": "#67AAF9",
+                  "label": "Total Bookings",
+                  "type": "bar",
+                  "values": [
+                    {
+                      "LABEL": "2016Q4",
+                      "VALUE": "42854.13"
+                    },
+                    {
+                      "LABEL": "2017Q1",
+                      "VALUE": "-37340.07"
+                    },
+                    {
+                      "LABEL": "2017Q2",
+                      "VALUE": "774345.93"
+                    },
+                    {
+                      "LABEL": "2017Q3",
+                      "VALUE": "-99405.97"
+                    }
+                  ]
+                },
+                {
+
+                  "backgroundColor": "#67AAF9",
+                  "label": "Annual Bookings",
+                  "type": "bar",
+                  "values": [
+                    {
+                      "LABEL": "2016Q4",
+                      "VALUE": "6905.77"
+                    },
+                    {
+                      "LABEL": "2017Q1",
+                      "VALUE": "-24665.98"
+                    },
+                    {
+                      "LABEL": "2017Q2",
+                      "VALUE": "438409.85"
+                    },
+                    {
+                      "LABEL": "2017Q3",
+                      "VALUE": "-129841.73"
+                    }
+                  ]
+                },
+                {
+
+                  "backgroundColor": "#67AAF9",
+                  "label": "Multiyear Bookings",
+                  "type": "bar",
+                  "values": [
+                    {
+                      "LABEL": "2016Q4",
+                      "VALUE": "35948.36"
+                    },
+                    {
+                      "LABEL": "2017Q1",
+                      "VALUE": "-12674.09"
+                    },
+                    {
+                      "LABEL": "2017Q2",
+                      "VALUE": "335936.07"
+                    },
+                    {
+                      "LABEL": "2017Q3",
+                      "VALUE": "30435.76"
+                    }
+                  ]
+                }
+              ]
             }
           }
         }
       },
       {
-        "title": "Multiyear Bookings",
-        "tagIds": [3],
+        "title": "Cloud Managed Services (CMS)",
+        "tagIds": [
+          3
+        ],
         "content": {
           "type": "barChart",
           "metadata": {
-        		"metricInfo": {
-        			"title":"The Metric Title",
-        			"text":"This metric is..."
-        		},
-        		"metricEffect": {
-        			"effect":1,
-        			"effectValue":"50.0%"
-        		}
-        	},
+            "metricInfo": {
+              "title": "The Metric Title",
+              "text": "This metric is..."
+            },
+            "metricEffect": {
+              "effect": 0,
+              "effectValue": "50.0%"
+            }
+          },
           "data": {
             "chartOptionsId": "stackedBarChart1",
-            "labelKeys": ["LABEL"],
-            "valueKeys": ["VALUE"],
+            "labelKeys": [
+              "LABEL"
+            ],
+            "valueKeys": [
+              "VALUES"
+            ],
             "chartData": {
-              "datasets": [{
-                  "datasetTransformerId": "",
+              "datasets": [
+                {
+
                   "backgroundColor": "#67AAF9",
-                  "label": "Bookings",
-                  "values": [{
-                    "LABEL": "Q1",
-                    "VALUE": "4"
-                  }, {
-                    "LABEL": "Q2",
-                    "VALUE": "10"
-                  }, {
-                    "LABEL": "Q3",
-                    "VALUE": "8"
-                  }, {
-                    "LABEL": "Q4",
-                    "VALUE": "12"
-                  }]
+                  "values": [
+                    {
+                      "LABEL": "2016Q4",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q1",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q2",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q3",
+                      "VALUE": "0.00"
+                    }
+                  ]
                 },
                 {
-                  "datasetTransformerId": "",
-                  "backgroundColor": "#FFBB41",
+
+                  "backgroundColor": "#67AAF9",
+                  "label": "Annual Bookings",
+                  "type": "bar",
+                  "values": [
+                    {
+                      "LABEL": "2016Q4",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q1",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q2",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q3",
+                      "VALUE": "0.00"
+                    }
+                  ]
+                },
+                {
+
+                  "backgroundColor": "#67AAF9",
                   "label": "Multiyear Bookings",
-                  "values": [{
-                    "LABEL": "Q1",
-                    "VALUE": "11"
-                  }, {
-                    "LABEL": "Q2",
-                    "VALUE": "10"
-                  }, {
-                    "LABEL": "Q3",
-                    "VALUE": "21"
-                  }, {
-                    "LABEL": "Q4",
-                    "VALUE": "15"
-                  }]
+                  "type": "bar",
+                  "values": [
+                    {
+                      "LABEL": "2016Q4",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q1",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q2",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q3",
+                      "VALUE": "0.00"
+                    }
+                  ]
                 }
               ]
             }
@@ -668,192 +585,53 @@
       },
       {
         "title": "Revenue",
-        "tagIds": [3],
+        "tagIds": [
+          3
+        ],
         "content": {
           "type": "barChart",
           "metadata": {
-        		"metricInfo": {
-        			"title":"The Metric Title",
-        			"text":"This metric is..."
-        		},
-        		"metricEffect": {
-        			"effect":-1,
-        			"effectValue":"50.0%"
-        		}
-        	},
-          "data": {
-
-            "chartOptionsId": "barChart5",
-            "labelKeys": ["LABEL"],
-            "valueKeys": ["VALUE"],
-            "chartData": {
-              "datasets": [{
-                "datasetTransformerId": "",
-                "backgroundColor": "#67AAF9",
-                "type": "bar",
-                "values": [{
-                  "LABEL": "Q1",
-                  "VALUE": "17"
-                }, {
-                  "LABEL": "Q2",
-                  "VALUE": "13"
-                }, {
-                  "LABEL": "Q3",
-                  "VALUE": "18"
-                }, {
-                  "LABEL": "Q4",
-                  "VALUE": "19"
-                }]
-              }]
+            "metricInfo": {
+              "title": "The Metric Title",
+              "text": "This metric is..."
+            },
+            "metricEffect": {
+              "effect": 0,
+              "effectValue": "50.0%"
             }
-          }
-        }
-      },
-      {
-        "title": "IB -Yield",
-        "tagIds": [3],
-        "content": {
-          "type": "barChart",
-          "metadata": {
-        		"metricInfo": {
-        			"title":"The Metric Title",
-        			"text":"This metric is..."
-        		},
-        		"metricEffect": {
-        			"effect":0,
-        			"effectValue":"50.0%"
-        		}
-        	},
+          },
           "data": {
-
-            "chartOptionsId": "barChart5",
-            "labelKeys": ["LABEL"],
-            "valueKeys": ["VALUE"],
+            "chartOptionsId": "barChart8",
+            "labelKeys": [
+              "LABEL"
+            ],
+            "valueKeys": [
+              "VALUE"
+            ],
             "chartData": {
-              "datasets": [{
-                "datasetTransformerId": "",
-                "backgroundColor": "#67AAF9",
-                "type": "bar",
-                "values": [{
-                  "LABEL": "Q1",
-                  "VALUE": "11"
-                }, {
-                  "LABEL": "Q2",
-                  "VALUE": "10"
-                }, {
-                  "LABEL": "Q3",
-                  "VALUE": "21"
-                }, {
-                  "LABEL": "Q4",
-                  "VALUE": "15"
-                }]
-              }]
-            }
-          }
-        }
-      },
-      {
-        "title": "Profitability of Customer",
-        "tagIds": [3],
-        "content": {
-          "type": "barChart",
-          "metadata": {
-        		"metricInfo": {
-        			"title":"The Metric Title",
-        			"text":"This metric is..."
-        		},
-        		"metricEffect": {
-        			"effect":1,
-        			"effectValue":"50.0%"
-        		}
-        	},
-          "data": {
-
-            "chartOptionsId": "barChart5",
-            "labelKeys": ["LABEL"],
-            "valueKeys": ["VALUE"],
-            "chartData": {
-              "datasets": [{
-                "datasetTransformerId": "",
-                "backgroundColor": "#67AAF9",
-                "type": "bar",
-                "values": [{
-                  "LABEL": "Q1",
-                  "VALUE": "4"
-                }, {
-                  "LABEL": "Q2",
-                  "VALUE": "10"
-                }, {
-                  "LABEL": "Q3",
-                  "VALUE": "8"
-                }, {
-                  "LABEL": "Q4",
-                  "VALUE": "15"
-                }]
-              }]
-            }
-          }
-        }
-      },
-
-      {
-        "title": "Uncovered Install-Base",
-        "tagIds": [4],
-        "content": {
-          "type": "barChart",
-          "metadata": {
-        		"metricInfo": {
-        			"title":"The Metric Title",
-        			"text":"This metric is..."
-        		},
-        		"metricEffect": {
-        			"effect":-1,
-        			"effectValue":"50.0%"
-        		}
-        	},
-          "data": {
-
-            "chartOptionsId": "barChart6",
-            "labelKeys": ["LABEL"],
-            "valueKeys": ["VALUE"],
-            "chartData": {
-              "datasets": [{
-                  "datasetTransformerId": "",
-                  "backgroundColor": "#67AAF9",
-                  "label": "Total IB",
-                  "type": "bar",
-                  "values": [{
-                    "LABEL": "Q1",
-                    "VALUE": "4"
-                  }, {
-                    "LABEL": "Q2",
-                    "VALUE": "10"
-                  }, {
-                    "LABEL": "Q3",
-                    "VALUE": "8"
-                  }, {
-                    "LABEL": "Q4",
-                    "VALUE": "15"
-                  }]
-                },
+              "datasets": [
                 {
-                  "datasetTransformerId": "",
-                  "backgroundColor": "#FFBB41",
-                  "label": "Uncovered IB",
+
+                  "backgroundColor": "#67AAF9",
                   "type": "bar",
-                  "values": [{
-                    "LABEL": "Q1",
-                    "VALUE": "14"
-                  }, {
-                    "LABEL": "Q2",
-                    "VALUE": "10"
-                  }, {
-                    "LABEL": "Q3",
-                    "VALUE": "18"
-                  }, {
-                    "LABEL": "Q4",
-                    "VALUE": "21"
-                  }]
+                  "values": [
+                    {
+                      "LABEL": "2016Q4",
+                      "VALUE": "90459.81"
+                    },
+                    {
+                      "LABEL": "2017Q1",
+                      "VALUE": "-12594.73"
+                    },
+                    {
+                      "LABEL": "2017Q2",
+                      "VALUE": "26359.48"
+                    },
+                    {
+                      "LABEL": "2017Q3",
+                      "VALUE": "-185524.99"
+                    }
+                  ]
                 }
               ]
             }
@@ -861,176 +639,1880 @@
         }
       },
       {
-        "title": "Attach Rate",
-        "tagIds": [4],
+        "title": "IB Yield",
+        "tagIds": [
+          3
+        ],
         "content": {
           "type": "barChart",
           "metadata": {
-        		"metricInfo": {
-        			"title":"The Metric Title",
-        			"text":"This metric is..."
-        		},
-        		"metricEffect": {
-        			"effect":0,
-        			"effectValue":"50.0%"
-        		}
-        	},
+            "metricInfo": {
+              "title": "The Metric Title",
+              "text": "This metric is..."
+            },
+            "metricEffect": {
+              "effect": 0,
+              "effectValue": "50.0%"
+            }
+          },
           "data": {
-
-            "chartOptionsId": "barChart7",
-            "labelKeys": ["LABEL"],
-            "valueKeys": ["VALUE"],
+            "chartOptionsId": "barChart1",
+            "labelKeys": [
+              "LABEL"
+            ],
+            "valueKeys": [
+              "VALUE"
+            ],
             "chartData": {
-              "datasets": [{
-                "datasetTransformerId": "",
-                "backgroundColor": "#67AAF9",
-                "type": "bar",
-                "values": [{
-                  "LABEL": "Q1",
-                  "VALUE": "25"
-                }, {
-                  "LABEL": "Q2",
-                  "VALUE": "35"
-                }, {
-                  "LABEL": "Q3",
-                  "VALUE": "23"
-                }, {
-                  "LABEL": "Q4",
-                  "VALUE": "54"
-                }]
-              }]
+              "datasets": [
+                {
+
+                  "backgroundColor": "#67AAF9",
+                  "values": [
+                    {
+                      "LABEL": "",
+                      "VALUE": "17.25%"
+                    }
+                  ]
+                }
+              ]
             }
           }
         }
       },
       {
-        "title": "Renewall Rate",
-        "tagIds": [4],
+        "title": "Top Product Families",
+        "tagIds": [
+          3
+        ],
         "content": {
           "type": "barChart",
           "metadata": {
-        		"metricInfo": {
-        			"title":"The Metric Title",
-        			"text":"This metric is..."
-        		},
-        		"metricEffect": {
-        			"effect":0,
-        			"effectValue":"50.0%"
-        		}
-        	},
+            "metricInfo": {
+              "title": "The Metric Title",
+              "text": "This metric is..."
+            },
+            "metricEffect": {
+              "effect": 0,
+              "effectValue": "50.0%"
+            }
+          },
           "data": {
-
-            "chartOptionsId": "barChart7",
-            "labelKeys": ["LABEL"],
-            "valueKeys": ["VALUE"],
+            "chartOptionsId": "stackedBarChart2",
+            "labelKeys": [
+              "LABEL"
+            ],
+            "valueKeys": [
+              "VALUE"
+            ],
             "chartData": {
-              "datasets": [{
-                "datasetTransformerId": "",
-                "backgroundColor": "#67AAF9",
-                "type": "bar",
-                "values": [{
-                  "LABEL": "Q1",
-                  "VALUE": "65"
-                }, {
-                  "LABEL": "Q2",
-                  "VALUE": "75"
-                }, {
-                  "LABEL": "Q3",
-                  "VALUE": "83"
-                }, {
-                  "LABEL": "Q4",
-                  "VALUE": "54"
-                }]
-              }]
+              "datasets": [
+                {
+
+                  "backgroundColor": "#67AAF9",
+                  "label": "TOP3",
+                  "values": [
+                    {
+                      "LABEL": "2016Q1",
+                      "VALUE": "103999.15"
+                    },
+                    {
+                      "LABEL": "2016Q2",
+                      "VALUE": "53282.77"
+                    },
+                    {
+                      "LABEL": "2016Q3",
+                      "VALUE": "45414.54"
+                    },
+                    {
+                      "LABEL": "2016Q4",
+                      "VALUE": "312691.92"
+                    },
+                    {
+                      "LABEL": "2017Q1",
+                      "VALUE": "27520.00"
+                    },
+                    {
+                      "LABEL": "2017Q2",
+                      "VALUE": "68991.37"
+                    },
+                    {
+                      "LABEL": "2017Q3",
+                      "VALUE": "37481.62"
+                    },
+                    {
+                      "LABEL": "2017Q4",
+                      "VALUE": "16487.40"
+                    }
+                  ]
+                },
+                {
+
+                  "backgroundColor": "#67AAF9",
+                  "label": "TOP2",
+                  "type": "bar",
+                  "values": [
+                    {
+                      "LABEL": "2016Q1",
+                      "VALUE": "107006.85"
+                    },
+                    {
+                      "LABEL": "2016Q2",
+                      "VALUE": "97155.00"
+                    },
+                    {
+                      "LABEL": "2016Q3",
+                      "VALUE": "61776.00"
+                    },
+                    {
+                      "LABEL": "2016Q4",
+                      "VALUE": "350252.80"
+                    },
+                    {
+                      "LABEL": "2017Q1",
+                      "VALUE": "28970.11"
+                    },
+                    {
+                      "LABEL": "2017Q2",
+                      "VALUE": "227257.52"
+                    },
+                    {
+                      "LABEL": "2017Q3",
+                      "VALUE": "50917.00"
+                    },
+                    {
+                      "LABEL": "2017Q4",
+                      "VALUE": "27528.99"
+                    }
+                  ]
+                },
+                {
+
+                  "backgroundColor": "#67AAF9",
+                  "label": "TOP1",
+                  "type": "bar",
+                  "values": [
+                    {
+                      "LABEL": "2016Q1",
+                      "VALUE": "157367.10"
+                    },
+                    {
+                      "LABEL": "2016Q2",
+                      "VALUE": "134457.24"
+                    },
+                    {
+                      "LABEL": "2016Q3",
+                      "VALUE": "74542.76"
+                    },
+                    {
+                      "LABEL": "2016Q4",
+                      "VALUE": "376536.06"
+                    },
+                    {
+                      "LABEL": "2017Q1",
+                      "VALUE": "58880.00"
+                    },
+                    {
+                      "LABEL": "2017Q2",
+                      "VALUE": "235127.20"
+                    },
+                    {
+                      "LABEL": "2017Q3",
+                      "VALUE": "58702.50"
+                    },
+                    {
+                      "LABEL": "2017Q4",
+                      "VALUE": "27634.40"
+                    }
+                  ]
+                }
+              ]
             }
           }
         }
       },
       {
-        "title": "Software Attach Rate",
-        "tagIds": [4],
+        "title": "RMA Exceptions (Uplift)",
+        "tagIds": [
+          5
+        ],
         "content": {
           "type": "barChart",
           "metadata": {
-        		"metricInfo": {
-        			"title":"The Metric Title",
-        			"text":"This metric is..."
-        		},
-        		"metricEffect": {
-        			"effect":0,
-        			"effectValue":"50.0%"
-        		}
-        	},
+            "metricInfo": {
+              "title": "The Metric Title",
+              "text": "This metric is..."
+            },
+            "metricEffect": {
+              "effect": 1,
+              "effectValue": "50.0%"
+            }
+          },
           "data": {
-
-            "chartOptionsId": "barChart7",
-            "labelKeys": ["LABEL"],
-            "valueKeys": ["VALUE"],
+            "chartOptionsId": "barChart1",
+            "labelKeys": [
+              "LABEL"
+            ],
+            "valueKeys": [
+              "VALUE"
+            ],
             "chartData": {
-              "datasets": [{
-                "datasetTransformerId": "",
-                "backgroundColor": "#67AAF9",
-                "type": "bar",
-                "values": [{
-                  "LABEL": "Q1",
-                  "VALUE": "75"
-                }, {
-                  "LABEL": "Q2",
-                  "VALUE": "35"
-                }, {
-                  "LABEL": "Q3",
-                  "VALUE": "73"
-                }, {
-                  "LABEL": "Q4",
-                  "VALUE": "64"
-                }]
-              }]
+              "datasets": [
+                {
+
+                  "backgroundColor": "#67AAF9",
+                  "label": "RMA %",
+                  "type": "bar",
+                  "values":[
+                    {
+                      "LABEL": "201701",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201702",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201703",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201704",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201705",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201706",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201707",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201708",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201709",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201710",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201711",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201712",
+                      "VALUE": "0.00%"
+                    }
+                  ]
+                }
+              ]
             }
           }
         }
       },
       {
-        "title": "Last Day Of Support",
-        "tagIds": [4],
+        "title": " Cover after Failure ",
+        "tagIds": [
+          5
+        ],
+        "content": {
+          "type": "barChart",
+          "metadata": {
+            "metricInfo": {
+              "title": "The Metric Title",
+              "text": "This metric is..."
+            },
+            "metricEffect": {
+              "effect": 1,
+              "effectValue": "50.0%"
+            }
+          },
+          "data": {
+            "chartOptionsId": "barChart1",
+            "labelKeys": [
+              "LABEL"
+            ],
+            "valueKeys": [
+              "VALUE"
+            ],
+            "chartData": {
+              "datasets": [
+                {
+
+                  "backgroundColor": "#67AAF9",
+                  "label": "",
+                  "type": "bar",
+                  "values":[
+                    {
+                      "LABEL": "201701",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201702",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201703",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201704",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201705",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201706",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201707",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201708",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201709",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201710",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201711",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201712",
+                      "VALUE": "0.00%"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "title": " Round Trip ",
+        "tagIds": [
+          5
+        ],
+        "content": {
+          "type": "barChart",
+          "metadata": {
+            "metricInfo": {
+              "title": "The Metric Title",
+              "text": "This metric is..."
+            },
+            "metricEffect": {
+              "effect": 1,
+              "effectValue": "50.0%"
+            }
+          },
+          "data": {
+            "chartOptionsId": "barChart1",
+            "labelKeys": [
+              "LABEL"
+            ],
+            "valueKeys": [
+              "VALUE"
+            ],
+            "chartData": {
+              "datasets": [
+                {
+
+                  "backgroundColor": "#67AAF9",
+                  "label": "",
+                  "type": "bar",
+                  "values":[
+                    {
+                      "LABEL": "201701",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201702",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201703",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201704",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201705",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201706",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201707",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201708",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201709",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201710",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201711",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201712",
+                      "VALUE": "0.00%"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "title": " Over Delivery ",
+        "tagIds": [
+          5
+        ],
+        "content": {
+          "type": "barChart",
+          "metadata": {
+            "metricInfo": {
+              "title": "The Metric Title",
+              "text": "This metric is..."
+            },
+            "metricEffect": {
+              "effect": 1,
+              "effectValue": "50.0%"
+            }
+          },
+          "data": {
+            "chartOptionsId": "barChart1",
+            "labelKeys": [
+              "LABEL"
+            ],
+            "valueKeys": [
+              "VALUE"
+            ],
+            "chartData": {
+              "datasets": [
+                {
+
+                  "backgroundColor": "#67AAF9",
+                  "label": "",
+                  "type": "bar",
+                  "values":[
+                    {
+                      "LABEL": "201701",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201702",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201703",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201704",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201705",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201706",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201707",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201708",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201709",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201710",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201711",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201712",
+                      "VALUE": "0.00%"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "title": "Service Delivery Performance (Premium)",
+        "tagIds": [
+          1
+        ],
+        "content": {
+          "type": "barChart",
+          "metadata": {
+            "metricInfo": {
+              "title": "The Metric Title",
+              "text": "This metric is..."
+            },
+            "metricEffect": {
+              "effect": 1,
+              "effectValue": "50.0%"
+            }
+          },
+          "data": {
+            "chartOptionsId": "barChart1",
+            "labelKeys": [
+              "LABEL"
+            ],
+            "valueKeys": [
+              "VALUE"
+            ],
+            "chartData": {
+              "datasets": [
+                {
+
+                  "backgroundColor": "#67AAF9",
+                  "label": "",
+                  "type": "bar",
+                  "values":[
+                    {
+                      "LABEL": "201701",
+                      "VALUE": "100.00%"
+                    },
+                    {
+                      "LABEL": "201702",
+                      "VALUE": "100.00%"
+                    },
+                    {
+                      "LABEL": "201703",
+                      "VALUE": "86.70%"
+                    },
+                    {
+                      "LABEL": "201704",
+                      "VALUE": "100.00%"
+                    },
+                    {
+                      "LABEL": "201705",
+                      "VALUE": "100.00%"
+                    },
+                    {
+                      "LABEL": "201706",
+                      "VALUE": "100.00%"
+                    },
+                    {
+                      "LABEL": "201707",
+                      "VALUE": "100.00%"
+                    },
+                    {
+                      "LABEL": "201708",
+                      "VALUE": "100.00%"
+                    },
+                    {
+                      "LABEL": "201709",
+                      "VALUE": "100.00%"
+                    },
+                    {
+                      "LABEL": "201710",
+                      "VALUE": "100.00%"
+                    },
+                    {
+                      "LABEL": "201711",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201712",
+                      "VALUE": "0.00%"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "title": "Service Delivery Performance (Standard)",
+        "tagIds": [
+          1
+        ],
+        "content": {
+          "type": "barChart",
+          "metadata": {
+            "metricInfo": {
+              "title": "The Metric Title",
+              "text": "This metric is..."
+            },
+            "metricEffect": {
+              "effect": 1,
+              "effectValue": "50.0%"
+            }
+          },
+          "data": {
+            "chartOptionsId": "barChart1",
+            "labelKeys": [
+              "LABEL"
+            ],
+            "valueKeys": [
+              "VALUE"
+            ],
+            "chartData": {
+              "datasets": [
+                {
+
+                  "backgroundColor": "#67AAF9",
+                  "label": "",
+                  "type": "bar",
+                  "values":[
+                    {
+                      "LABEL": "201701",
+                      "VALUE": "75.00%"
+                    },
+                    {
+                      "LABEL": "201702",
+                      "VALUE": "100.00%"
+                    },
+                    {
+                      "LABEL": "201703",
+                      "VALUE": "100.00%"
+                    },
+                    {
+                      "LABEL": "201704",
+                      "VALUE": "100.00%"
+                    },
+                    {
+                      "LABEL": "201705",
+                      "VALUE": "100.00%"
+                    },
+                    {
+                      "LABEL": "201706",
+                      "VALUE": "100.00%"
+                    },
+                    {
+                      "LABEL": "201707",
+                      "VALUE": "100.00%"
+                    },
+                    {
+                      "LABEL": "201708",
+                      "VALUE": "100.00%"
+                    },
+                    {
+                      "LABEL": "201709",
+                      "VALUE": "100.00%"
+                    },
+                    {
+                      "LABEL": "201710",
+                      "VALUE": "100.00%"
+                    },
+                    {
+                      "LABEL": "201711",
+                      "VALUE": "0.00%"
+                    },
+                    {
+                      "LABEL": "201712",
+                      "VALUE": "0.00%"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "title": "SR Volume (Severity 1/2)",
+        "tagIds": [
+          2
+        ],
+        "content": {
+          "type": "barChart",
+          "metadata": {
+            "metricInfo": {
+              "title": "The Metric Title",
+              "text": "This metric is..."
+            },
+            "metricEffect": {
+              "effect": 1,
+              "effectValue": "50.0%"
+            }
+          },
+          "data": {
+            "chartOptionsId": "barChart1",
+            "labelKeys": [
+              "LABEL"
+            ],
+            "valueKeys": [
+              "VALUE"
+            ],
+            "chartData": {
+              "datasets": [
+                {
+
+                  "backgroundColor": "#67AAF9",
+                  "label": "",
+                  "type": "bar",
+                  "values":[
+                    {
+                      "LABEL": "2016Q1",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2016Q2",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2016Q3",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2016Q4",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q1",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q2",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q3",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q4",
+                      "VALUE": "0.00"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "title": "SR Volume (Severity 3/4)",
+        "tagIds": [
+          2
+        ],
+        "content": {
+          "type": "barChart",
+          "metadata": {
+            "metricInfo": {
+              "title": "The Metric Title",
+              "text": "This metric is..."
+            },
+            "metricEffect": {
+              "effect": 1,
+              "effectValue": "50.0%"
+            }
+          },
+          "data": {
+            "chartOptionsId": "barChart1",
+            "labelKeys": [
+              "LABEL"
+            ],
+            "valueKeys": [
+              "VALUE"
+            ],
+            "chartData": {
+              "datasets": [
+                {
+
+                  "backgroundColor": "#67AAF9",
+                  "label": "",
+                  "type": "bar",
+                  "values":[
+                    {
+                      "LABEL": "2016Q1",
+                      "VALUE": "2.00"
+                    },
+                    {
+                      "LABEL": "2016Q2",
+                      "VALUE": "1.00"
+                    },
+                    {
+                      "LABEL": "2016Q3",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2016Q4",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q1",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q2",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q3",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q4",
+                      "VALUE": "0.00"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "title": "SR RMA Ratio",
+        "tagIds": [
+          2
+        ],
+        "content": {
+          "type": "barChart",
+          "metadata": {
+            "metricInfo": {
+              "title": "The Metric Title",
+              "text": "This metric is..."
+            },
+            "metricEffect": {
+              "effect": 1,
+              "effectValue": "50.0%"
+            }
+          },
+          "data": {
+            "chartOptionsId": "barChart1",
+            "labelKeys": [
+              "LABEL"
+            ],
+            "valueKeys": [
+              "VALUE"
+            ],
+            "chartData": {
+              "datasets": [
+                {
+
+                  "backgroundColor": "#67AAF9",
+                  "label": "",
+                  "type": "bar",
+                  "values":[
+                    {
+                      "LABEL": "2016Q1",
+                      "VALUE": "1.00"
+                    },
+                    {
+                      "LABEL": "2016Q2",
+                      "VALUE": "1.00"
+                    },
+                    {
+                      "LABEL": "2016Q3",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2016Q4",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q1",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q2",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q3",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q4",
+                      "VALUE": "0.00"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "title": "Mean Time to Resolution",
+        "tagIds": [
+          2
+        ],
+        "content": {
+          "type": "barChart",
+          "metadata": {
+            "metricInfo": {
+              "title": "The Metric Title",
+              "text": "This metric is..."
+            },
+            "metricEffect": {
+              "effect": 1,
+              "effectValue": "50.0%"
+            }
+          },
+          "data": {
+            "chartOptionsId": "barChart1",
+            "labelKeys": [
+              "LABEL"
+            ],
+            "valueKeys": [
+              "VALUE"
+            ],
+            "chartData": {
+              "datasets": [
+                {
+
+                  "backgroundColor": "#67AAF9",
+                  "label": "",
+                  "type": "bar",
+                  "values":[
+                    {
+                      "LABEL": "2016Q1",
+                      "VALUE": "0.30"
+                    },
+                    {
+                      "LABEL": "2016Q2",
+                      "VALUE": "0.10"
+                    },
+                    {
+                      "LABEL": "2016Q3",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2016Q4",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q1",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q2",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q3",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q4",
+                      "VALUE": "0.00"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "title": "SR Reque",
+        "tagIds": [
+          2
+        ],
+        "content": {
+          "type": "barChart",
+          "metadata": {
+            "metricInfo": {
+              "title": "The Metric Title",
+              "text": "This metric is..."
+            },
+            "metricEffect": {
+              "effect": 1,
+              "effectValue": "50.0%"
+            }
+          },
+          "data": {
+            "chartOptionsId": "barChart1",
+            "labelKeys": [
+              "LABEL"
+            ],
+            "valueKeys": [
+              "VALUE"
+            ],
+            "chartData": {
+              "datasets": [
+                {
+
+                  "backgroundColor": "#67AAF9",
+                  "label": "",
+                  "type": "bar",
+                  "values":[
+                    {
+                      "LABEL": "2016Q1",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2016Q2",
+                      "VALUE": "0.00"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "title": "No Fault Found",
+        "tagIds": [
+          2
+        ],
+        "content": {
+          "type": "barChart",
+          "metadata": {
+            "metricInfo": {
+              "title": "The Metric Title",
+              "text": "This metric is..."
+            },
+            "metricEffect": {
+              "effect": 1,
+              "effectValue": "50.0%"
+            }
+          },
+          "data": {
+            "chartOptionsId": "barChart1",
+            "labelKeys": [
+              "LABEL"
+            ],
+            "valueKeys": [
+              "VALUE"
+            ],
+            "chartData": {
+              "datasets": [
+                {
+
+                  "backgroundColor": "#67AAF9",
+                  "label": "",
+                  "type": "bar",
+                  "values":[
+                    {
+                      "LABEL": "2016Q1",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2016Q2",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2016Q3",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2016Q4",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q1",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q2",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q3",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q4",
+                      "VALUE": "0.00"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "title": "RMA Volume Premium",
+        "tagIds": [
+          2
+        ],
+        "content": {
+          "type": "barChart",
+          "metadata": {
+            "metricInfo": {
+              "title": "The Metric Title",
+              "text": "This metric is..."
+            },
+            "metricEffect": {
+              "effect": 0,
+              "effectValue": "50.0%"
+            }
+          },
+          "data": {
+            "chartOptionsId": "barChart1",
+            "labelKeys": [
+              "LABEL"
+            ],
+            "valueKeys": [
+              "VALUE"
+            ],
+            "chartData": {
+              "datasets": [
+                {
+
+                  "backgroundColor": "#67AAF9",
+                  "label": "RMA Order Count",
+                  "type": "bar",
+                  "values": [
+                    {
+
+                      "backgroundColor": "#67AAF9",
+                      "label": "RMA Order Count",
+                      "type": "bar",
+                      "values":[
+                        {
+                          "LABEL": "2016Q1",
+                          "VALUE": "0.00"
+                        },
+                        {
+                          "LABEL": "2016Q2",
+                          "VALUE": "0.00"
+                        },
+                        {
+                          "LABEL": "2016Q3",
+                          "VALUE": "0.00"
+                        },
+                        {
+                          "LABEL": "2016Q4",
+                          "VALUE": "0.00"
+                        },
+                        {
+                          "LABEL": "2017Q1",
+                          "VALUE": "0.00"
+                        },
+                        {
+                          "LABEL": "2017Q2",
+                          "VALUE": "0.00"
+                        },
+                        {
+                          "LABEL": "2017Q3",
+                          "VALUE": "0.00"
+                        },
+                        {
+                          "LABEL": "2017Q4",
+                          "VALUE": "0.00"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+
+                  "backgroundColor": "#67AAF9",
+                  "label": "RMA Part Count",
+                  "type": "bar",
+                  "values": [
+                    {
+                      "LABEL": "2016Q1",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2016Q2",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2016Q3",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2016Q4",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q1",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q2",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q3",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q4",
+                      "VALUE": "0.00"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "title": "RMA Volume Standard",
+        "tagIds": [
+          2
+        ],
+        "content": {
+          "type": "barChart",
+          "metadata": {
+            "metricInfo": {
+              "title": "The Metric Title",
+              "text": "This metric is..."
+            },
+            "metricEffect": {
+              "effect": 0,
+              "effectValue": "50.0%"
+            }
+          },
+          "data": {
+            "chartOptionsId": "barChart1",
+            "labelKeys": [
+              "LABEL"
+            ],
+            "valueKeys": [
+              "VALUE"
+            ],
+            "chartData": {
+              "datasets": [
+                {
+
+                  "backgroundColor": "#67AAF9",
+                  "label": "RMA Order Count",
+                  "type": "bar",
+                  "values": [
+                    {
+                      "LABEL": "2016Q1",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2016Q2",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2016Q3",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2016Q4",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q1",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q2",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q3",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q4",
+                      "VALUE": "0.00"
+                    }
+                  ]
+                },
+                {
+
+                  "backgroundColor": "#67AAF9",
+                  "label": "RMA Part Count",
+                  "type": "bar",
+                  "values": [
+                    {
+                      "LABEL": "2016Q1",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2016Q2",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2016Q3",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2016Q4",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q1",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q2",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q3",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q4",
+                      "VALUE": "0.00"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "title": "Premium Vs Classic",
+        "tagIds": [
+          2
+        ],
+        "content": {
+          "type": "barChart",
+          "metadata": {
+            "metricInfo": {
+              "title": "The Metric Title",
+              "text": "This metric is..."
+            },
+            "metricEffect": {
+              "effect": 0,
+              "effectValue": "50.0%"
+            }
+          },
+          "data": {
+            "chartOptionsId": "stackedBarChart1",
+            "labelKeys": [
+              "LABEL"
+            ],
+            "valueKeys": [
+              "VALUE"
+            ],
+            "chartData": {
+              "datasets": [
+                {
+
+                  "backgroundColor": "#67AAF9",
+                  "label": "Premium",
+                  "type": "bar",
+                  "values": [
+                    {
+                      "LABEL": "2016Q1",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2016Q2",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2016Q3",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2016Q4",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q1",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q2",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q3",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q4",
+                      "VALUE": "0.00"
+                    }
+                  ]
+                },
+                {
+
+                  "backgroundColor": "#FFBB41",
+                  "label": "Classic",
+                  "type": "bar",
+                  "values": [
+                    {
+                      "LABEL": "2016Q1",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2016Q2",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2016Q3",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2016Q4",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q1",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q2",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q3",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q4",
+                      "VALUE": "0.00"
+                    }
+                  ]
+                },
+                {
+
+                  "backgroundColor": "#708090",
+                  "label": "Other",
+                  "type": "bar",
+                  "values": [
+                    {
+                      "LABEL": "2016Q1",
+                      "VALUE": "2.00"
+                    },
+                    {
+                      "LABEL": "2016Q2",
+                      "VALUE": "1.00"
+                    },
+                    {
+                      "LABEL": "2016Q3",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2016Q4",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q1",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q2",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q3",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q4",
+                      "VALUE": "0.00"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "title": "Install Base - Coverage",
+        "tagIds": [
+          4
+        ],
         "content": {
           "type": "pieChart",
           "metadata": {
-        		"metricInfo": {
-        			"title":"The Metric Title",
-        			"text":"This metric is..."
-        		},
-        		"metricEffect": {
-        			"effect":0,
-        			"effectValue":"50.0%"
-        		}
-        	},
+            "metricInfo": {
+              "title": "The Metric Title",
+              "text": "This metric is..."
+            },
+            "metricEffect": {
+              "effect": 0,
+              "effectValue": "50.0%"
+            }
+          },
           "data": {
-
             "chartOptionsId": "pieChart1",
-            "labelKeys": ["LABEL"],
-            "valueKeys": ["VALUE"],
+            "labelKeys": [
+              "LABEL"
+            ],
+            "valueKeys": [
+              "VALUE"
+            ],
             "chartData": {
-              "datasets": [{
-                "datasetTransformerId": "",
-                "backgroundColor": "#67AAF9",
-                "type": "pie",
-                "values": [{
-                  "LABEL": "2017",
-                  "VALUE": "21"
-                }, {
-                  "LABEL": "2018",
-                  "VALUE": "12"
-                }, {
-                  "LABEL": "2019",
-                  "VALUE": "34"
-                }, {
-                  "LABEL": "2020",
-                  "VALUE": "42"
-                }, {
-                  "LABEL": "2021",
-                  "VALUE": "32"
-                }]
-              }]
+              "datasets": [
+                {
+
+                  "type": "pie",
+                  "values": [
+                    {
+                      "LABEL": "Total Covered",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "Total Uncovered",
+                      "VALUE": "3496.00"
+                    },
+                    {
+                      "LABEL": "Total Covered and Beyond LDoS",
+                      "VALUE": "0.00"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "title": "Install Base LDoS",
+        "tagIds": [
+          4
+        ],
+        "content": {
+          "type": "barChart",
+          "metadata": {
+            "metricInfo": {
+              "title": "The Metric Title",
+              "text": "This metric is..."
+            },
+            "metricEffect": {
+              "effect": 0,
+              "effectValue": "50.0%"
+            }
+          },
+          "data": {
+            "chartOptionsId": "stackedBarChart2",
+            "labelKeys": [
+              "LABEL"
+            ],
+            "valueKeys": [
+              "VALUES"
+            ],
+            "chartData": {
+              "datasets": [
+                {
+
+                  "backgroundColor": "#67AAF9",
+                  "label": "Collaboration",
+                  "type": "bar",
+                  "values": [
+                    {
+                      "LABEL": "2017",
+                      "VALUE": "27545.00"
+                    },
+                    {
+                      "LABEL": "2018",
+                      "VALUE": "40784.00"
+                    },
+                    {
+                      "LABEL": "2019",
+                      "VALUE": "34772.00"
+                    },
+                    {
+                      "LABEL": "2020",
+                      "VALUE": "367836.00"
+                    },
+                    {
+                      "LABEL": "2021",
+                      "VALUE": "47474.00"
+                    }
+                  ]
+                },
+                {
+
+                  "backgroundColor": "#FFBB41",
+                  "label": "Data Center Switching",
+                  "type": "bar",
+                  "values": [
+                    {
+                      "LABEL": "2017",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2018",
+                      "VALUE": "757.00"
+                    },
+                    {
+                      "LABEL": "2019",
+                      "VALUE": "844.00"
+                    },
+                    {
+                      "LABEL": "2020",
+                      "VALUE": "66079.00"
+                    },
+                    {
+                      "LABEL": "2021",
+                      "VALUE": "10388.00"
+                    }
+                  ]
+                },
+                {
+
+                  "backgroundColor": "#37394C",
+                  "label": "Enterprise Networking",
+                  "type": "bar",
+                  "values": [
+                    {
+                      "LABEL": "2017",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2018",
+                      "VALUE": "35749.00"
+                    },
+                    {
+                      "LABEL": "2019",
+                      "VALUE": "10171.00"
+                    },
+                    {
+                      "LABEL": "2020",
+                      "VALUE": "19781.00"
+                    },
+                    {
+                      "LABEL": "2021",
+                      "VALUE": "34179.00"
+                    }
+                  ]
+                },
+                {
+
+                  "backgroundColor": "#D1E5FD",
+                  "label": "Security",
+                  "type": "bar",
+                  "values": [
+                    {
+                      "LABEL": "2017",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2018",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2019",
+                      "VALUE": "28669.00"
+                    },
+                    {
+                      "LABEL": "2020",
+                      "VALUE": "7962.00"
+                    },
+                    {
+                      "LABEL": "2021",
+                      "VALUE": "2592.00"
+                    }
+                  ]
+                },
+                {
+
+                  "backgroundColor": "#F4F1EA",
+                  "label": "Service Provider",
+                  "type": "bar",
+                  "values": [
+                    {
+                      "LABEL": "2021",
+                      "VALUE": "0.00"
+                    }
+                  ]
+                },
+                {
+
+                  "backgroundColor": "#F9E767",
+                  "label": "Unmapped",
+                  "type": "bar",
+                  "values": [
+                    {
+                      "LABEL": "2018",
+                      "VALUE": "987.00"
+                    },
+                    {
+                      "LABEL": "2019",
+                      "VALUE": "37274.00"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "title": "Install Base Software Attach Rate",
+        "tagIds": [
+          4
+        ],
+        "content": {
+          "type": "barChart",
+          "metadata": {
+            "metricInfo": {
+              "title": "The Metric Title",
+              "text": "This metric is..."
+            },
+            "metricEffect": {
+              "effect": 0,
+              "effectValue": "50.0%"
+            }
+          },
+          "data": {
+            "chartOptionsId": "barChart1",
+            "labelKeys": [
+              "LABEL"
+            ],
+            "valueKeys": [
+              "VALUES"
+            ],
+            "chartData": {
+              "datasets": [
+                {
+
+                  "backgroundColor": "#67AAF9",
+                  "label": "Software Attach Rate",
+                  "type": "bar",
+                  "values": [
+                    {
+                      "LABEL": "2016Q1",
+                      "VALUES": "0.00"
+                    },
+                    {
+                      "LABEL": "2016Q2",
+                      "VALUES": "0.00"
+                    },
+                    {
+                      "LABEL": "2016Q3",
+                      "VALUES": "6402.00"
+                    },
+                    {
+                      "LABEL": "2016Q4",
+                      "VALUES": "11419.00"
+                    },
+                    {
+                      "LABEL": "2017Q1",
+                      "VALUES": "8939.00"
+                    },
+                    {
+                      "LABEL": "2017Q2",
+                      "VALUES": "55380.00"
+                    },
+                    {
+                      "LABEL": "2017Q3",
+                      "VALUES": "4973.00"
+                    },
+                    {
+                      "LABEL": "2017Q4",
+                      "VALUES": "0.00"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "title": "Install Base Attach Rate",
+        "tagIds": [
+          4
+        ],
+        "content": {
+          "type": "barChart",
+          "metadata": {
+            "metricInfo": {
+              "title": "The Metric Title",
+              "text": "This metric is..."
+            },
+            "metricEffect": {
+              "effect": 0,
+              "effectValue": "50.0%"
+            }
+          },
+          "data": {
+            "chartOptionsId": "barChart1",
+            "labelKeys": [
+              "LABEL"
+            ],
+            "valueKeys": [
+              "VALUES"
+            ],
+            "chartData": {
+              "datasets": [
+                {
+
+                  "backgroundColor": "#67AAF9",
+                  "label": "Attach Rate",
+                  "type": "bar",
+                  "values": [
+                    {
+                      "LABEL": "2016Q1",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2016Q2",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2016Q3",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2016Q4",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q1",
+                      "VALUE": "0.00"
+                    },
+                    {
+                      "LABEL": "2017Q2",
+                      "VALUE": "88046.00"
+                    },
+                    {
+                      "LABEL": "2017Q3",
+                      "VALUE": "384476.00"
+                    },
+                    {
+                      "LABEL": "2017Q4",
+                      "VALUE": "153438.00"
+                    }
+                  ]
+                }
+              ]
             }
           }
         }

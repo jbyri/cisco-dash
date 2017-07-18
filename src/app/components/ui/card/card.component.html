@@ -21,12 +21,13 @@
 
   <card-content #content [contentBuilder]="cardContentBuilder" [contentModel]="cardModel.contentModel"></card-content>
 
+ 
   <div class="large-margin-top">
     <button type="button"
             class="no-background no-border"
-            ngbPopover="You see, I show up on hover!"
+            ngbPopover="{{cardModel.contentModel.cardContentMetadata.metricInfo.text}}"
             triggers="mouseenter:mouseleave"
-            popoverTitle="Pop title" container="body">
+            popoverTitle="{{cardModel.contentModel.cardContentMetadata.metricInfo.title}}" container="body">
       <i class="fa fa-info-circle" aria-hidden="true"></i>
     </button>
   </div>

@@ -11,13 +11,6 @@ export interface CustomerModel {
   data: CustomerData
 }
 
-// customer feedback model
-export interface CustomerFeedback {
-  title: string,
-  text: string,
-  performance: number
-}
-
 // customer datapoint
 export interface CustomerDatapoint {
   title: string,
@@ -38,6 +31,5 @@ export interface CustomerDatapointContent {
 
 // customer data model
 export interface CustomerData {
-  feedbacks: CustomerFeedback[],
   datapoints: CustomerDatapoint[]
 }
