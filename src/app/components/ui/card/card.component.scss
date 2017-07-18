@@ -33,6 +33,10 @@
   outline: none;
 }
 
+.card-tag:hover, .card-download:hover {
+  transform: scale(1.2);
+}
+
 .card-popover, .card-download {
   font-size: 16px;
   outline: none;

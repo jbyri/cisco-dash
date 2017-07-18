@@ -92,6 +92,10 @@
   cursor: pointer;
 }
 
+#side-nav i:hover {
+  transform: scale(1.2);
+}
+
 #dash-img img {
   padding: 1em 2em 1em 0;
 }
