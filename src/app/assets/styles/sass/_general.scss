@@ -22,7 +22,6 @@
   display: inline-flex !important;
 }
 
-
 .flex-row-center{
   flex-direction: row;
   align-items: center;
@@ -33,6 +32,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
 }
 
 .flex-spread{

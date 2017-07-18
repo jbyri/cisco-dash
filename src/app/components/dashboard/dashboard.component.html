@@ -27,7 +27,7 @@
       </div>
       <div id="dash-content">
         <div class="col-xs-10 col-sm-12 col-md-12 col-lg-12 large-padding-top">
-          <div class="display-inline-flex flex-center large-padding-bottom">
+          <div class="display-inline-flex flex-center large-padding-bottom large-margin-bottom">
             <div id="dash-img" class="hidden-sm-down col-md-2 col-lg-2">
               <img class="medium-border-right border-whitesmoke" src="/app/assets/images/cisco-logo-white.svg" />
             </div>
@@ -41,15 +41,21 @@
               </button>
             </div>
           </div>
+          <div class="display-flex flex-row">
+            <div id="side-nav" class="hidden-sm-down col-md-1 col-lg-1">
+              <i (click)="handleMenuToggle()" class="fa fa-search large-padding-bottom large-margin-left large-margin-bottom font-whitesmoke" aria-hidden="true"></i>
+              <i (click)="logout()" class="fa fa-sign-out large-padding-bottom large-margin-left large-margin-bottom font-whitesmoke" aria-hidden="true"></i>
+            </div>
 
-          <div id="card-container-scroll" class="sbstyle-5">
-            <!-- Draw the cards -->
-            <div #cards id="card-container" class="card-columns">
-              <card data-packed class="cards no-background no-border no-margin"
-                *ngFor="let dataPoint of filterCustomerDatapoints(selectedCustomerModel.data.datapoints)"
-                (tagSelected)="onCardTagSelected($event)"
-                [cardContentBuilder]="getContentBuilder(dataPoint.content.type)"
-                [cardModel]='buildCardModel(dataPoint)'></card>
+            <div id="card-container-scroll" class="col-xs-12 col-sm-12 col-md-11 col-lg-11 no-padding-left">
+              <!-- Draw the cards -->
+              <div #cards id="card-container" class="card-columns">
+                <card data-packed class="cards no-background no-border no-margin"
+                  *ngFor="let dataPoint of filterCustomerDatapoints(selectedCustomerModel.data.datapoints)"
+                  (tagSelected)="onCardTagSelected($event)"
+                  [cardContentBuilder]="getContentBuilder(dataPoint.content.type)"
+                  [cardModel]='buildCardModel(dataPoint)'></card>
+              </div>
             </div>
           </div>
         </div>

@@ -26,18 +26,15 @@
   height:100%;
 }
 
-
 ::-webkit-scrollbar{
   background: transparent;
   width: 0;
 }
 
 #card-container-scroll {
-  max-width: 100vw;
   max-height: 80vh;
   overflow-y: auto;
   overflow-x: auto;
-  padding: 0 6em;
 }
 
 .cards {
@@ -70,6 +67,16 @@
 
 #side-nav-dropdown img {
   padding: 1em 1em 1em 0;
+}
+
+#side-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+#side-nav i {
+  font-size: 1.2em;
+  cursor: pointer;
 }
 
 #dash-img img {
