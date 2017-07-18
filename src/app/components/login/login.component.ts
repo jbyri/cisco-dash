@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthenticationService } from '../../services/authentication.service'
-import 'rxjs/add/operator/map'
+import { AuthenticationService } from '../../services/authentication.service';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-login',

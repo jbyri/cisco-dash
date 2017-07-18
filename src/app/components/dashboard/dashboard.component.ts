@@ -9,9 +9,9 @@ import {
 
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../../services/authentication.service';
-import { DashboardDataService } from '../../services/dashboard/dashboarddata.service'
-import { SearchMenuModel } from '../ui/search/search-menu.model'
-import { Tag } from '../../model/tag.model'
+import { DashboardDataService } from '../../services/dashboard/dashboarddata.service';
+import { SearchMenuModel } from '../ui/search/search-menu.model';
+import { Tag } from '../../model/tag.model';
 import {
   CardContentModel,
   ChartContentModel,

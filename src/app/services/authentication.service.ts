@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/of';
  
 @Injectable()
 export class AuthenticationService {
@@ -18,7 +19,7 @@ export class AuthenticationService {
                 // login successful if there's a jwt token in the response
                 let user = response.json();
 
-                console.log("USER", user);
+                console.log('USER', user);
 
                 if (user && user.token) {
                   // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -33,7 +34,7 @@ export class AuthenticationService {
 
     signup(firstName: string, lastName: string, email: string, password: string) : Observable<boolean> {
         let serverUrl = window.location.origin;
-        if(serverUrl.indexOf('localhost:') > -1) {
+        if (serverUrl.indexOf('localhost:') > -1) {
             serverUrl = 'http://localhost';
         }
         return this.http.post(serverUrl + ':5000/api/user/signup', { firstName, lastName, email, password })
@@ -54,10 +55,10 @@ export class AuthenticationService {
     }
  
     logout() : Observable<boolean> {
-        console.log("Login Service Logout");
+        console.log('Login Service Logout');
         // remove user from local storage to log user out
         localStorage.removeItem('token');
-        return Observable.create(true);
+        return Observable.of(true);
     }
 
 }
