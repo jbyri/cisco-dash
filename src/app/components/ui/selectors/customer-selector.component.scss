@@ -9,18 +9,18 @@ customer-selector {
   text-transform: capitalize;
 }
 
-.options-box {
+.option-tag-box {
   min-width: 10em;
   width: 15em;
+  background: none;
   border: none;
   padding: 0;
-  border: none;
 }
 
 .option-tag {
   font-family: 'Open Sans', sans-serif;
   min-width: 10em;
-  width: 15em;
+  width: 13em;
   padding: 1em;
   text-align: left;
   font-size: small;

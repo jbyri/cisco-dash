@@ -293,6 +293,13 @@ export class DashboardComponent implements OnInit {
     this.cardContentModelCache.clear();
   }
 
+  logout() {
+    this.authenticationService.logout()
+      .subscribe(success => {
+        this.router.navigate(['/']);
+      });
+  }
+
   ngOnDestroy(): void {
     this.clearCache();
   }
