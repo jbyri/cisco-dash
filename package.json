@@ -29,7 +29,7 @@
     "lint": "tslint ./src/**/*.ts -t verbose --fix"
   },
   "keywords": [],
-  "author": "Bow Archer [Decoded4620] and William Namen",
+  "author": "Bow Archer [Decoded4620] and William Namen [wnamen]",
   "license": "MIT",
   "dependencies": {
     "@angular/common": "~4.0.0",

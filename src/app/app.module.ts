@@ -23,14 +23,15 @@ import { CardComponent } from './components/ui/card/card.component';
 import { CardContentComponent } from './components/ui/card/card-content.component';
 import { CustomerSelectorComponent, CustomerFilterPipe } from './components/ui/selectors/customer-selector.component'
 import { SearchMenuComponent } from './components/ui/search/search-menu.component';
-import { SignUpComponent } from './components/signup/signup.component';
 import { TagBarComponent } from './components/ui/tagbar/tagbar.component';
 import { TagBarItemComponent } from './components/ui/tagbar/tagbar-item.component';
 import { TagSelectorComponent } from './components/ui/selectors/tag-selector.component';
 
 // Route handling components.
+import { SignUpComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SettingsComponent } from './components/settings/settings.component';
 
 @NgModule({
   imports: [
@@ -50,6 +51,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     DashboardComponent,
     LoginComponent,
     SignUpComponent,
+    SettingsComponent,
     SearchMenuComponent,
     TagBarComponent,
     TagBarItemComponent,

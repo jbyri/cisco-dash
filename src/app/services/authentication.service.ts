@@ -24,8 +24,10 @@ export class AuthenticationService {
                 if (user && user.token) {
                   // store user details and jwt token in local storage to keep user logged in between page refreshes
                   localStorage.setItem('token', JSON.stringify(user.token));
+                  localStorage.setItem('user', JSON.stringify(user));
                 } else {
                   localStorage.setItem('token', null);
+                  localStorage.setItem('user', null);
                 }
 
                 return user;
@@ -46,8 +48,10 @@ export class AuthenticationService {
                 if (user && user.token) {
                   // store user details and jwt token in local storage to keep user logged in between page refreshes
                   localStorage.setItem('token', JSON.stringify(user.token));
+                  localStorage.setItem('user', JSON.stringify(user));
                 } else {
                   localStorage.setItem('token', null);
+                  localStorage.setItem('user', null);
                 }
 
                 return user;
@@ -58,6 +62,7 @@ export class AuthenticationService {
         console.log('Login Service Logout');
         // remove user from local storage to log user out
         localStorage.removeItem('token');
+        localStorage.removeItem('user');
         return Observable.of(true);
     }
 

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!-- The Settings Component Content (Rendered to screen)-->
+<div class="container-fluid no-scroll no-padding">
+  <div id="dash-view" class="background-linen">
+
+    <!--  -->
+    <div id="dash-body" class="background-linen" [class.dash-active]="toggled">
+      <div id="dash-bg">
+        <div id="top-dash" class="background-blue display-flex large-padding">
+        </div>
+      </div>
+      <div id="dash-content">
+        <div class="col-xs-10 col-sm-12 col-md-12 col-lg-12 large-padding-top">
+          <div id="dash-bar" class="display-inline-flex flex-center large-padding-bottom large-margin-bottom">
+            <div id="mobile-dash-bar" class="hidden-md-up flex-row-spread">
+              <a href="/#/dashboard"><i class="fa fa-line-chart font-whitesmoke" aria-hidden="true"></i></a>
+              <img class="border-whitesmoke" src="/app/assets/images/cisco-logo-white.svg" />
+              <a href="/#/settings"><i class="fa fa-cog font-whitesmoke" aria-hidden="true"></i></a>
+            </div>
+            <div id="dash-img" class="hidden-sm-down col-md-2 col-lg-2">
+              <img class="medium-border-right border-whitesmoke" src="/app/assets/images/cisco-logo-white.svg" />
+            </div>
+          </div>
+          <div class="display-flex flex-row">
+            <div id="side-nav" class="hidden-sm-down col-md-1 col-lg-1">
+              <a href="/#/dashboard"><i class="fa fa-line-chart large-padding-bottom large-margin-left large-margin-bottom font-whitesmoke" aria-hidden="true"></i></a>
+              <a href="/#/settings"><i class="fa fa-cog large-padding-bottom large-margin-left large-margin-bottom font-whitesmoke" aria-hidden="true"></i></a>
+            </div>
+
+            <div id="card-container-scroll" class="col-xs-12 col-sm-12 col-md-11 col-lg-11 no-padding-left large-padding-bottom">
+              <!-- Draw the cards -->
+              <div class="card-block dash-card card-radius background-white">
+                <div class="card-block display-flex flex-row-spread large-margin-bottom no-padding large-padding-bottom">
+                  <p class="card-title no-margin">Settings</p>
+                  <div class="card-tag-container">
+                    <button (click)="logout()" type="button" class="card-tag background-red font-white no-border">
+                        Sign Out
+                    </button>
+                  </div>
+                </div>
+
+                <div class="card-content large-margin-top large-padding-top">
+                  <div class="card-content-row display-flex flex-row-spread">
+                    <p>Name</p>
+                    <p>{{user.firstName}} {{user.lastName}}</p>
+                  </div>
+                  <div class="card-content-row display-flex flex-row-spread">
+                    <p>Email Address</p>
+                    <p>{{user.email}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
