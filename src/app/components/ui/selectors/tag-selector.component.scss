@@ -31,3 +31,14 @@ tag-selector {
 .tag-dot {
   color: green;
 }
+
+@media only screen and (max-width: 767px) {
+  .option-tag-box {
+    min-width: 8em;
+    width: 100%;
+  }
+  .option-tag {
+    min-width: 10em;
+    width: 100%;
+  }
+}
