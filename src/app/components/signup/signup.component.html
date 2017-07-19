@@ -2,11 +2,13 @@
   <form class="display-flex flex-column-center" (ngSubmit)="onSubmit($event)" #signUpForm="ngForm">
     <h2 class="font-white large-margin-bottom">Cisco SSO Signup</h2>
     <div id="signup-inputs" class="large-margin-top large-margin-bottom">
-      <div class="form-group" >
-          <input type="text" class="form-control font-white background-purple" placeholder="First Name" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" required />
-      </div>
-      <div class="form-group" >
-          <input type="text" class="form-control font-white background-purple" placeholder="Last Name" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" required />
+      <div id="signup-names" class="flex-row-spread">
+        <div class="form-group" >
+            <input type="text" class="form-control font-white background-purple" placeholder="First Name" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" required />
+        </div>
+        <div class="form-group" >
+            <input type="text" class="form-control font-white background-purple" placeholder="Last Name" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" required />
+        </div>
       </div>
       <div class="form-group"  >
         <input type="email" class="form-control font-white background-purple" placeholder="Email Address" name="email" [(ngModel)]="model.email" #email="ngModel" required />

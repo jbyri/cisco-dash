@@ -18,6 +18,10 @@
   width: 20vw;
 }
 
+#signup-names {
+  display: block;
+}
+
 #signup-inputs {
   color: white;
 }
@@ -64,7 +68,19 @@
 
 
 @media only screen and (max-width: 767px) {
+  #signup-form {
+    padding: 2em;
+  }
+  #signup-form h2 {
+    margin: 0;
+  }
+  #signup-names {
+    display: flex;
+  }
   #signup-inputs, #signup-button {
     width: 65vw;
+  }
+  #signup-inputs {
+    margin-bottom: 0;
   }
 }
