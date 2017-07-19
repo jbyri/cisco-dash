@@ -31,7 +31,7 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit() {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-    this.user = JSON.parse(localStorage.getItem('currentUser')).user;
+    this.user = JSON.parse(localStorage.getItem('user')).user;
 
     // check cookies for previous settings
     // settings (oauth?)

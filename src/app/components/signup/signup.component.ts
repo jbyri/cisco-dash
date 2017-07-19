@@ -40,8 +40,6 @@ export class SignUpComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.authenticationService.logout();
-
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
 
     console.log("SignUpComponent::ngOnInit()");
